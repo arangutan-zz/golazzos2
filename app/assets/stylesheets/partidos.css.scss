@@ -1,0 +1,174 @@
+// Place all the styles related to the Partidos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.img-random
+{
+opacity:0.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.logo{
+	text-align:center;
+	padding-bottom:0px;
+
+}
+
+.vs{
+	text-align:center;
+	margin-top:-200px;
+	margin-bottom:150px;
+}
+.header-title2{
+	padding-top:0px;
+	padding-bottom: 0px;
+	background: #f2f2f2;
+	margin-bottom: -10px;
+	h1{
+	
+	}
+}
+.titulo-blanco{
+	background:white;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-bottom: 15px;
+	padding-left:50px;
+	margin-left: -25px;
+}
+.header-title{
+	padding-top:0px;
+	padding-bottom: 10px;
+	background: #f2f2f2;
+	h1{
+	
+	}
+}
+.accordion-heading{
+	background: #f2f2f2;
+}
+.partidos-equipos-local{
+	text-align:right;
+}
+.partidos-escudo-alinear{
+	margin-top:-25px;
+}
+.partidos-fecha-partido{
+	padding-bottom:23px;
+}
+.partidos-equipos-visitante{
+	text-align: left;
+}
+.partidos-ranking{
+	padding:0	px;
+	color: white;
+	background: #353535;
+	margin-top:0px;	
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.partidos-premios{
+	padding:0	px;
+	color: white;
+	background: #f2f2f2;
+	margin-top:20px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.partidos-acordion{
+	margin-top:20px;
+}
+.partido-montos{
+	background: #004f92;
+	padding-bottom:20px;
+	margin-bottom:40px;
+}
+.partido-fecha{
+	text-align: center;
+	margin-bottom:-20px;
+}
+.partido-local{
+	margin-top:-20px;
+}
+.partido-uno{
+	position:relative;
+	width:100%;
+	z-index:1;
+	left:-50px;
+	bottom:-50px;
+	margin-top:-70px;
+}
+.partido-pasouno{
+	background:white;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-top: -15px;
+	margin-bottom: 15px;
+	padding-left:50px;
+}
+
+.partido-dos{
+	position:relative;
+	width:100%;
+	z-index:1;
+	left:-50px;
+	bottom:100px;
+	margin-bottom:-80px;
+}
+.partido-pasodos{
+	background: #004f92;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-top: -55px;
+	margin-bottom: 15px;
+	color: white;
+	padding-left:50px;
+	small{
+		color:white;
+	}
+}
+.partido-tres{
+	position:relative;
+	width:100%;
+	left:-200px;
+	bottom:-20px;
+	margin-bottom:-30px;
+}
+.partido-rangos{
+	padding-top:-50px;
+	padding-bottom:40px;
+}
+
+.partido-disabled-btn{
+	margin-bottom:20px;
+}
+.centro{
+	text-align: center;
+}
+.flash-container{
+	padding-top: 10px;
+}
+
+.hr-color{
+	background-color:#353535;
+	color: #353535;
+}
+
+.afiche{
+	background-image:url('partido/VS_partidos.png');
+		background-repeat:no-repeat;
+		background-attachment:scroll;
+		background-position:51%; 
+}
+
+.spinner{
+    left:46%; 
+    top:50%;
+	position: fixed;
+	background-color: #353535;
+	padding: 5px;
+		-moz-border-radius: 15px;
+	border-radius: 15px;
+	opacity: .8;
+}

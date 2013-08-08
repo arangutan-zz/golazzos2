@@ -1,0 +1,30 @@
+<div class="about">
+	<div class="about_titulo secTitle">AMIGOS</div>
+	<div class="about_content">
+		<% @ranking_followers.each do |following|%>
+			<% if current_user.id == following.id%>
+					<div class="activity-ranking-follower activityrankingfondo ">
+						<div class="activity-ranking">
+							<%= link_to following.name, following%>
+						</div>
+						<div class="pull-right">
+							<font face="digital7" color="orange" size="3">
+								<%= number_to_currency(following.pezzos,:precision => 0) %>
+							</font>
+						</div>
+					</div>
+			<%else%>
+					<div class="activity-ranking-follower">
+						<div class="activity-ranking">
+							<%= link_to following.name, following%>
+						</div>
+						<div class="pull-right">
+							<font face="digital7" color="orange" size="3">
+								<%= number_to_currency(following.pezzos,:precision => 0) %>
+							</font>
+						</div>
+					</div>
+			<%end%>
+		<%end%>
+	</div>
+</div>

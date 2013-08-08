@@ -1,0 +1,29 @@
+<div class="offset1 about">
+	<div class="about_titulo">
+		AMIGOS DE FACEBOOK
+	</div>
+	<div class="about_content">
+    <div class="ro">
+      <% @friends.each  do |friend| %>
+        <%user = User.find_by_uid(friend["id"])%>
+        <%if user.nil? %>
+          <!-- el usuario no existe -->
+
+          <div class= "friendship-amigo-facebook">
+            <div class="friendship-foto-facebook">
+              <%=image_tag friend["picture"]["data"]["url"], {:class=> "thumbsail", :width => "40px"}%>
+            </div>
+            <div class="friendship-nombre-facebook">
+                <h5> <%=h friend["name"]%></h5>
+            </div>
+          </div>
+          <hr/>
+
+        <%else%>
+
+        <%end%>
+      <%end%>
+    </div>
+		</div>
+	</div>
+</div>

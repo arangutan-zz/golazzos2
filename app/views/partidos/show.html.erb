@@ -1,0 +1,39 @@
+<div class= "header-title">
+  <div class="container">
+    <div class="row">
+      <div class="span7  titulo-blanco">
+        <div class="offset1">
+        <div class="fuenteFuturaB"><h3>JUEGA POR TU MARCADOR</h3></div>
+        <div class="muted BTSinEspacio"><h6>ESTE ES EL PARTIDO QUE ESCOGISTE, POR FAVOR SIGUE LOS 3 PASOS.</h6></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "layouts/flash_notice"%>
+<%=render "afiche_partido"%>
+
+
+
+<%if @partido.repartido%>
+<div class="container"><div class="row"><div class=""></div></div></div>
+<%else%>
+<div class="container">
+  <div class="row">
+    <div class="span2 offset1">
+    <div class="partido-uno">
+      <%=image_tag "partido/No1_apuesta.png" %>
+    </div>
+  </div>
+  </div>
+</div>
+    <%=render "monto_a_apostar"%>
+    <%render "matriz_apuestas"%>
+    <%=render "matriz_apuestas_dos"%>
+</div>
+<%end%>
+<div class="centro spinner" id="spinner">
+  <%= image_tag "350.gif", { width: "28px" }%>
+   <h6 class="muted BTSinEspacio">CARGANDO...</h6>
+</div>

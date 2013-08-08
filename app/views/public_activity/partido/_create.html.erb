@@ -1,0 +1,32 @@
+<section class="">
+	<div class="activity-content-title">
+		<h5><strong> Partido Nuevo </strong><small><%= time_ago_in_words(activity.trackable.created_at) %> ago</small></h5>
+	</div>
+	<div class="activity activity-partido-nuevo well well-small">
+		<div class="partido-fecha">
+		  <h4> <%= l(activity.trackable.diapartido, format: '%d de %B', locale:'es-CO')%></h4>
+		  <h6 class="muted"> <%= l(activity.trackable.diapartido, format: '%l:%M %p', locale:'es-CO')%></h6>
+		</div>
+	    <div class="logo activity-partido-nuevo-logo">
+	      <%= image_tag activity.trackable.logolocal, {:class => "", :width=>"100px"}%>
+	      <div>
+	          <h2 class="lead"> <%=activity.trackable.local%></h2>      
+	          <h6 class="muted">Local</h6>
+	      </div>
+	    </div>
+	    <div class=" activity-partido-nuevo-vs">
+	    	<%=image_tag "partido/VS_partidos.png",{:class => "user-vs"}%>
+	    </div>
+	    <div class="logo activity-partido-nuevo-logo">
+	      <%= image_tag activity.trackable.logovisitante,{:class => "", :width =>"100px"}%>
+	      <div>
+	        <h2 class="lead"> <%=activity.trackable.visitante%></h2>
+	        <h6 class="muted"> Visitante</h6>
+	      </div>
+	    </div>
+	    <div class="text-right"><%= link_to "Juega Ya!", activity.trackable, {:class=> "btn btn-primary"}%></div>
+	</div>
+
+</section>
+
+

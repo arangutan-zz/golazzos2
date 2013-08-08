@@ -1,0 +1,196 @@
+
+  <div class="span4">
+    <div class="row">
+
+    <%for i in 0..5 %>
+      <%for j in 0..5%>
+        <%if  i> j && !(i==5 && j==4)%>
+          <div class="span2">
+            <%if (@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta) >= 2 || @partido.monto_total_apostado < 500000) && @partido.cerrado==false %>
+                            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+                                  <%= f.hidden_field :local_apostado, value: i%>
+                                  <%= f.hidden_field :visitante_apostado, value: j%>
+                                      <% if (current_user.local_apostado==i && current_user.visitante_apostado== j)%>
+                                          <button data-loading-text="Loading..." class= "btn btn-block btn-mini disabled btn-primary" >   
+                                          <h2><%= "#{i} - #{j}"%></h2>
+                                          <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                            <% f.submit ""%> 
+                                        </button>
+                                      <%else%>
+                                              <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<2%>
+                                                <button class= "btn btn-block btn-mini btn-danger"> 
+                                                  <h2><%= "#{i} - #{j}"%></h2>
+                                                  <h2 class="lead"><%="definiendo.."%></h2> 
+                                                  <% f.submit ""%>
+                                                </button>
+                                              <%end%>
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=2 && @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<4%>
+                                                  <button class= "btn btn-block btn-mini btn-danger"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                    <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=4 && @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<8%>
+                                                  <button class= "btn btn-block btn-mini btn-warning"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                     <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=8 || @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)== -1%>
+                                                  <button class= "btn btn-block btn-mini btn-success"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                  <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2>    
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+                                      <%end%>
+                            <%end%>
+            <%else%>     
+                            <button class= "btn btn-block btn-mini disabled partido-disabled-btn">
+                              <h2><%= "#{i} - #{j}"%></h2>  
+                              <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                            </button>      
+            <% end %>
+          </div>  
+        <%end%> 
+      <%end%> 
+    <%end%>
+    </div>
+  </div>
+
+  <div class="span4">
+    <div class="row">
+
+    <%for i in 0..5 %>
+      <%for j in 0..5%>
+        <%if  i==j %>
+          <div class="span2">
+            <%if (@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta) >= 2 || @partido.monto_total_apostado < 500000) && @partido.cerrado==false %>
+                            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+                                  <%= f.hidden_field :local_apostado, value: i%>
+                                  <%= f.hidden_field :visitante_apostado, value: j%>
+                                      <% if (current_user.local_apostado==i && current_user.visitante_apostado== j)%>
+                                          <button class= "btn btn-block btn-mini disabled btn-primary" >   
+                                          <h2><%= "#{i} - #{j}"%></h2>
+                                          <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                            <% f.submit ""%> 
+                                        </button>
+                                      <%else%>
+                                                 <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<2%>
+                                                <button class= "btn btn-block btn-mini btn-danger"> 
+                                                  <h2><%= "#{i} - #{j}"%></h2>
+                                                  <h2 class="lead"><%="definiendo.."%></h2> 
+                                                  <% f.submit ""%>
+                                                </button>
+                                              <%end%>
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=2 && @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<4%>
+                                                  <button class= "btn btn-block btn-mini btn-danger"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                    <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=4 && @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<8%>
+                                                  <button class= "btn btn-block btn-mini btn-warning"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                     <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=8 || @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)== -1%>
+                                                  <button class= "btn btn-block btn-mini btn-success"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                  <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2>    
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+                                      <%end%>
+                            <%end%>
+            <%else%>     
+                            <button class= "btn btn-block btn-mini disabled partido-disabled-btn">
+                              <h2><%= "#{i} - #{j}"%></h2>  
+                              <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                            </button>      
+            <% end %>
+          </div>  
+        <%end%> 
+      <%end%> 
+    <%end%>
+    </div>
+    <div class="centro">
+      <%= image_tag "partido/explicacionRetorno.png"%>
+      <%= image_tag "partido/partido_fondoPersonaje.png" %>
+    </div>
+  </div>
+
+
+  <div class="span4">
+    <div class="row">
+
+    <%for j in 0..5 %>
+      <%for i in 0..5%>
+        <%if  i< j && !(j==5 && i==4)%>
+          <div class="span2">
+            <%if (@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta) >= 2 || @partido.monto_total_apostado < 500000) && @partido.cerrado==false %>
+                            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+                                  <%= f.hidden_field :local_apostado, value: i%>
+                                  <%= f.hidden_field :visitante_apostado, value: j%>
+                                      <% if (current_user.local_apostado==i && current_user.visitante_apostado== j)%>
+                                          <button class= "btn btn-block btn-mini disabled btn-primary" >   
+                                          <h2><%= "#{i} - #{j}"%></h2>
+                                          <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                            <% f.submit ""%> 
+                                        </button>
+                                      <%else%>
+                                               <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<2%>
+                                                <button class= "btn btn-block btn-mini btn-danger"> 
+                                                  <h2><%= "#{i} - #{j}"%></h2>
+                                                  <h2 class="lead"><%="definiendo.."%></h2> 
+                                                  <% f.submit ""%>
+                                                </button>
+                                              <%end%>
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=2 && @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<4%>
+                                                  <button class= "btn btn-block btn-mini btn-danger"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                    <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=4 && @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)<8%>
+                                                  <button class= "btn btn-block btn-mini btn-warning"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                     <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+
+                                                <%if @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)>=8 || @partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta)== -1%>
+                                                  <button class= "btn btn-block btn-mini btn-success"> 
+                                                    <h2><%= "#{i} - #{j}"%></h2>
+                                                  <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2>    
+                                                    <% f.submit ""%>
+                                                  </button>
+                                                <%end%>
+                                      <%end%>
+                            <%end%>
+            <%else%>     
+                            <button class= "btn btn-block btn-mini disabled partido-disabled-btn">
+                              <h2><%= "#{i} - #{j}"%></h2>  
+                              <h2 class="lead"><%="#{@partido.xveces_el_resultado(i,j,current_user.pezzos_que_apuesta).round(3)}x"%></h2> 
+                            </button>      
+            <% end %>
+          </div>  
+        <%end%> 
+      <%end%> 
+    <%end%>
+    </div>
+  </div>
+
+

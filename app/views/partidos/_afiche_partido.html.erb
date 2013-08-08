@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row afiche">
+    <div class="partido-fecha span12 BTSinEspacio">
+
+      <h4> <%= l(@partido.diapartido, format: '%d de %B', locale:'es-CO')%></h4>
+      <h6 class="muted BTSinEspacio"> <%= l(@partido.diapartido, format: '%l:%M %p', locale:'es-CO')%></h6>
+    </div>
+
+    <%=render "supporters_local"%>
+
+
+    <div class="span3 logo">
+      <%= image_tag @partido.logolocal, {:class => "", :width=>"200x200"}%>
+      <div>
+          <h2 class="lead BTSinEspacio"> <%=@partido.local%></h2>      
+          <h6 class="muted BTSinEspacio partido-local">Local</h6>
+      </div>
+    </div>
+    <div class="span3 logo">
+      <%= image_tag @partido.logovisitante,{:class => "", :width=>"200x100"}%>
+      <div>
+        <h2 class="lead BTSinEspacio"> <%=@partido.visitante%></h2>
+        <h6 class="muted BTSinEspacio partido-local"> Visitante</h6>
+      </div>
+    </div>
+  
+  <%=render "supporters_visitante"%>
+
+</div>
+<%if @partido.repartido%>
+  <div class="about span6 offset3">
+    <div class="about_titulo secTitle"><strong><%= @ganadores.count%></strong> GANADORES!</div>
+    <div class="about_content">
+
+      <% @ganadores.each do |ganador|%>
+      <div class="activity-ranking-follower">
+        <div class="activity-ranking">
+          <%= link_to ganador.user.name, ganador.user.name%>
+        </div>
+        <div class="pull-right">
+          <font face="digital7" color="orange" size="5">
+            <%= number_to_currency(ganador.pezzos_ganados,:precision => 0) %>
+          </font>
+          <%  if !current_user.friendships.find_by_friend_id(ganador.user.id) %>
+            <%= link_to "Seguir", friendships_path(:friend_id => ganador.user),{:class=> "btn" ,:method => :post}%>
+
+          <%else%>
+            <%= link_to "remove", current_user.friendships.find_by_friend_id(ganador.user.id),{:class=> "btn btn-danger" ,:method => :delete}%>
+          <%end%>
+        </div>
+      </div>
+      <%end%>
+    </div>
+</div>
+<%end%>
+  <div class="accordion span6 offset3" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Comparte tus comentarios sobre este partido aquí!
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%=render "chat_partido"%>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="row">
+        <div class="span6 offset1 partido-pasodos">
+          <h3><small>ESCOGE TU MARCADOR Y CONOCE EL RETORNO QUE GANARIÁS:</small></h3>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="span2 offset1">
+            <div class="partido-dos">
+              <%=image_tag "partido/No2_apuesta.png" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row partido-rangos">
+        <div class="span2 offset1"><%=image_tag "partido/iconoVerde_retorno.png"%></div>
+        <div class="span2"><%=image_tag "partido/iconoAmarillo_retorno.png"%></div>
+        <div class="span2"><%=image_tag "partido/iconoRojo_retorno.png"%></div>
+        <div class="span4"><%=image_tag "partido/iconoGris_retorno.png"%></div>
+      </div>
+
+      <div class="row">
+        <div class="span4 centro">
+          <%= image_tag @partido.logolocal, { :class=> "centro", :width=> "100"} %>
+        </div>
+        <div class="span4 centro">
+        </div>
+        <div class="span4 centro">
+          <%= image_tag @partido.logovisitante, { :class=> "centro", :width=> "100"} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span4">
+          <%= image_tag "partido/GanaLocal_apuesta.jpg"%>
+        </div>
+        <div class="span4">
+          <%= image_tag "partido/Empate_apuesta.jpg"%>
+        </div>
+        <div class="span4">
+          <%= image_tag "partido/GanaVisitante_apuesta.jpg"%>
+        </div>
+      </div>
+    <div class= "row" id="matriz">
+      <%= render "botones_apuestas"%>
+    </div>
+    <div class="row">
+      <div class="span6 offset3 centro">
+        <%if @partido.cerrado==false%>
+          <%= render"formulario_apuesta"%>
+        <%end%> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

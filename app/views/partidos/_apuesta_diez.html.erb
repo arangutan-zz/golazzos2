@@ -1,0 +1,175 @@
+<div class="" id="botonesmontos">
+          <div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+            <div id="pruebas">
+                <%if current_user.pezzos_que_apuesta==10000%>
+                      <button class= "btn-block btn btn-warning"> 
+                        $10,000 pezzos
+                <%elsif current_user.pezzos<10000%>
+                     <button class= "btn-block btn disabled"> 
+                        $10,000 pezzos
+                <%else%>
+                       <button class= "btn-block btn"> 
+                        <%= f.hidden_field :pezzos_que_apuesta, value: 10000%>
+                        $10,000 pezzos
+                        <% f.submit ""%> 
+                <%end%>
+                  
+                </button>
+              </div>
+            <%end%>
+          </div>
+          <div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true   do |f|%>
+              <%if current_user.pezzos_que_apuesta==20000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $20,000 pezzos
+              <%elsif current_user.pezzos<20000%>
+                    <button class= "btn-block btn disabled"> 
+                      $20,000 pezzos
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 20000%>
+                      $20,000 pezzos
+                      <% f.submit ""%> 
+              <%end%>
+                
+              </button>
+            <%end%>
+          </div><div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==30000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $30,000 pzz
+              <%elsif current_user.pezzos<30000%>
+                    <button class= "btn-block btn disabled"> 
+                      $30,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 30000%>
+                      $30,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+                
+              </button>
+            <%end%>
+          </div><div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==40000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $40,000 pzz
+              <%elsif current_user.pezzos<40000%>
+                    <button class= "btn-block btn disabled"> 
+                      $40,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 40000%>
+                      $40,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+               
+              </button>
+            <%end%>
+          </div><div class="span2">
+           <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==50000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $50,000 pzz
+              <%elsif current_user.pezzos<50000%>
+                    <button class= "btn-block btn disabled"> 
+                      $50,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 50000%>
+                      $50,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+
+              </button>
+            <%end%>
+          </div><div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==60000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $60,000 pzz
+              <%elsif current_user.pezzos<60000%>
+                    <button class= "btn-block btn disabled"> 
+                      $60,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 60000%>
+                      $60,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+                
+              </button>
+            <%end%>
+          </div><div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==70000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $70,000 pzz
+              <%elsif current_user.pezzos<70000%>
+                    <button class= "btn-block btn disabled"> 
+                      $70,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 70000%>
+                      $70,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+              </button>
+            <%end%>
+          </div>
+          <div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==80000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $80,000 pzz
+              <%elsif current_user.pezzos<80000%>
+                    <button class= "btn-block btn disabled"> 
+                      $80,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 80000%>
+                      $80,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+              </button>
+            <%end%>
+          </div>
+           <div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==90000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $90,000 pzz
+              <%elsif current_user.pezzos<90000%>
+                    <button class= "btn-block btn disabled"> 
+                      $90,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 90000%>
+                      $90,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+              </button>
+            <%end%>
+          </div>
+           <div class="span2">
+            <%=form_for current_user, url: {action: 'update', controller: 'users', partido_actual_id: @partido.id}, remote: true  do |f|%>
+              <%if current_user.pezzos_que_apuesta==100000 %>
+                    <button class= "btn-block btn btn-warning"> 
+                      $100,000 pzz
+              <%elsif current_user.pezzos<100000%>
+                    <button class= "btn-block btn disabled"> 
+                      $100,000 pzz
+              <%else%>
+                     <button class= "btn-block btn"> 
+                      <%= f.hidden_field :pezzos_que_apuesta, value: 100000%>
+                      $100,000 pzz
+                      <% f.submit ""%> 
+              <%end%>
+              </button>
+            <%end%>
+          </div>
+</div>

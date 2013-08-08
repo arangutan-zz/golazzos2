@@ -1,0 +1,43 @@
+
+<% if flash[:notice] %>
+<div class="flash-container">
+  <div class="container ">
+    <div class= "row">
+      <div class="span6 offset3">
+          <div class="alert alert-block alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% if flash[:alert] %>
+<div class="flash-container">
+  <div class="container ">
+    <div class= "row">
+      <div class="span6 offset3">
+          <div class="alert alert-block alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% if flash[:error] %>
+<div class="flash-container">
+  <div class="container ">
+    <div class= "row">
+      <div class="span6 offset3">
+          <div class="alert alert-block alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:error] %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

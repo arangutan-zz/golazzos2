@@ -1,0 +1,80 @@
+Home#Index.html
+
+<!-->
+<% content_for :title, "Juego de Futbol : Golazzos" %>
+
+<div class="contenedor centro">
+<%= render "carousel"%>
+<%= render "layouts/flash_notice"%>
+
+<div class="fondoPremios">
+  <div class="centro fuenteFuturaB container">
+    <div class="areaPremios"></div>
+    <%=image_tag "landing/pasos_titulo.png", {:class => "", :width=>"450"}%> 
+    <div class="areaPremios row">
+  <table class="blanco span10 offset1 centro">
+    <tbody>
+  <tr>
+    <td>
+      <%=image_tag "landing/pasos_icono1.png", {:class => "", :width=>"200"}%> 
+    </td>
+    <td>
+      <%=image_tag "landing/pasos_icono2.png", {:class => "", :width=>"200"}%> 
+    </td>
+    <td>
+      <%=image_tag "landing/pasos_icono3.png", {:class => "", :width=>"200"}%> 
+    </td>
+  </tr>
+  <tr>
+    <td>PAZZO 1</td><td>PAZZO 2</td><td>PAZZO 3</td>
+  </tr>
+  <tr>  
+    <td class="BTSinEspacio">Escoje tu partido</td><td class="BTSinEspacio">Juega por un marcador</td><td class="BTSinEspacio">Invita a tus amigos</td>
+  </tr>
+</tbody>
+  </table>
+    
+    </div>
+      <div class="areaPremios"></div>
+
+    </div>
+</div>
+
+<div class="fondoPartidosLanding">
+  <%=image_tag "landing/partidos/partido_titulo.png", {:class => "tituloS", :width=>""}%> 
+  <div class="centro fuenteFuturaB">
+    
+    
+    <div class="areaPremios">
+    
+    <%image_tag "landing/partidos/partido_equiposImportantes.png", {:class => "", :width=>"550"}%> 
+    <%= render "partidos/afiche_partido2" if @partido != nil%>
+     
+  
+  </div>
+  
+  </div>
+</div>
+ 
+
+<div class="fondoPremios">
+   <div class="botonFacebook">
+    
+    <font color="white" face="FUTURAB" size="4">TIENES</font>
+    <font color="orange" face="Digital7" size="6">$50.000</font>
+    <font color="white" face="FUTURAB" size="4">PEZZOS GRATIS</font><P>
+    <%= link_to "/auth/facebook" do%>
+     <%= image_tag 'Call/btnCall.png', { width: "500px"}  %>
+     <% end -%>
+  </div>
+</div>
+
+
+  <section class="container">
+    <h3 class="centro">Con el apoyo de</h3>
+    <div class="row apoyoInstituciones">
+      <%= image_tag 'hubbog.jpg', {:class => "span3 offset3"}%>
+      <%= image_tag 'appsco.png', {:class => "span3"}%>
+    </div>
+  </section>
+</!-->

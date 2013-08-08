@@ -1,0 +1,79 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.apoyoInstituciones
+{
+	img
+	{
+		opacity:0.4;
+		filter:alpha(opacity=40); /* For IE8 and earlier */
+	}
+}
+
+.table td {
+   text-align: center;   
+}
+.table th {
+   text-align: center;   
+}
+.jugador {
+   text-align: left;   
+}
+.blanco{
+	color: white;
+}
+
+.botonFacebook{
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+.contenedor{
+	text-align:center;
+	width:100%;
+	margin-bottom:-70px;
+
+}
+.features {
+	text-align: center ;
+	}
+.tituloS{
+	margin-top:-30px;
+}
+
+.registrarse{
+	text-align:center;
+	background-color: #00CAED;
+	margin-top:40px;
+	margin-bottom:40px;
+	padding: 40px;
+	h4{
+		color:#ffffff;
+	}
+}
+
+.logo-container{
+	background-color: #00CAED;
+	padding: 31px;
+}
+
+.well{
+	box-sizing: border-box;
+}
+.premios-ranking{
+	position: fixed;
+}
+.reglamento{
+	margin-top:20px;
+}
+
+footer{
+	text-align:center;
+	background: #353535;
+	padding-top: 60px;
+	padding-bottom: 10px;
+	color: white;
+	background-image:url('footerLanding.jpg');
+		background-repeat:no-repeat;
+		background-attachment:scroll;
+}

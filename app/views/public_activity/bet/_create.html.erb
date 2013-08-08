@@ -1,0 +1,25 @@
+<section class="">
+<div class="activity">
+	<div class="activity-owner">
+		<%=image_tag current_user.facebook.get_picture(activity.owner.uid, {type: "square"}), {:class=> "thumbsnail"}%>
+	</div>
+	<div class="activity-content">
+		<div class="activity-content-title">
+			<h5><strong> <%=h activity.owner.name%> </strong><small> acaba de apostar en el partido <%= link_to "#{activity.trackable.partido.local} vs #{activity.trackable.partido.visitante}", activity.trackable.partido%></small></h5>
+		</div>
+		<div class="activity-content-body well well-small">
+			<div class="activity-content-body-content">
+				<%= image_tag activity.trackable.partido.logolocal%>
+				<div class="activity-content-resultado">
+					<%= "#{activity.trackable.golesLocal} - #{activity.trackable.golesVisitante}"%>
+				</div>
+				<%= image_tag activity.trackable.partido.logovisitante%>
+			</div>
+		</div>
+		<h5><small><%= time_ago_in_words(activity.trackable.created_at) %> ago</small></h5>
+	</div>
+
+</div>
+</section>
+
+

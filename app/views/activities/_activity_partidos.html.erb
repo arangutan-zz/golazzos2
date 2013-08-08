@@ -1,0 +1,18 @@
+<div class="about">
+	<div class="about_titulo secTitle">PARTIDOS</div>
+	<div class="about_content"> 
+		<%@partidos.each do |partido|%>
+			<div class="activity-partidos">
+				<div class="activity-partidos-equipos">
+					<h5><%= "#{partido.local} - #{partido.visitante}" %></h5>
+				    <h5><small><%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></small></h5>
+				</div>
+				<div class= "activity-partidos-apostar text-right">
+					<%= link_to "juega!", partido, {:class => "btn btn-small"}%>
+				</div>
+				<hr/>
+			</div>
+		<%end%>
+		<%= link_to "ver mas partidos", partidos_path, {:class => "text-right"}%>
+	</div>
+</div>

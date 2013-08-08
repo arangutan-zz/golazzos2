@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  total_usuarios: 1
+  total_apuestas: 1
+  apuestas_usuario: 9.99
+  total_referidos: 1
+  referidos_usuario: 9.99
+  login_usuario: 9.99
+  posts_usuario: 9.99
+  sinapostar_usuarios: 1
+  sininvitar_usuarios: 1
+
+two:
+  total_usuarios: 1
+  total_apuestas: 1
+  apuestas_usuario: 9.99
+  total_referidos: 1
+  referidos_usuario: 9.99
+  login_usuario: 9.99
+  posts_usuario: 9.99
+  sinapostar_usuarios: 1
+  sininvitar_usuarios: 1

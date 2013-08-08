@@ -1,0 +1,77 @@
+.formulario-sameline
+{
+	display:inline-block;
+}
+
+.invita-amigos-footer{
+	position:relative;
+	
+	z-index:1;
+	top:-30px;
+}
+.caja-blanca{
+	background:white;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-top: -15px;
+	margin-bottom: 15px;
+	
+}
+.fondoPremios{
+	background: #0673ab;
+	margin-top: -20px;
+	margin-bottom:-10px;
+}
+.fondoPartidosLanding{
+	background: #f4f4f4;
+	margin-bottom:-10px;
+}
+.areaPremios{
+	padding-top: 20px;
+	padding-bottom:20px;
+}
+
+.user-separador{
+		background: #004f92;
+		padding-top:10px;
+		margin-top:30px;
+}
+
+.user-separador-abajo{
+	margin-top:45px;
+}
+.user-fondoGris{
+	background: #f0f1f1;
+}
+.user-gano-pezzos{
+	background: #ffffff;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	padding:10px;
+	margin-top:15px;
+	.user-pezzos{
+		background: #004f92;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+		color:white;
+		padding:15px;
+	}
+}
+.user-photo{
+	margin-top:30px;
+}
+
+.user-vs{
+	margin-top:100px;
+}
+.partidos-ranking-dos{
+	color: white;
+	background: #003956;
+	padding:20px;	
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	td{
+		text-align:center;
+		padding:4px;
+	}
+}

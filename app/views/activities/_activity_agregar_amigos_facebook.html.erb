@@ -1,0 +1,43 @@
+<a href="" data-toggle="modal" data-target="#myProfile">
+  Agrega a tus amigos de Facebook!
+</a>
+<div id="myProfile" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">¡Amigos de Facebook en Golazzos!</h3>
+  </div>
+
+  <div class="modal-body">
+    <p>Agrega tus amigos de Facebook a tu lista de Followings, para estar al tanto de sus jugadas y noticias! </p>
+
+    <div>
+      <div id= "users">
+        <%friends = current_user.facebook.get_connections("me", "friends")%>
+        <% friends.each  do |friend| %>
+          <%user = User.find_by_uid(friend["id"])%>
+          <%if user.nil? %>
+            <!-- el usuario no existe -->
+
+          <%else%>
+            <div class= "user">
+              <p>
+                <strong> <%=h user.name%></strong>
+                <%= link_to "Seguir", friendships_path(:friend_id => user), :method => :post  if !current_user.friendships.find_by_friend_id(user.id) %>
+              </p>
+            </div>
+          <%end%>
+        <%end%>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn">
+      Agregar Amigos 
+    </button> 
+       
+  </div>
+</div>

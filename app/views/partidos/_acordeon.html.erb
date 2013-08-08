@@ -1,0 +1,348 @@
+ <div class="span9">
+        <%= render "users/user_apostaria" if current_user.profile.apostaria==nil%>
+        <div class="accordion partidos-acordion" id="accordion2">
+
+
+ <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                <%= image_tag "logos/CHAMPIONS_acordeon_partidos.png", {width: "50px"}%>COPA CONFEDERACIONES 2013
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+              <div class="accordion-inner">
+               <% @champions.each do |partido| %>
+                        <div class="row">
+                          <div class="span9 muted partidos-fecha-partido">
+                            <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></h6>
+                          </div>
+                        <div>
+                        <div class="row">
+                          <div class="span0 offset1 partidos-equipos-loca">
+                            <%= image_tag partido.logolocal, {:class => "partidos-escudo-alinear", :width=>"80"}%> 
+                          </div>
+                          <div class="span1 partidos-equipos-local">
+                            <%= partido.local %> 
+                          </div>
+                          <div class="span0">
+                             <strong class="muted">vs</strong> 
+                          </div>
+                          <div class="span1 partidos-equipos-visitante">
+                            <%= partido.visitante %> 
+                          </div>
+                          <div class="span0">
+                            <%= image_tag partido.logovisitante, {:class => "partidos-escudo-alinear", :width=>"80", style:""}%>
+                          </div>
+                          <div class="span2">
+                            <%= link_to  partido_path(partido) do %>
+                            <%=image_tag "partidos/btnJUEGA_partidos.png"%>
+                            <%end%>
+                                <% if current_user.administrator==true %>
+                                <%= link_to t('edit', :default => t("helpers.links.edit")),
+                                            edit_partido_path(partido), :class => 'btn btn-mini' %>
+                                <%= link_to t('destroy', :default => t("helpers.links.destroy")),
+                                            partido_path(partido),
+                                            :method => :delete,
+                                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                            :class => 'btn btn-mini btn-danger' %>
+                                <% end %>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  <hr>
+                 <%end%>
+              </div>
+            </div>
+          </div>
+
+
+          
+
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+          <%= image_tag "logos/ELIMINATORIAS_acordeon_partidos.png", {width: "50px"}%> ELIMINATORIAS MUNDIAL BRASIL 2014
+
+              </a>
+            </div>
+            <div id="collapseFive" class="accordion-body collapse in">
+              <div class="span9 accordion-inner">
+                <% @eliminatorias.each do |partido| %>
+                        <div class="row">
+                          <div class="span9 muted partidos-fecha-partido">
+
+                            <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></h6>
+                          </div>
+                        <div>
+                        <div class="row">
+                          <div class="span0 offset1 partidos-equipos-loca">
+                            <%= image_tag partido.logolocal, {:class => "partidos-escudo-alinear", :width=>"80"}%> 
+                          </div>
+                          <div class="span1 partidos-equipos-local">
+                            <%= partido.local %> 
+                          </div>
+                          <div class="span0">
+                             <strong class="muted">vs</strong> 
+                          </div>
+                          <div class="span1 partidos-equipos-visitante">
+                            <%= partido.visitante %> 
+                          </div>
+                          <div class="span0">
+                            <%= image_tag partido.logovisitante, {:class => "partidos-escudo-alinear", :width=>"80", style:""}%>
+                          </div>
+                          <div class="span2">
+                            <% if partido.id==64 %>
+                            <%= link_to  "http://www.sportsaround.us" do %>
+                            Patrocinado por:
+
+                            <%=image_tag "varios/sportsaround.jpg"%>
+                            <%end%>
+                            <%end%>
+                            <%= link_to  partido_path(partido) do %>
+                            <%=image_tag "partidos/btnJUEGA_partidos.png"%>
+                            <%end%>
+
+                                <% if current_user.administrator==true %>
+                                <%= link_to t('edit', :default => t("helpers.links.edit")),
+                                            edit_partido_path(partido), :class => 'btn btn-mini' %>
+                                <%= link_to t('destroy', :default => t("helpers.links.destroy")),
+                                            partido_path(partido),
+                                            :method => :delete,
+                                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                            :class => 'btn btn-mini btn-danger' %>
+                                <% end %>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  <hr>
+                 <%end%>
+              </div>
+            </div>
+          </div>
+
+                   
+
+
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+          <%= image_tag "logos/LIGAPOSTOBON_acordeon_partidos.png", {width: "50px"}%>LIGA POSTOBON
+              </a>
+            </div>
+            <div id="collapseThree" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <% @postobon.each do |partido| %>
+                        <div class="row">
+                          <div class="span9 muted partidos-fecha-partido">
+                            <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></h6>
+                          </div>
+                        <div>
+                        <div class="row">
+                          <div class="span0 offset1 partidos-equipos-loca">
+                            <%= image_tag partido.logolocal, {:class => "partidos-escudo-alinear", :width=>"80"}%> 
+                          </div>
+                          <div class="span1 partidos-equipos-local">
+                            <%= partido.local %> 
+                          </div>
+                          <div class="span0">
+                             <strong class="muted">vs</strong> 
+                          </div>
+                          <div class="span1 partidos-equipos-visitante">
+                            <%= partido.visitante %> 
+                          </div>
+                          <div class="span0">
+                            <%= image_tag partido.logovisitante, {:class => "partidos-escudo-alinear", :width=>"80", style:""}%>
+                          </div>
+                          <div class="span2">
+                            <%= link_to  partido_path(partido) do %>
+                            <%=image_tag "partidos/btnJUEGA_partidos.png"%>
+                            <%end%>
+                                <% if current_user.administrator==true %>
+                                <%= link_to t('edit', :default => t("helpers.links.edit")),
+                                            edit_partido_path(partido), :class => 'btn btn-mini' %>
+                                <%= link_to t('destroy', :default => t("helpers.links.destroy")),
+                                            partido_path(partido),
+                                            :method => :delete,
+                                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                            :class => 'btn btn-mini btn-danger' %>
+                                <% end %>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  <hr>
+                 <%end%>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+          <%= image_tag "logos/BBVA_acordeon_partidos.png", {width: "50px"}%>LIGA BBVA
+              </a>
+            </div>
+            <div id="collapseFour" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <% @bbva.each do |partido| %>
+                        <div class="row">
+                          <div class="span9 muted partidos-fecha-partido">
+                            <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></h6>
+                          </div>
+                        <div>
+                        <div class="row">
+                          <div class="span0 offset1 partidos-equipos-loca">
+                            <%= image_tag partido.logolocal, {:class => "partidos-escudo-alinear", :width=>"80"}%> 
+                          </div>
+                          <div class="span1 partidos-equipos-local">
+                            <%= partido.local %> 
+                          </div>
+                          <div class="span0">
+                             <strong class="muted">vs</strong> 
+                          </div>
+                          <div class="span1 partidos-equipos-visitante">
+                            <%= partido.visitante %> 
+                          </div>
+                          <div class="span0">
+                            <%= image_tag partido.logovisitante, {:class => "partidos-escudo-alinear", :width=>"80", style:""}%>
+                          </div>
+                          <div class="span2">
+                            <%= link_to  partido_path(partido) do %>
+                            <%=image_tag "partidos/btnJUEGA_partidos.png"%>
+                            <%end%>
+                                <% if current_user.administrator==true %>
+                                <%= link_to t('edit', :default => t("helpers.links.edit")),
+                                            edit_partido_path(partido), :class => 'btn btn-mini' %>
+                                <%= link_to t('destroy', :default => t("helpers.links.destroy")),
+                                            partido_path(partido),
+                                            :method => :delete,
+                                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                            :class => 'btn btn-mini btn-danger' %>
+                                <% end %>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  <hr>
+                 <%end%>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+          <%= image_tag "logos/PREMIERLEAGUE_acordeon_partidos.png", {width: "50px"}%>PREMIER LEAGUE
+              </a>
+            </div>
+            <div id="collapseSix" class="accordion-body collapse">
+              <div class="accordion-inner">
+               <% @premier.each do |partido| %>
+                        <div class="row">
+                          <div class="span9 muted partidos-fecha-partido">
+                            <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></h6>
+                          </div>
+                        <div>
+                        <div class="row">
+                          <div class="span0 offset1 partidos-equipos-loca">
+                            <%= image_tag partido.logolocal, {:class => "partidos-escudo-alinear", :width=>"80"}%> 
+                          </div>
+                          <div class="span1 partidos-equipos-local">
+                            <%= partido.local %> 
+                          </div>
+                          <div class="span0">
+                             <strong class="muted">vs</strong> 
+                          </div>
+                          <div class="span1 partidos-equipos-visitante">
+                            <%= partido.visitante %> 
+                          </div>
+                          <div class="span0">
+                            <%= image_tag partido.logovisitante, {:class => "partidos-escudo-alinear", :width=>"80", style:""}%>
+                          </div>
+                          <div class="span2">
+                            
+                            <%= link_to  partido_path(partido) do %>
+                            <%=image_tag "partidos/btnJUEGA_partidos.png"%>
+                            <%end%>
+                                <% if current_user.administrator==true %>
+                                <%= link_to t('edit', :default => t("helpers.links.edit")),
+                                            edit_partido_path(partido), :class => 'btn btn-mini' %>
+                                <%= link_to t('destroy', :default => t("helpers.links.destroy")),
+                                            partido_path(partido),
+                                            :method => :delete,
+                                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                            :class => 'btn btn-mini btn-danger' %>
+                                <% end %>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  <hr>
+                 <%end%>
+              </div>
+            </div>
+          </div>
+
+
+          
+          
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+          <%= image_tag "logos/COPALIBERTADORES_acordeon_partidos.png", {width: "50px"}%>COPA LIBERTADORES
+              </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <% @libertadores.each do |partido| %>
+                        <div class="row">
+                          <div class="span9 muted partidos-fecha-partido">
+
+                            <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></div>
+                        <div>
+                        <div class="row">
+                          <div class="span0 offset1 partidos-equipos-loca">
+                            <%= image_tag partido.logolocal, {:class => "partidos-escudo-alinear", :width=>"80"}%> 
+                          </div>
+                          <div class="span1 partidos-equipos-local">
+                            <%= partido.local %> 
+                          </div>
+                          <div class="span0">
+                             <strong class="muted">vs</strong> 
+                          </div>
+                          <div class="span1 partidos-equipos-visitante">
+                            <%= partido.visitante %> 
+                          </div>
+                          <div class="span0">
+                            <%= image_tag partido.logovisitante, {:class => "partidos-escudo-alinear", :width=>"80", style:""}%>
+                          </div>
+                          <div class="span2">
+                            <%= link_to  partido_path(partido) do %>
+                            <%=image_tag "partidos/btnJUEGA_partidos.png"%>
+                            <%end%>
+                                <% if current_user.administrator==true %>
+                                <%= link_to t('edit', :default => t("helpers.links.edit")),
+                                            edit_partido_path(partido), :class => 'btn btn-mini' %>
+                                <%= link_to t('destroy', :default => t("helpers.links.destroy")),
+                                            partido_path(partido),
+                                            :method => :delete,
+                                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                            :class => 'btn btn-mini btn-danger' %>
+                                <% end %>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  <hr>
+                 <%end%>
+              </div>
+            </div>
+          </div>    
+          </div>
+        </div>

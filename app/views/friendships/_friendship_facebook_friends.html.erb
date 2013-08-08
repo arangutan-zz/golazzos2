@@ -1,0 +1,35 @@
+<div class="about">
+	<div class="about_titulo">
+		AMIGOS DE FACEBOOK EN GOLAZZOS
+	</div>
+	<div class="about_content">
+		<div class="ro">
+			<% @friends.each  do |friend| %>
+			<%user = User.find_by_uid(friend["id"])%>
+			<%if user.nil? %>
+			<!-- el usuario no existe -->
+
+			<%else%>
+			<div class= "friendship-amigo-facebook">
+				<div class="friendship-foto-facebook">
+					<%=image_tag friend["picture"]["data"]["url"], {:class=> "thumbsail", :width => "40px"}%>
+				</div>
+				<div class="friendship-nombre-facebook">
+					<h5> <%=h user.name%></h5>
+				</div>
+				<div class="friendship-seguir-facebook">
+					<%  if !current_user.friendships.find_by_friend_id(user.id) %>
+					<%= link_to "Seguir", friendships_path(:friend_id => user),{:class=> "btn" ,:method => :post}%>
+
+					<%else%>
+					<%= link_to "remove", current_user.friendships.find_by_friend_id(user.id),{:class=> "btn btn-danger" ,:method => :delete}%>
+					<%end%>
+				</div>
+
+			</div>
+			<hr/>
+			<%end%>
+			<%end%>
+		</div>
+	</div>
+</div>

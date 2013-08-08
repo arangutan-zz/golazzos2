@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  monto: 1
+  golesLocal: 1
+  golesVisitante: 1
+  partido: 
+  user: 
+
+two:
+  monto: 1
+  golesLocal: 1
+  golesVisitante: 1
+  partido: 
+  user: 

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  nombre: MyString
+  pais: MyString
+  ciudad: MyString
+  direccion: MyString
+  email: MyString
+  celular: MyString
+  twitter: MyString
+  equipos_favoritos: MyString
+  camiseta_de: MyString
+  talla: MyString
+
+two:
+  user_id: 1
+  nombre: MyString
+  pais: MyString
+  ciudad: MyString
+  direccion: MyString
+  email: MyString
+  celular: MyString
+  twitter: MyString
+  equipos_favoritos: MyString
+  camiseta_de: MyString
+  talla: MyString

@@ -1,0 +1,34 @@
+  <div class= "span3  pull-right">
+    <div class=" well well-mini pul-right">
+
+<h5> 
+<% @supporters.inspect %>
+<% @supporters.each do |arreglo2|%>
+	<% arreglo=arreglo2[:local]%>Gana local  
+	<% if arreglo.size<1%>
+		<%=image_tag("partido/invitematch2.png", :title => "Invita a tus amigos", :width=>"30")%>
+	<% end%>
+	<% arreglo.each do |fan|%>
+		<%fan[:marcador]%>
+		<%=image_tag(fan[:pic], :title => fan[:marcador])%>
+	<% end%>
+	<% arreglo=arreglo2[:empate]%><p>Empate 
+	<% if arreglo.size<1%>
+<%=image_tag("partido/invitematch2.png", :title => "Invita a tus amigos", :width=>"30")%>	<% end%>
+	<% arreglo.each do |fan|%>
+		<%fan[:marcador]%>
+		<%=image_tag(fan[:pic], :title => fan[:marcador])%>
+	<% end%>
+	<% arreglo=arreglo2[:visitante]%><p>Gana visitante 
+	<% if arreglo.size<1%>
+<%=image_tag("partido/invitematch2.png", :title => "Invita a tus amigos", :width=>"30")%>	<% end%>
+	<% arreglo.each do |fan|%>
+		<%fan[:marcador]%>
+		<%=image_tag(fan[:pic], :title => fan[:marcador])%>
+	<% end%>
+<% end%>
+
+</h5>
+
+    </div>
+</div>

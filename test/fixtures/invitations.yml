@@ -1,0 +1,11 @@
+one:
+  sender_id: 1
+  recipient_uid: MyString
+  token: MyString
+  sent_at: 2013-02-12 20:59:17
+
+two:
+  sender_id: 1
+  recipient_uid: MyString
+  token: MyString
+  sent_at: 2013-02-12 20:59:17

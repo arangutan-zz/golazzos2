@@ -1,0 +1,23 @@
+Home#referido.html
+<!-->
+<div class="contenedor">
+
+  <div id="apDiv2"><%= image_tag "secciones/premios3.png"%>
+   <div class="botonFacebook">
+
+<%= link_to "/auth/facebook" do%>
+ <%= image_tag ('Call/btnCall.png')  %>
+ <% end -%>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+
+<pre>Has sido referido con el token:
+
+<%= session['guacamaya'] %>
+
+</pre>
+</div>
+</!-->

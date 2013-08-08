@@ -1,0 +1,45 @@
+<%= form_for @partido, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :local, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :local, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :visitante, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :visitante, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :logolocal, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :logolocal, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :logovisitante, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :logovisitante, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :diapartido, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :diapartido, :class => 'datetime_select' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :torneo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:torneo,options_for_select([["Champions League",1],["Eliminatoria Sudamericana",2],["Copa Libertadores",3],["Liga Postobon",4],["Liga BBVA",5],["Premier League", 6]])) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                partidos_path, :class => 'btn' %>
+  </div>
+<% end %>

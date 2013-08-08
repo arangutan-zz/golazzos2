@@ -1,0 +1,23 @@
+<div class="alert alert">
+    <strong>Te gustaría poder apostar dinero real por tus equipos favoritos?</strong> <br/> 
+    <div class="formulario-sameline">
+      <%= form_for [current_user, current_user.profile], :html => { :class => 'form-horizontal' } do |f| %>
+        <%= f.hidden_field :apostaria, value: true %>
+        <button   class="btn btn-primary" data-dismiss="ale2rt">
+        Si, deseo apostar dinero real!
+        <% f.submit ""%> 
+        </button> 
+      <%end%>
+    </div>
+
+    <div class="formulario-sameline">
+      <%= form_for [current_user, current_user.profile], :html => { :class => 'form-horizontal' } do |f| %>
+        <%= f.hidden_field :apostaria, value: false %>
+        <button   class="btn" data-dismiss="ale2rt">
+        No
+        <% f.submit ""%> 
+        </button> 
+      <%end%>
+    </div>
+</div>
+ 

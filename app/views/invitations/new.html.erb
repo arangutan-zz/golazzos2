@@ -1,0 +1,54 @@
+<!-->
+<div class= "header-title">
+  <div class="container">
+    <div class="row">
+      <p>
+      <div class="span6 fuenteFuturaB titulo-blanco">
+        <h3><span class="offset1">GANA MÁS PEZZOS</div></h3>
+      </div>
+    </div>
+  </div>
+</div>
+<%=render "partidos/redes_sociales"%>
+<div class="container">
+<div class="row BTSinEspacio">
+  <div class="span5 offset2 ">
+
+
+<p><strong>1. AMIGOS REFERIDOS</strong>
+<table class="table partidos-ranking">
+
+    <tbody>
+        <tr>
+          <td>Si aceptan antes de 24 horas</td><td>recibes 50.000 PEZZOS</td>
+        </tr>
+        <tr>
+        <td>Si aceptan entre 24 y 48 horas</td><td>recibes 20.000 PEZZOS</td>
+        </tr>
+        <tr>
+        <td>Si aceptan después de 48 horas</td><td>recibes 0 PEZZOS</td>
+        </tr>
+        
+        
+    </tbody>
+  </table>
+<%= form_for (@invitation) do |f| %>
+<%= f.submit "Invitar a tus amigos!" , :class => 'btn btn-primary'%>
+<% end %>
+
+<p><% link_to "Postear", @linkwallpost , :class =>"btn btn-primary"%>
+<hr><p><strong>2. JUGANDO</strong>
+
+<p>Por cada juego que realices recibes 5000 pezzos
+
+<p><%= link_to "Juega ya", '/partidos/' , :class =>"btn btn-primary"%>
+
+
+<hr><p><strong>3. LLENANDO TU PERFIL</strong>
+
+<p>Por llenar la información de tu perfil recibes 50000 pezzos
+<p><%= render "users/user_profile_boton"%>
+</div>
+</div>
+</div>
+ </!-->

@@ -1,0 +1,197 @@
+<!-->
+<div class= "">
+	<%= render "layouts/flash_notice"%>
+  <div class="container">
+    <div class="row user-photo">
+    	<div class="span2">
+    		<%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"}), {:class=> "thumbnail"}%>
+    	</div>
+    	<% if current_user.id == @user.id%>
+    		<%=render "user_mi_perfil"%>
+    	<%else%>
+    		<%=render "user_tu_perfil"%>
+    	<%end%>
+    </div>
+  </div>
+</div>
+
+<div class="user-separador"></div>
+<div class= "">
+  <div class="container">
+
+    <div class="row">
+      <div class="span12 offset">
+	  	<div class="row">
+	  		<div class="span3">
+	  			<%= image_tag "user/btnTuspartidosJugados_perfil.jpg"%>
+	  			<ul class="nav nav-tabs nav-stacked">
+		  			<% @user.partidos.each do |partido|%>
+		  				<li class=<%="active" if @partido.id == partido.id%>>
+		  					<%= link_to user_path(@user, partidoId: partido.id ) do%>
+
+						      <h6> <%= l(partido.diapartido, format: '%d de %B %l:%M %p', locale:'es-CO')%></h6>
+						      <div class="centro">
+							      <%= image_tag partido.logolocal, {:class => "", :width=>"50px"}%>
+							      <%partido.local%>
+							      <strong>Vs</strong>
+							      <% partido.visitante%>
+							      <%= image_tag partido.logovisitante,{:class => "", :width =>"50px"}%>
+						      </div>
+		  					<%end%>
+		  				</li>
+		  			<%end%>  
+				</ul>
+	  		</div>
+
+	  		<div class="user-separador-abajo span6">
+	  			<div class="row">
+	  				<div class= "span6">
+	  					<%if @user.partidos.any?%>
+	  					<div class="row">
+						    <div class="partido-fecha span5 ">
+						      <h4> <%= l(@partido.diapartido, format: '%d de %B', locale:'es-CO')%></h4>
+						      <h6 class="muted"> <%= l(@partido.diapartido, format: '%l:%M %p', locale:'es-CO')%></h6>
+						    </div>
+						    <div class="">
+							    <div class=" span2 logo">
+							      <%= image_tag @partido.logolocal, {:class => "", :width=>"100px"}%>
+							      <div>
+							          <h2 class="lead"> <%=@partido.local%></h2>      
+							          <h6 class="muted">Local</h6>
+							      </div>
+							    </div>
+							    <div class="span1">
+							    	<%=image_tag "partido/VS_partidos.png",{:class => "user-vs"}%>
+							    </div>
+							    <div class="span2 logo">
+							      <%= image_tag @partido.logovisitante,{:class => "", :width =>"100px"}%>
+							      <div>
+							        <h2 class="lead"> <%=@partido.visitante%></h2>
+							        <h6 class="muted"> Visitante</h6>
+							      </div>
+							    </div>
+						    </div>
+						  </div>
+						  <hr>
+						  
+	  					  <table class="partidos-ranking-dos">
+						    <thead>
+						      <tr>
+						        <th>Resultado Jugado</th>
+						        <th>Pezzos Jugados</th>
+						        <th>Retorno <font color="#fff601">Esperado</font></th>
+						        <th>Pezzos <font color="#67ff01">Ganados</font></th>
+						        <th>Pezzos <font color="#829198">Perdidos</font></th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <%@bets.each do |bet|%>
+						        <tr>
+						         <td><%= "#{bet.golesLocal} - #{bet.golesVisitante}"%></td>
+						         <td><%= number_to_currency(bet.monto,:precision => 0)%></td>
+						         <td><font color="#fff601"><%= @partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)%></font></td>
+						         <td>
+						         	<font color="#67ff01">
+								         <% if bet.pezzos_ganados==nil  %>
+								         	0
+								         <%else%>
+								         <%= number_to_currency(bet.pezzos_ganados,precision: 0)%>
+								         <%end%>
+						     		</font>
+						     	</td>
+						     	<td>
+						     		<font color="#829198">
+						     			<%if bet.partido.repartido == true && bet.pezzos_ganados==nil %>
+						     				<%= number_to_currency(bet.monto,:precision => 0)%>
+						     			<%else%>
+						     				0
+						     			<%end%>
+						     		</font>
+						     	</td>
+						        </tr>
+						      <%end%>
+						    </tbody>
+						  </table>
+						   
+						<%else%>
+			  				<%if current_user.id == @user.id%>
+			  					<div class="">
+				  					<h6>NO HAS JUGADO POR NINGÚN PARTIDO!</h6>
+				  					    <%= link_to  partidos_path do %>
+					                    	<%=image_tag "partidos/btnJUEGA_partidos.png"%>
+					                    <%end%>
+			  					</div>
+			  				<%else%>
+			  					<div class="">
+				  					<h6>NO HA JUGADO POR NINGUN PARTIDO!</h6>
+			  					</div>
+			  				<%end%>
+		  				<%end%>
+	  				</div>
+	  			</div>
+	  		</div>
+	  		<div class="span3">
+	  			<%=render "partidos/premios_y_ranking"%>
+	  		</div>
+
+	  	</div>
+	  </div>
+    </div>
+  </div>
+</div>
+<div class="user-separador"></div>
+<div class= "user-fondoGris">
+  <div class="container">
+    <div class="row">
+      <div class="span12 offset">
+	  	<div class="row">
+	  		<div class="span3">
+	  			<%= image_tag "user/btnTuspezzos_perfil.jpg"%>
+	  		</div>
+	  		<div class="span5">
+	  			<div class= "user-separador-abajo">
+	  			<p>Estos son los Pezzos que has adquirido Jugando, Invitando y Compartiendo.</p></div>
+
+	  			<div class="user-gano-pezzos">
+	  				<%=image_tag "user/iconoBalon_tusPezzosPerfil.png", {:class =>"", :height =>"30"}%> JUEGOS GANADOS
+	  				<span class="user-pezzos pull-right"> <font size="6" face="digital7" color="ffd200"> 
+	  					<%=number_to_currency( current_user.bets.sum(:pezzos_ganados),:precision => 0)%> </font>PEZZOS</span>
+	  			</div>
+	  			<div class="user-gano-pezzos">
+	  				<%=image_tag "user/iconoInvitaAmigos_tusPezzosPerfil.png", {:class =>"", :height =>"30"}%>INVITANDO AMIGOS
+	  				<span class="user-pezzos pull-right"> <font size="6" face="digital7" color="ffd200">
+	  					<%=number_to_currency( @pezzos_por_amigos,:precision => 0)%> </font>PEZZOS</span>
+	  			</div>
+	  			<div class="user-gano-pezzos">
+	  				<%=image_tag "user/iconoActividad_tusPezzosPerfil.png", {:class =>"", :height =>"150"}%> ACTIVIDAD
+	  				<span class="user-pezzos pull-right">
+	  				<font size="6" face="digital7" color="ffd200"> <%=number_to_currency(  @pezzos_por_actividad,:precision => 0)%></font> PEZZOS</span>
+	  			</div>
+
+	  		</div>
+	  	</div>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="user-separador">
+  <div class="centro">
+    <div class="span6 offset3 caja-blanca invita-amigos-footer">
+    	<div class="areaPremios"></div>
+    	
+      <font face="Futura Book BT">¡INVITA A TUS AMIGOS Y COMPARTE JUEGOS PARA GANAR MÁS PEZZOS!
+    </font>
+    
+    </div>
+    <div class="areaPremios"></div>
+
+    <div class="areaPremios">
+    <%= link_to  new_invitation_path do%>
+	<%=image_tag "user/logo_facebook.png", {:class => "", :width=>"50"}%> 
+	<%end%>
+  
+  	</div>
+  </div>
+</div>
+</!-->

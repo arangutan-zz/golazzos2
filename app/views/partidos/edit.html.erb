@@ -1,0 +1,62 @@
+<div class="container">
+	<%- model_class = Partido -%>
+  <div class="row">
+  	<div class="span4">
+  		<h3>1. <small>Cerrar Apuestas</small></h3>
+  		<p>Al cerrar las apuestas, la gente no podra volver a apostar por ningun marcado.</p>
+  		<p><strong>Cerrar las apuestas cuando el partido esta por empezar.</strong></p>
+  		<br/><br/>
+  			<% if @partido.cerrado== false%>
+  			<%=form_for @partido do |f|%>
+				<%= f.hidden_field :cerrado, value: true%>
+				<%=f.submit "Cerrar apuestas", :class=> "btn btn-block btn-large"%>
+				<%end%>
+			<%else%>
+		   		<button class="btn btn-block btn-large disabled">
+		   			La apuesta ya se cerro!
+		   		</button>
+		   	<%end%>
+  	</div>
+    <div class="span4">
+    	<h3>2. <small>Agregar Resultado del Partido</small></h3>
+    	<div class="">
+    		<%if @partido.terminado==false%>
+			   	<%=form_for @partido do |f|%>
+					<%= f.hidden_field :terminado, value: true%>
+				  	<%= f.label "resultado Local", :class => 'control-label' %>
+				    <%= f.number_field :resultadoLocal%>
+					<%= f.label "resultado Visitante", :class => 'control-label' %>
+					<%= f.number_field :resultadoVisitante%>
+					<%=f.submit "Termino el partido", :class=> "btn btn-block btn-large"%>
+			   	<%end%>
+		   	<%else%>
+		   		<p>EL partido ya termino! ya se agrego el resultado. solo falta repartir la plata</p>
+		   		<br/><br/><br/><br/><br/>
+		   		<button class="btn btn-block btn-large disabled">
+		   			El partido ya termino!
+		   		</button>
+		   	<%end%>
+   		</div>
+   	</div>
+   <div class="span4">
+		   	<h3>3. <small>Repartir plata a los ganadores</small></h3>
+		   	<p>Se reparte la plata entre la gente que aposto por el marcador ganador.</p>
+		   	<br/><br/><br/><br/><br/>
+		   	<%if @partido.repartido==false%>
+		   	<%= button_to "repartir", {:controller => :partidos, :action => :repartir, :id=> @partido.id}, :class =>"btn btn-block btn-large btn-primary"%>
+	   	<%else%>
+	   		<button class="btn btn-block btn-large btn-primary disabled">
+	   			Ya se repartio la plata!
+	   		</button>
+	   	<%end%>
+   </div>
+      	<div class="span12">
+    		<div class="page-header">
+			  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
+			                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+			</div>
+			<%= render :partial => 'form_edit' %>
+   		</div>
+   </div>
+  </div>
+</div>

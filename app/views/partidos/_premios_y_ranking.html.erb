@@ -1,0 +1,27 @@
+      <%= render "partidos/redes_sociales"%>
+<!--
+  <div class= "span3  pull-left">
+
+    <div class=" well well-mini partidos-ranking pull-right">
+      <%= image_tag "partidos/tituloMiRanking.png"%>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th><th>Nombre</th><th>pezzos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%count = 1 %>
+          <%@user_ranking.each do |user|%>
+            <tr>
+              <td><%=count%></td><td><%=h truncate(user.name, length: 12) %></td><td><%=number_to_currency( user.pezzos,:precision => 0)%></td>
+            </tr>
+            <%count +=1%>
+          <%end%>
+        </tbody>
+      </table>
+      <%= link_to "ver mas", users_path%>
+    </div>
+
+    </div>
+    -->

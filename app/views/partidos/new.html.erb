@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+
+<%- model_class = Partido -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
+                                 :default => "New #{model_class.model_name.human}") %></h1>
+</div>
+<%= render :partial => 'form_new' %>
+
+
+   </div>
+  </div>
+</div>

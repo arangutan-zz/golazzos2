@@ -1,0 +1,44 @@
+<!-->
+  <div class= "header-title">
+  <div class="container">
+    <div class="row">
+      <div class="span6 fuenteFuturaB titulo-blanco">
+        <p> <p>
+        <h3><%=image_tag "ranking/btn_rankingTitulos.png"%>JUGADORES</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<%=render "partidos/redes_sociales"%>
+<div class="container">
+  <div class="row centro">
+    <%= will_paginate %>
+    <div class="span6 offset3 BTSinEspacio partidos-ranking">
+      
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Posición</th><th>Nombre</th><th>Pezzos</th><th># Apuestas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%count = @page %>
+      <%@users.each do |user|%>
+        <tr>
+          <td>
+            <%=count%>
+          </td>
+          <td>
+            <div class="jugador">
+              <%=image_tag current_user.facebook.get_picture(user.uid, {type: "square"}), {:class=> "", :width=>"30"}%>  <%=link_to user.name, user%></span></td><td><%= number_to_currency(user.pezzos,:precision => 0)%></td><td><%= user.bets.count%></td>
+            </div>
+        </tr>
+        <%count +=1%>
+      <%end%>
+    </tbody>
+  </table>
+  
+</div>
+<%= will_paginate %>
+  </div>
+</div></!-->

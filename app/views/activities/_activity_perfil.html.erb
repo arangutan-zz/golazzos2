@@ -1,0 +1,17 @@
+<div class="about">
+	<div class="about_titulo_nombre secTitle">
+		<%=image_tag current_user.facebook.get_picture(current_user.uid, {type: "square"}), {:class=> "thumbsail", :width => "40px"}%>
+		<%= current_user.name.upcase%>
+	</div>
+	<div class="about_followers">
+		<div class="about_followers_following">
+		<h3><%= @following.count%></h3>
+			Following
+		</div>
+		<div class="about_followers_following">
+			<h3><%= @followers.count%></h3>
+			Followers
+		</div>
+	</div>	
+					
+</div>

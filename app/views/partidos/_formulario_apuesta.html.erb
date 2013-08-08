@@ -1,0 +1,52 @@
+<div id="formulario">
+      <a href="" data-toggle="modal" data-target="#myModal">
+       <%= image_submit_tag("partido/btnJuega_apuesta.png") %>
+       </a>
+</div>
+
+
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">¡Confirma y Comparte!</h3>
+  </div>
+  <div class="modal-body">
+
+    <p>¿Deseas jugar</p>
+    <p class="lead"> <%= number_to_currency(current_user.pezzos_que_apuesta,:precision => 0)%> pzz</p>
+    <p>por este marcador?</p>
+    <p>Recuerda que el retorno final de tu apuesta será calculado definitivamente cuando la apuesta se cierre.</p>
+
+    <p class="lead"> 
+    	<%=image_tag @partido.logolocal, {width: "100px"}%>
+    	<%="#{current_user.local_apostado} - #{current_user.visitante_apostado}"%>
+    	<%=image_tag @partido.logovisitante, {width: "100px"}%>
+    </p>
+  </div>
+  <div class="modal-footer">
+  <%= form_for([@partido, @partido.bets.build]) do |f| %>
+	<%= f.hidden_field :monto, value: current_user.pezzos_que_apuesta%>
+	<%= f.hidden_field :golesLocal, value: current_user.local_apostado%>
+	<%= f.hidden_field :golesVisitante, value: current_user.visitante_apostado%>
+	<%= f.hidden_field :user_id, value: current_user.id%>
+    <button class="btn" onClick="_gaq.push(['_trackEvent', 'Partido', 'Apuesta', 'NO compartio en FB', '#{@partido.local}-#{@partido.visitante}'])">
+    	Jugar
+		<% f.submit "", {onClick: "_gaq.push(['_trackEvent', 'Partido', 'Apuesta', 'NO compartio en FB', '#{@partido.local}-#{@partido.visitante}'])"}%> 
+    </button>	
+  <%end%>
+  <%= form_for([@partido, @partido.bets.build]) do |f| %>
+  <%= f.hidden_field :monto, value: current_user.pezzos_que_apuesta%>
+  <%= f.hidden_field :golesLocal, value: current_user.local_apostado%>
+  <%= f.hidden_field :golesVisitante, value: current_user.visitante_apostado%>
+  <%= f.hidden_field :user_id, value: current_user.id%>
+  <%= f.hidden_field :posteo_fb, value: true%>
+  
+	<button class="btn btn-primary" onClick="_gaq.push(['_trackEvent', 'Partido', 'Apuesta', 'Compartio en FB', '#{@partido.local}-#{@partido.visitante}'])">
+		¡Jugar y compartir en facebook!
+		<% f.submit "", {onClick: "_gaq.push(['_trackEvent', 'Partido', 'Apuesta', 'Compartio en FB', '#{@partido.local}-#{@partido.visitante}'])"}%> 
+	</button>
+  <%end%>
+      
+  </div>
+</div>

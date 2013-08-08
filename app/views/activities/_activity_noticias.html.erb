@@ -1,0 +1,11 @@
+<div class="">
+	<div class="about_titulo_noticias">
+		NOTICIAS
+	</div>
+</div>
+<% @activities.each do |activity| %>
+	<% if activity.trackable %>
+		<%=render_activity activity%>
+	<% end %>
+<%end%>
+<%= will_paginate%>

@@ -1,0 +1,10 @@
+<div class="span9 BTSinEspacio">
+<p class= "lead">¡Hola <font face="FUTURAB" color="#005798"><%=@user.name%></font>! </p>
+<p><font face="FUTURAB" color="#005798">TIENES</font><font size="18" face="digital7" color="orange"><%=number_to_currency(current_user.pezzos,:precision => 0)%></font> <font face="FUTURAB" color="#005798">PEZZOS</font>     / ACTUALMENTE ESTAS EN LA POSICIÓN <strong><font size="18" color="#005798"><%=@user.position%></font></strong> DEL RANKING</p>
+<%= link_to  new_invitation_path do%>
+	<%= image_tag "user/btnGanarPezzos_menu.png"%>
+<%end%>
+<%= render "user_profile"%>
+</div>
+<font face="Futura Book BT">
+

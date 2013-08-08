@@ -1,0 +1,35 @@
+<section class="">
+	<div class="activity-content-title">
+		<h5><strong> Terminó el Partido </strong><small><%= time_ago_in_words(activity.trackable.updated_at) %> ago</small></h5>
+	</div>
+	<div class="activity activity-partido-nuevo well well-small">
+		<div class="partido-fecha">
+		  <h4> <%= l(activity.trackable.diapartido, format: '%d de %B', locale:'es-CO')%></h4>
+		  <h6 class="muted"> <%= l(activity.trackable.diapartido, format: '%l:%M %p', locale:'es-CO')%></h6>
+		</div>
+	    <div class="logo activity-partido-nuevo-logo">
+	      <%= image_tag activity.trackable.logolocal, {:class => "", :width=>"100px"}%>
+	      <div>
+	          <h2 class="lead"><strong> <%=activity.trackable.resultadoLocal%></strong></h2>      
+
+	      </div>
+	    </div>
+	    <div class=" activity-partido-nuevo-vs">
+	    	
+	    </div>
+	    <div class="logo activity-partido-nuevo-logo">
+	      <%= image_tag activity.trackable.logovisitante,{:class => "", :width =>"100px"}%>
+	      <div>
+	        <h2 class="lead"> <strong> <%=activity.trackable.resultadoVisitante%></strong></h2>
+	      </div>
+	    </div>
+	    <hr class="activity-hr"/>
+	    <div>
+    		<h5>Mi Ganancia de <%= link_to "#{activity.trackable.apuestas_del_usuario(current_user).count} apuestas",  user_path(current_user, partidoId: activity.trackable.id)%></h5>
+	    	<div class="activity-partido-nuevo-apuesta">
+				<div class="activity-content-resultado">
+					<font face="digital7" color="orange" size="5"><%= number_to_currency(activity.trackable.ganancias_del_usuario(current_user),:precision => 0) %></font>
+				</div>
+			</div>
+	  	</div>
+</section>

@@ -1,0 +1,45 @@
+<%if current_user %>
+<div class="badge-fixed">
+	<%=image_tag "ranking/menu_superior.png", {:class => "", :width=>"280"}%>
+
+</div>
+	<div class="badge-fixed2">
+	
+	<font face="FUTURAB" color="white"> 
+<div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <font face="FUTURAB" color="white"><%= current_user.name %></font>
+            
+            </a>
+            <ul class="dropdown-menu">
+            <li><%= link_to "Mi Perfil", user_path(current_user)%></li>
+            <% if current_user.administrator==true %>
+                <li>
+                <%= link_to "Partido Nuevo", new_partido_path %>
+                </li>
+                <li>
+                <%= link_to "Metrics", metrics_index_path %>
+                </li>
+            <% end %>
+            <li class="divider"></li>
+            <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+            </ul>
+</div>
+
+		<p></font>
+	<p> <font color="#165f93">.</font></p><p>
+
+		<span class="secTitle">TIENES</span>
+		<font face="digital7" color="orange" size="5"><%= number_to_currency(current_user.pezzos,:precision => 0) %></font>
+		<span class="secTitle">PEZZOS</span>
+	
+	<p>
+	
+	<%= link_to  new_invitation_path do%>
+	<%= image_tag "user/btnGanarPezzos_menu.png"%>
+	<%end%>
+
+	</div>
+
+<%end%>
+     

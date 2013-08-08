@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  local: MyString
+  visitante: MyString
+  logolocal: MyString
+  logovisitante: MyString
+  diapartido: 2013-01-28 13:16:15
+
+two:
+  local: MyString
+  visitante: MyString
+  logolocal: MyString
+  logovisitante: MyString
+  diapartido: 2013-01-28 13:16:15

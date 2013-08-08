@@ -1,0 +1,28 @@
+
+    <!--Supporters del local-->
+      <div class="span2 centrado">
+    <% @supporters.each do |arreglo2|%>
+    <% arreglo=arreglo2[:visitante]%>
+    <% @tamanioArreglo=arreglo.size%>
+      <% arreglo.each do |fan|%>
+    <%fan[:marcador]%>
+    <%=image_tag(fan[:pic], :title => fan[:marcador], :width=>"50")%>
+  <% end%>
+    <% if @tamanioArreglo<11%>
+      <% for i in 1..(11-@tamanioArreglo) %>
+        <!--Si no hay supporters del partido local pone usuarios de golazzos-->
+        <%max_id = User.maximum("id")%>
+        <%min_id = User.minimum("id")%>
+        <%id_range = max_id - min_id + 1%>
+        <%random_id = min_id + rand(id_range).to_i%>
+        <%@usuarioAleatorio= User.find(:first, :conditions => "id >= #{random_id}", :limit => 1, :order => "id")%>
+    <%=image_tag("https://graph.facebook.com/#{@usuarioAleatorio.uid}/picture", :class => "img-random", :width=>"50")%> 
+    <% end%>
+  <% end%>
+
+  <% for i in 0..0 %>
+  <a href="<%=@linkinvitation%>"><%=image_tag("partido/invitematch2.png", :title => "Invita a tus amigos", :width=>"50")%></a>
+     
+    <% end%>
+  <% end%>
+    </div>

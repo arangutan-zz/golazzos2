@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row afiche">
+    <div class="partido-fecha span12 BTSinEspacio">
+
+      <h4> <%= l(@partido.diapartido, format: '%d de %B', locale:'es-CO')%></h4>
+      <h6 class="muted BTSinEspacio"> <%= l(@partido.diapartido, format: '%l:%M %p', locale:'es-CO')%></h6>
+    </div>
+
+    
+
+
+    <div class="span3 logo offset3">
+      <%= image_tag @partido.logolocal, {:class => "", :width=>"200x200"}%>
+      <div>
+          <h2 class="lead BTSinEspacio"> <%=@partido.local%></h2>      
+          <h6 class="muted BTSinEspacio partido-local">Local</h6>
+      </div>
+    </div>
+    <div class="span3 logo">
+      <%= image_tag @partido.logovisitante,{:class => "", :width=>"200x100"}%>
+      <div>
+        <h2 class="lead BTSinEspacio"> <%=@partido.visitante%></h2>
+        <h6 class="muted BTSinEspacio partido-local"> Visitante</h6>
+      </div>
+    </div>
+  
+  
+
+</div>
+

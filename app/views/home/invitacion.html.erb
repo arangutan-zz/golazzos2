@@ -1,0 +1,10 @@
+invitacion.html.erb
+
+<h1>Mensaje al muro</h1>
+<%= form_tag do %>
+	<%= label_tag :fbUser %>
+	<%= text_field_tag :fbUser %>
+	<%= label_tag :mensaje %>
+	<%= text_field_tag :mensaje %>
+	<%= submit_tag "mandar mensaje" , {:class => "btn"} %>
+<% end %>

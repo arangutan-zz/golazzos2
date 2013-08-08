@@ -1,0 +1,46 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner ">
+    <div class="container fuenteFuturaBookBT">
+        <div class="brand" >
+            <%=link_to activities_path do%>
+               <%= image_tag ('Menu/logo_menuBeta.png')  %>
+            <%end%>
+        </div>
+      <ul class="nav">
+
+        
+        <li><%= link_to activities_path do%> 
+            <%=image_tag "Menu/iconosMenu_Ranking.png", {:class => "", :height=>"20"}%> NEWS FEED
+            <%end%>
+        </li>
+        <li><%= link_to partidos_path do%>|
+            <%=image_tag "Menu/iconosMenu_Partidos.png", {:class => "", :height=>"20"}%> PARTIDOS
+            <%end%>
+        </li>
+        <li><%if current_user %>
+                <%= link_to user_path(current_user) do%>| 
+                    <%=image_tag "Menu/iconosMenu_Perfil.png", {:class => "", :height=>"20"}%> MI CUENTA      
+                <%end%>
+            <%end%>
+        </li>
+        <li><%= link_to home_reglamento_path do%>| 
+            <%=image_tag "Menu/iconosMenu_Reglamento.png", {:class => "", :height=>"20"}%> REGLAMENTO
+            <%end%>
+        </li>
+      </ul>
+      <ul class= "nav pull-right">
+        <% if current_user %>
+            
+           
+        <% else %>
+            <li>
+            <%= link_to "/auth/facebook", {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])"} do%>
+            <%= image_tag ('Menu/menu_btnRegistro.png')  %>
+            <% end -%>
+            
+            </li> 
+        <% end %>
+      </ul>
+    </div>
+  </div> 
+</div>

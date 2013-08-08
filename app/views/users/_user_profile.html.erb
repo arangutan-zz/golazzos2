@@ -1,0 +1,82 @@
+<a href="" data-toggle="modal" data-target="#myProfile">
+  Actualizar mi Perfil
+</a>
+<div id="myProfile" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<%= form_for [@user, @user.profile], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">¡Actualizar Mi Perfil!</h3>
+  </div>
+
+  <div class="modal-body">
+
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Obtén $50,000 pezzos llenando tu perfil!</strong> <br/> Actualiza la información de tu perfil para ganar mas pezzos.
+  </div>
+  <div class="control-group">
+    <%= f.label :pais, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :pais, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :ciudad, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ciudad, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :direccion, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :direccion, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :celular, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :celular, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :twitter, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :equipos_favoritos, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :equipos_favoritos, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :camiseta_de, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :camiseta_de, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :talla, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :talla, :class => 'text_field' %>
+    </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+  
+	<%= f.hidden_field :nombre, value: @user.name%>
+    <button class="btn">
+    	Actualizar Perfil
+		<% f.submit ""%> 
+    </button>	
+       
+  </div>
+  <%end%>
+</div>
