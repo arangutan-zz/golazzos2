@@ -1,77 +1,171 @@
-.formulario-sameline
-{
-	display:inline-block;
+/*estilos para la página de perfil de usuario*/
+
+
+.cperfil{
+	width: 100%;
+	height: 95%;
+	font-family: helvetica,arial,sans-serif;
+	padding: 10px;
+	display: inline-block;
+}
+.modulo1{
+	width: 30%;
+	height: 100%;
+	margin-right: 10px;
+	background-color: rgb(238, 238, 238);
+	display: block;
+	float: left;
+
+}
+.fotoperfil{
+	width:100%;
+	height:116px;
+	background-color: #0672ab;
+	display: block;
+	border-radius: 3px;
+}
+.playerlevel{
+	color: #878787;
+	font-family: futura, arial, helvetica;
+	font-size: 18px;
+	text-align: center;
+	height: 25px;
+}
+.nextlevel{
+	font-family: helvetica, arial, sans-serif;
+	font-size: 10px;
+	color: #999999;
+	padding: 5px;
+	height: 25px;
+	text-align: center;
+}
+.fotoperfil img {
+	width: 100%;
+	height:70%; 
+}
+.modulo2{
+	width: 67%;
+	float: left;
+	display: inline-block;
+	margin-bottom: 10px;
+
+}
+.nombreperfil{
+	font-family: futura, helvetica, arial;
+	font-size: 25px;
+	color: #0672ab;
+	width: 100%;
+	margin-bottom: 10px;
+	text-align: left;
+}
+.logout{
+	text-align: left;
+}
+.boxpezzos{
+	width:45%;
+	margin-right: 10%;
+	float: left;
+	height: 63px;
+}
+.topicpezzos{
+	font-family: helvetica, arial, sans-serif;
+	font-size: 14px;
+	color: #00c9ec;
+	display: block;
+	width: 98%;
+	background-color: #EEEEEE;
+	height: 20px;
+	float: left;
+	padding-top: 5px;
+	padding-left: 2%;
+	text-align: center;
+
+}
+.cantidadpezzos{
+	font-family: futura, helvetica, arial;
+	font-size: 18px;
+	color: #fff;
+	background-color: #00c9ec;
+	display: block;
+	width: 100%;
+	height: 40px;
+	padding-top:15px;
+	text-align: center;
+
+}
+.boxdinero{
+	width:45%;
+	float: left;
+	height: 63px;
+}
+.topicdinero{
+	font-family: helvetica, arial, sans-serif;
+	font-size: 14px;
+	color: #0672ab;
+	display: block;
+	width: 98%;
+	background-color: #EEEEEE;
+	height: 20px;
+	float: left;
+	text-align: center;
+	padding-left: 2%;
+	padding-top: 5px;
+
+}
+.cantidaddinero{
+	font-family: futura, helvetica, arial;
+	font-size: 18px;
+	color: #fff;
+	background-color: #0672ab;
+	display: block;
+	width: 100%;
+	height: 40px;
+	padding-top: 15px;
+	text-align: center;
+
+
+}	
+.modulo3{
+	display: inline-block;
+	margin-top: 10px;
+	width: 100%;
+	display: inline-block;
+}
+.logrosuser{
+	width: 30%;
+	margin-right: 3%;
+	float: left;
+	background-color: #f2009a;
+}
+.nombrelogro{
+	font-family: helvetica, arial, sans-serif;
+	font-size: 11px;
+	color: #FFF;
+	width: 100%;
+	font-size: 14px;
+	height: 20px;
+	text-align: center;
+	padding-top: 5px;
+
+}
+#puntos{
+	background-color: #0672ab;
+}
+#ganados{
+	background-color: #00D936;
+}
+#perdidos{	
+	background-color: #D93600;
 }
 
-.invita-amigos-footer{
-	position:relative;
-	
-	z-index:1;
-	top:-30px;
-}
-.caja-blanca{
-	background:white;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	margin-top: -15px;
-	margin-bottom: 15px;
-	
-}
-.fondoPremios{
-	background: #0673ab;
-	margin-top: -20px;
-	margin-bottom:-10px;
-}
-.fondoPartidosLanding{
-	background: #f4f4f4;
-	margin-bottom:-10px;
-}
-.areaPremios{
-	padding-top: 20px;
-	padding-bottom:20px;
-}
-
-.user-separador{
-		background: #004f92;
-		padding-top:10px;
-		margin-top:30px;
-}
-
-.user-separador-abajo{
-	margin-top:45px;
-}
-.user-fondoGris{
-	background: #f0f1f1;
-}
-.user-gano-pezzos{
-	background: #ffffff;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	padding:10px;
-	margin-top:15px;
-	.user-pezzos{
-		background: #004f92;
-		-moz-border-radius: 15px;
-		border-radius: 15px;
-		color:white;
-		padding:15px;
-	}
-}
-.user-photo{
-	margin-top:30px;
-}
-
-.user-vs{
-	margin-top:100px;
-}
-.partidos-ranking-dos{
-	color: white;
-	background: #003956;
-	padding:20px;	
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	td{
-		text-align:center;
-		padding:4px;
-	}
+.numerologro{
+	color: #5c595c;
+	background-color: #EEEEEE;
+	width: 100%;
+	font-family: futura, helvetica, arial;
+	font-size: 18px;
+	color: #7d7781;
+	text-align: center;
+	height: 30px;
+	padding-top: 5px;
 }

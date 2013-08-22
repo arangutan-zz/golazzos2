@@ -1,3 +1,62 @@
+<header class="header">
+    <a class="logo" href=<%= root_path %>></a>
+    <a href="#" class="navegacion" id="nav">
+        <a href="#" class="botperfil" id="botperfil"></a>
+    </header>
+    <section id="perfiluser">
+        <%if current_user %>
+        <div class="cperfil">
+            <div class="modulo1">
+                <div class="fotoperfil"><%=image_tag current_user.facebook.get_picture(current_user.uid, {type: "large"})%></div>
+                <div> 
+                    <div class="playerlevel">Level 10</div>
+                    <div class="nextlevel"> 200,000 pezzos para siguiente nivel.</div>
+                </div>
+            </div>
+            <div class="modulo2">
+                <div class="nombreperfil"><%= current_user.name %> </div>
+                <div class="logout"><%= link_to "Sign out", signout_path, id: "sign_out" %></div>
+                <div class="boxpezzos">
+                    <div class="topicpezzos">Pezzos</div>
+                    <div class="cantidadpezzos"><%= current_user.pezzos %></div>
+                </div>
+                <div class="boxdinero">
+                    <div class="topicdinero">Dinero</div>
+                    <div class="cantidaddinero">0</div>
+                </div>
+                <div class="modulo3">
+
+                    <div class="logrosuser">
+                        <div class="nombrelogro" id="puntos">Acumulado</div>
+                        <div class="numerologro">0</div>
+                    </div>
+                    <div class="logrosuser">
+                        <div class="nombrelogro" id="ganados">Ganados</div>
+                        <div class="numerologro">0</div>
+                    </div>
+                    <div class="logrosuser">
+                        <div class="nombrelogro" id="perdidos">Perdidos</div>
+                        <div class="numerologro">0</div>
+                    </div>
+                </div>
+            </div>
+            <%else %>
+            <%= link_to "/auth/facebook", {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])"} do%>
+            <%= image_tag ('Menu/menu_btnRegistro.png')  %>
+            <% end -%>
+            <%end %>
+        </section>
+        <nav id="navmenu">
+            <ul>
+                <li>Home</li>
+                <li>Perfil</li>
+                <li>Partidos</li>
+                <li>Reglas</li>
+                <li>Contactanos</li>
+            </ul>
+        </nav>
+
+<!-- 
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner ">
     <div class="container fuenteFuturaBookBT">
@@ -44,3 +103,4 @@
     </div>
   </div> 
 </div>
+    -->

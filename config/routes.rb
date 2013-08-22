@@ -1,41 +1,48 @@
 Gollazos::Application.routes.draw do
+
+#------GOLAZZOS 2 -----------
+get "home/index"
+resources :partidos do
+  post 'repartir', on: :collection
+  get 'mostrar', on: :collection
+  resources :bets
+end
+
 #---------------------------------------------------------------------
 #-----------GOLAZZOS 1.0
-  #get "activities/index"
-  #get "friendship/index"
-  #get "redireccion/index"
-  #get "redireccion/new"
-  #get "metrics/index"
-  #get "metrics/emails"
-  #resources :invitations do
-  #  post 'postear', :on => :collection
-  #end
+  get "activities/index"
+  get "friendship/index"
+  get "redireccion/index"
+  get "redireccion/new"
+  get "metrics/index"
+  get "metrics/emails"
+  resources :invitations do
+    post 'postear', :on => :collection
+  end
 #
-  #resources :partidos do
-   # post 'repartir', :on => :collection
-   # resources :bets
-  #end
+
 #
- # resources :users do
-  #  resources :profiles
-  #end
-  #resources :redireccion
-  #resources :friendships
-  #resources :activities
-  #get "home/index"
-  #get "home/index2"
-  #get "home/reglamento"
-  #get "home/contacto"
+ resources :users do
+    resources :profiles
+  end
+  resources :redireccion
+  resources :friendships
+  resources :activities
+  
+  get "home/index2"
+  get "home/reglamento"
+  get "home/contacto"
 #
-  #get "home/invitacion"
-  #post "home/inivitacion"
+  get "home/invitacion"
+  post "home/inivitacion"
+
   #LOGIN WITH FACEBOOK OMNIAUTH
-  #match 'auth/:provider/callback', to: 'sessions#create'
-  #match 'auth/failure', to: redirect('/')
-  #match 'signout', to: 'sessions#destroy', as: 'signout'
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
   #VIRALIDAD TOKEN
-  #match "home/:invitation_token" ,to: "home#referido"
-  #match "/:invitation_token" ,to: "home#index"
+  match "home/:invitation_token" ,to: "home#referido"
+  match "/:invitation_token" ,to: "home#index"
 #---------------------------------------------------------------------
 
 

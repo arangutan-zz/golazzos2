@@ -1,34 +1,3 @@
 // Place all the styles related to the friendship controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-#ranking{
-	background:#e9eaed;
-	border: 1px solid #d3d6db;
-}
-
-.friendship-amigo-facebook
-{	
-	clear: both;
-	margin-bottom: 10px;
-	display: block;
-	.friendship-foto-facebook
-	{
-		display: inline;
-		margin-right: 5px;
-	}
-	.friendship-nombre-facebook
-	{
-		display: inline;
-		h5
-		{
-			display: inline;
-		}
-	}
-	.friendship-seguir-facebook
-	{	
-		float: right;
-		display: inline;
-	}
-}

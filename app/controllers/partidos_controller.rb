@@ -1,20 +1,12 @@
 class PartidosController < ApplicationController
   # GET /partidos
   # GET /partidos.json
-  before_filter :require_login
+  before_filter :require_login, except: [:index, :mostrar]
   before_filter :require_admin_login , :only => [:new, :edit, :update, :destroy, :create, :repartir]
   def index
-    @partidos = Partido.all
     @hora = Time.now - 1.day
+    @partidos = Partido.where("diapartido > ?", @hora ).order("diapartido ASC")
 
-    @eliminatorias = Partido.where("torneo = ? AND diapartido > ?", 2, @hora ).order("diapartido ASC")
-    @champions = Partido.where("torneo = ? AND diapartido > ?", 1, @hora).order("diapartido ASC")
-    @libertadores = Partido.where("torneo = ? AND diapartido > ?", 3, @hora).order("diapartido ASC")
-    @postobon = Partido.where("torneo = ? AND diapartido > ?", 4, @hora).order("diapartido ASC")
-    @bbva = Partido.where("torneo = ? AND diapartido > ?", 5, @hora).order("diapartido ASC")
-    @premier = Partido.where("torneo = ? AND diapartido > ?", 6, @hora).order("diapartido ASC")
-
-    @user_ranking = User.order("pezzos DESC").limit(10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @partidos }
@@ -120,5 +112,9 @@ redirect_uri=http://www.golazzos.com/partidos/#{@partido.id}"
     else
       redirect_to edit_partido_path(@partido), notice: "Asegurate de Cerrar la apuesta y de agregar el marcador"
     end
+  end
+
+  def mostrar
+
   end
 end

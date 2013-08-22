@@ -1,27 +1,28 @@
-
-
-<div class= "header-title">
-  <div class="container">
-    <div class="row">
-      <p>
-      <div class="span6 fuenteFuturaB titulo-blanco">
-        <h3><%=image_tag "partidos/btn_partidosTitulos.png"%>PARTIDOS
-
-        <%= render "social"%>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="container">
-  <div class="row BTSinEspacio">
-   <%= render "acordeon"%>
-   <%= render "premios_y_ranking"%>
-  </div>
-</div>
-</div>
-
-
+<section id="partidos">
+  <header >
+    <h2 class="titulosseccion">PARTIDOS</h2>
+  </header> 
+    <%@partidos.each do |partido| %>
+      <a href=<%= partido_path(partido)%>> 
+        <article class="cajamarcador">
+          <div class="marcadorCentrado">
+            <div class="escudoequipo">
+              <%= image_tag partido.logolocal %>
+              <h3> <%= partido.local %></h3>
+            </div>
+            <div class="datospartido">
+              <div class="Liga">Liga Mexicana</div>
+              <div class="vs">VS</div>
+              <div class="hora">Oct 5 - 7:45 pm</div>
+              <div class="pjugando">123 personas jugando</div>
+            </div>
+            <div class="escudoequipo">
+              <%= image_tag partido.logovisitante %>
+              <h3> <%= partido.visitante %></h3>
+            </div>
+          </div>
+          <div class="botcontinuar"></div>
+        </article>
+      </a>
+  <%end %>
+</section>

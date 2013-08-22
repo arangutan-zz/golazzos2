@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @partido= Partido.where("diapartido > ?", Time.now).order("diapartido ASC").first
+    @partidos = Partido.where("diapartido > ?", Time.now).order("diapartido ASC").limit(3)
     #track_ga_event("Users", "Login", "Standard")
     #@partido = Partido.find(64)
   end
@@ -16,7 +16,7 @@ class HomeController < ApplicationController
   def invitacion
     @mensaje = params[:mensaje]
     @fbUser = params[:fbUser]
-    current_user.facebook.put_wall_post("prueba prueba golazzos @antonio.faillace.96", {tag: "antonio.faillace.96"}) 
+    current_user.facebook.put_wall_post("prueba prueba golazzos @antonio.faillace.96", {:name => "i love loving you", :link => "http://www.explodingdog.com/title/ilovelovingyou.html"}, "antonio.faillace.96" )
   end
 
   def referido

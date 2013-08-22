@@ -1,80 +1,55 @@
-Home#Index.html
+<section id="bienvenida">
+  <div class="imgbienvenidano"></div>
+  <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
+</section>      
 
-<!-->
-<% content_for :title, "Juego de Futbol : Golazzos" %>
+<section id="partidosSabrozzos" class="clear">
+  <header >
+    <h2 class="titulosseccion clear">PARTIDOS SABROZZOS</h2>
+  </header>  
+  <%@partidos.each do |partido| %>
+  <a href=<%= partido_path(partido)%>> 
+    <article class="cajamarcador">
+      <div class="marcadorCentrado">
+        <div class="escudoequipo">
+         <%= image_tag partido.logolocal %>
+          <h3> <%= partido.local %></h3>
+        </div>
+        <div class="datospartido">
+          <div class="Liga">Liga Mexicana</div>
+          <div class="vs">VS</div>
+          <div class="hora">Oct 5 - 7:45 pm</div>
+          <div class="pjugando">123 personas jugando</div>
+        </div>
+        <div class="escudoequipo">
+          <%= image_tag partido.logovisitante %>
+          <h3> <%= partido.visitante %></h3>
+        </div>
+      </div>
+      <div class="botcontinuar"></div>
+    </article>
+  </a>
+  <%end %>
+  <div class="masPartidos"><%= link_to "ver mas partidos", partidos_path %></div> 
+</section>
 
-<div class="contenedor centro">
-<%= render "carousel"%>
-<%= render "layouts/flash_notice"%>
-
-<div class="fondoPremios">
-  <div class="centro fuenteFuturaB container">
-    <div class="areaPremios"></div>
-    <%=image_tag "landing/pasos_titulo.png", {:class => "", :width=>"450"}%> 
-    <div class="areaPremios row">
-  <table class="blanco span10 offset1 centro">
-    <tbody>
-  <tr>
-    <td>
-      <%=image_tag "landing/pasos_icono1.png", {:class => "", :width=>"200"}%> 
-    </td>
-    <td>
-      <%=image_tag "landing/pasos_icono2.png", {:class => "", :width=>"200"}%> 
-    </td>
-    <td>
-      <%=image_tag "landing/pasos_icono3.png", {:class => "", :width=>"200"}%> 
-    </td>
-  </tr>
-  <tr>
-    <td>PAZZO 1</td><td>PAZZO 2</td><td>PAZZO 3</td>
-  </tr>
-  <tr>  
-    <td class="BTSinEspacio">Escoje tu partido</td><td class="BTSinEspacio">Juega por un marcador</td><td class="BTSinEspacio">Invita a tus amigos</td>
-  </tr>
-</tbody>
-  </table>
-    
-    </div>
-      <div class="areaPremios"></div>
-
-    </div>
-</div>
-
-<div class="fondoPartidosLanding">
-  <%=image_tag "landing/partidos/partido_titulo.png", {:class => "tituloS", :width=>""}%> 
-  <div class="centro fuenteFuturaB">
-    
-    
-    <div class="areaPremios">
-    
-    <%image_tag "landing/partidos/partido_equiposImportantes.png", {:class => "", :width=>"550"}%> 
-    <%= render "partidos/afiche_partido2" if @partido != nil%>
-     
-  
-  </div>
-  
-  </div>
-</div>
- 
-
-<div class="fondoPremios">
-   <div class="botonFacebook">
-    
-    <font color="white" face="FUTURAB" size="4">TIENES</font>
-    <font color="orange" face="Digital7" size="6">$50.000</font>
-    <font color="white" face="FUTURAB" size="4">PEZZOS GRATIS</font><P>
-    <%= link_to "/auth/facebook" do%>
-     <%= image_tag 'Call/btnCall.png', { width: "500px"}  %>
-     <% end -%>
-  </div>
-</div>
-
-
-  <section class="container">
-    <h3 class="centro">Con el apoyo de</h3>
-    <div class="row apoyoInstituciones">
-      <%= image_tag 'hubbog.jpg', {:class => "span3 offset3"}%>
-      <%= image_tag 'appsco.png', {:class => "span3"}%>
-    </div>
-  </section>
-</!-->
+<section id="sobreGolazzos" class="">
+  <header>
+    <h2 class="titulosseccion">Sobre Golazzos</h2>
+  </header>
+  <p class="wrapper" id="frase1">Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos..</p>
+  <h3 class="wrapper" id="frase1">Pazzo 1</h3>
+  <p class="wrapper">
+    <strong class="bold">SELECCIONA:</strong> 
+    tu Partido y tu marcador esperado que te dará una ganancia si aciertas</p>
+    <h3 class="wrapper" id="frase1"> Pazzo 2</h3>
+    <p class="wrapper">
+      <strong class="bold">RETA:</strong> 
+      a tus amigos y apuestas con dinero real o ficticio que llamamos "PeZZos"</p>
+      <h3 class="wrapper" id="frase1">Pazzo 3</h3>
+      <p class="wrapper"><strong class="bold">COMPARTE: </strong>tu pasión en nuestro "Estadio" donde comentas el partido. y Ganas si aciertas el marcador.</p>
+      <div class="masPartidos"></div>
+    </section>
+    <section class="titulosseccion">
+      <h2>Reglas de GOLAZZOS</h2>
+    </section>
