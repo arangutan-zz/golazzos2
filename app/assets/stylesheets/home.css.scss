@@ -76,10 +76,7 @@ a:focus{
 	color:#2AB9DE;
 	font-family: arial, helvetica;
 }
-a:visited{
-	color:#2099B7;
-	font-family: arial, helvetica;
-}	
+
 
 /* Header________________________________________________________________ */	
 .header{
@@ -104,14 +101,10 @@ a:visited{
 	background-image: image-url("golazzos2/logo.png");
 	float:left;
 }
-#navmenu ul li{
-	list-style:none;
-	list-style-image:none;
-	font-size:10px;
+#navmenu{
+	display: none;
 }
-#navmenu ul li :hover{
-	color:#03C;
-}	
+
 .navegacion{
 	height:50px;
 	width:50px;
@@ -135,34 +128,65 @@ a:visited{
 }
 #perfiluser{
 	text-align: center;
-	background-color: #F7F7F7;
+	background-color: #ddd;
 	display: none;
-	margin-bottom: 10px;
-	box-shadow: 2px 0px 4px #AAAAAA;
+	padding: 10px;
 }
-#navmenu{
-	display: none;
+/* boton pezzos__________________________*/
+.botlogin{
+	width:300px;
+	height:30px;
+	font-family:Futura,Arial, Helvetica, sans-serif;
+	font-size:20px;
+	color:#FFF;
+	background-color:#3A5D9F;
+	border:none;
+	padding: 3px;
+	text-align:center;
+	cursor:pointer;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	letter-spacing:.1em;
+	text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
+	background-image:image-url("golazzos2/facebook.png");
+	background-origin: padding-box;
+	background-repeat:no-repeat;
+	padding-top: 15px;
+} 
+.botlogin:hover, .botlogin:focus {
+	background-color:#436CBC;
+	text-decoration:none;
+	color: #fff;
 }
 nav{
 	font-family:Arial, Helvetica, sans-serif;
 	color: #FFF;
 	font-style:normal;
 	font-weight:lighter;
+	background-color:#ddd;
 }
 nav ul{
-	background-color: #03496d;
+	margin:0;
 }	
 nav ul li{
 	list-style:none;
 	list-style-image:none;
-	font-size:10px;
+	font-size:16px;
 	font-family: helvetica, arial, sans-serif;
 	color: #FFF;
+	border-bottom: solid 1px #bbb;
 }
-nav ul li :hover{
-	color:#00c9ec;
+nav ul li a{
 	display: block;
-	background-color:#03496d;;	
+	height: 30px;
+	padding: 11px 0px 3px 14px;
+	text-decoration: none;	
+}
+nav ul li a:hover{
+	color:#fff;
+	background-color: #bbb;
+	text-decoration: none;	
 }
 
 .imgbienvenida{

@@ -1,39 +1,86 @@
-<div class= "header-title">
-  <div class="container">
-    <div class="row">
-      <div class="span7  titulo-blanco">
-        <div class="offset1">
-        <div class="fuenteFuturaB"><h3>JUEGA POR TU MARCADOR</h3></div>
-        <div class="muted BTSinEspacio"><h6>ESTE ES EL PARTIDO QUE ESCOGISTE, POR FAVOR SIGUE LOS 3 PASOS.</h6></div>
-        </div>
+<section class="colocaTuMarcador">
+  <div class="imgbienvenida2no"></div>
+  <header>
+    <h2 class="titulosseccion">MI APUESTA</h2>
+  </header>
+  <div>
+    <%= flash[:notice] %>
+  </div>
+  <div class="datosmarcador">
+    <div class="Ligamarcador">Liga Mexicana</div>
+    <div class="equipo2"> <%= @partido.local %></div>
+    <div class="vsmarcador">VS</div>
+    <div class="equipo2"> <%= @partido.visitante %></div>
+    <div class="horamarcador">Oct 5 - 7:45 pm</div>
+    <div class="pjugando2">123 personas jugando</div>
+  </div>
+</section>
+<% if current_user %>
+  <section id="apuesta">
+    <article id="miapuesta">
+      <%= form_for([@partido, @partido.bets.build]) do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id%>
+      <div class="contenedorentrada">
+        <div class="equipin">
+          <div class="imgequipo1">
+            <%= image_tag @partido.logolocal %>
+          </div>
+          <div class="divmarcador">
+            <%= f.number_field :golesLocal, {
+              :value => "0",
+              :max=>"10" ,
+              :min=>"0" ,
+              :placeholder=>"0",
+              :size=>"10px", 
+              :class=>"marcadoruser1",  
+              :align=>"middle"}  %>
+            </div>
+          </div>
+          <div class="equipin">
+            <div class="divmarcador">
+              <%= f.number_field :golesVisitante, {
+                :value => "0",
+                :max=>"10" ,
+                :min=>"0" ,
+                :placeholder=>"0",
+                :size=>"10px", 
+                :class=>"marcadoruser1",  
+                :align=>"middle"}%>
+              </div>
+              <div class="imgequipo2">
+                <%= image_tag @partido.logovisitante %>
+              </div> 
+              <div class="clear"></div> 
+            </div>
+          </div>
+          <div class="opcionesplata">
+            <%= f.select :monto, ['10000',
+              '20000',
+              '30000',
+              '40000',
+              '50000',
+              '60000',
+              '70000',
+              '80000',
+              '90000',
+              '100000']%>
+            </div>
+            <p class="retornoesperado">Retorno Esperado: <span class="cifrasapuestas">70.000</span></p>
+            <%= f.submit "APOSTAR PEZZOS", {:class=> "botpezzos"}%> 
+            <%end %>
+           <input type="submit" Value="APOSTAR DINERO" class="botdinero" />
+    </article>
+    <article class="retaramigos" id="retaramigos">
+      <input type="submit" Value="Retar a tus amigos" class="botfacebook" />
+      <p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
+      <div class="vermas">
+        <a href="partidos.html">jugar solo</a>
       </div>
-    </div>
-  </div>
-</div>
-
-<%= render "layouts/flash_notice"%>
-<%=render "afiche_partido"%>
-
-
-
-<%if @partido.repartido%>
-<div class="container"><div class="row"><div class=""></div></div></div>
-<%else%>
-<div class="container">
-  <div class="row">
-    <div class="span2 offset1">
-    <div class="partido-uno">
-      <%=image_tag "partido/No1_apuesta.png" %>
-    </div>
-  </div>
-  </div>
-</div>
-    <%=render "monto_a_apostar"%>
-    <%render "matriz_apuestas"%>
-    <%=render "matriz_apuestas_dos"%>
-</div>
-<%end%>
-<div class="centro spinner" id="spinner">
-  <%= image_tag "350.gif", { width: "28px" }%>
-   <h6 class="muted BTSinEspacio">CARGANDO...</h6>
-</div>
+    </article>
+  </section>
+<%else %>
+  <section class="loginfacebook">
+      <h3> Para continuar:</h3>
+      <%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin"} %>
+  </section>
+<%end %>

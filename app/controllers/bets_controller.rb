@@ -21,6 +21,5 @@ class BetsController < ApplicationController
 			flash[:notice] = "No tienes suficientes Pezzos para realizar tu juego."
 		end
 		redirect_to partido_path(@partido)
-
 	end
 end
