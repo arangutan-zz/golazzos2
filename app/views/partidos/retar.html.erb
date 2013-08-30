@@ -1,0 +1,59 @@
+<%= @linkinvitation %>
+<section id="retaramigos">
+	<header>
+		<h2 class="titulosseccion"> EL RETO</h2>
+	</header>
+	<% if flash[:notice]%>
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<%= flash[:notice] %>
+	</div>
+	<% end %>
+	<div class="datosmarcador">
+		<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
+		<div class="equipo2"> <%= @partido.local %></div>
+		<div class="vsmarcador">VS</div>
+		<div class="equipo2"> <%= @partido.visitante %></div>
+		<div class="horamarcador"><%= @partido.hora_partido %></div>
+		<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+	</div>
+</section>
+<section>
+	<article id="miapuesta">
+		<div class="contenedorentrada">
+			<div class="equipin">
+				<div class="imgequipo1">
+					<%= image_tag @partido.logolocal %>
+				</div>
+				<div class="divmarcador">
+					<%= @bet.golesLocal %>
+				</div>
+			</div>
+			<div class="equipin">
+				<div class="divmarcador">
+					<%= @bet.golesVisitante %>
+				</div>
+				<div class="imgequipo2">
+					<%= image_tag @partido.logovisitante %>
+				</div> 
+				<div class="clear"></div> 
+			</div>
+		</div>
+	</article>
+</section>
+<section class="loginfacebook">
+	<h3>Invita a tus amigos a Golazzos aquí:</h3>
+	<div class="botonfacebook">
+		<div class="fb-send" data-href=<%= "http://www.golazzos.com/show/1?userid=#{current_user.id}&betid=#{@bet.id}" %> </div>
+	</div>
+
+</section>
+
+<section class="amigosfacebook wrapper">
+	<div>
+		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
+	</div>
+	<%= render "invitations/facebook_friends" %>
+</section>
+
+

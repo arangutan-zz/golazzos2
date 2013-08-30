@@ -5,6 +5,8 @@ get "home/index"
 resources :partidos do
   post 'repartir', on: :collection
   get 'mostrar', on: :collection
+  get 'retar', on: :member
+  get 'estadio', on: :member
   resources :bets
 end
 

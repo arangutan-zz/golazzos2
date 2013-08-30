@@ -1,15 +1,8 @@
 class PartidosController < ApplicationController
   # GET /partidos
   # GET /partidos.json
-  before_filter :require_login, except: [:index, 
-                                         :mostrar, 
-                                         :show]
-  before_filter :require_admin_login , :only => [:new,
-                                                 :edit,
-                                                 :update, 
-                                                 :destroy, 
-                                                 :create, 
-                                                 :repartir]
+  before_filter :require_login, except: [:index,:mostrar,:show]
+  before_filter :require_admin_login , :only => [:new,:edit,:update,:destroy,:create,:repartir]
 
   def index
     @hora = Time.now - 1.day
@@ -24,23 +17,13 @@ class PartidosController < ApplicationController
   # GET /partidos/1
   # GET /partidos/1.json
   def show
-
-    #amigos a favor y en contra.
     @partido = Partido.find(params[:id])
-    
-    #@supporters=@partido.supporters_partido(current_user.following,@partido)
-    @linkinvitation= "http://www.facebook.com/dialog/feed?app_id=193467880799348&
-name=Los%20invito%20a%20que%20jueguen%20conmigo%20en%20Golazzos,%20En%20el%20partido%20de%20#{@partido.local}%20vs.%20#{@partido.visitante}&
-link=http://www.golazzos.com/partidos/#{@partido.id}&
-redirect_uri=http://www.golazzos.com/partidos/#{@partido.id}"
-      
-    if @partido.repartido
-      #SI EL PARTIDO TERMINO Y YA SE REPARTIO LA PLATA! REDIRECT_TO RESULTADO_PARTIDO_PATH
 
-      #@ganadores = @partido.ganadores_del_partido
-      #@ranking_followers = @ganadores
+    if params[:betid] && params[:userid]
+      @bet = Bet.find(params[:betid])
+      @user = User.find(params[:userid])
     end
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @partido }
@@ -125,6 +108,20 @@ redirect_uri=http://www.golazzos.com/partidos/#{@partido.id}"
   end
 
   def mostrar
+
+  end
+  
+
+  def retar
+    @partido = Partido.find(params[:id])
+    @bet = Bet.find(params[:betid])
+    
+    @linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
+    #@linkinvitation = "http://localhost:3000"
+    @friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
+  end
+
+  def estadio
 
   end
 end

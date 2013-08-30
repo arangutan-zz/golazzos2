@@ -16,10 +16,10 @@
           <h3> <%= partido.local %></h3>
         </div>
         <div class="datospartido">
-          <div class="Liga">Liga Mexicana</div>
+          <div class="Liga"><%= partido.nombre_torneo %></div>
           <div class="vs">VS</div>
-          <div class="hora">Oct 5 - 7:45 pm</div>
-          <div class="pjugando">123 personas jugando</div>
+          <div class="hora"><%= partido.hora_partido %></div>
+          <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
         </div>
         <div class="escudoequipo">
           <%= image_tag partido.logovisitante %>

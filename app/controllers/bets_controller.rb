@@ -20,6 +20,6 @@ class BetsController < ApplicationController
 		else
 			flash[:notice] = "No tienes suficientes Pezzos para realizar tu juego."
 		end
-		redirect_to partido_path(@partido)
+		redirect_to retar_partido_path(@partido, betid: @bet.id)
 	end
 end

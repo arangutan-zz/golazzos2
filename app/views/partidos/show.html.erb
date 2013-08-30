@@ -1,3 +1,6 @@
+<% if @bet && @user %>
+  <%= "#{@user.name} aposto  #{@bet.partido.local}:#{@bet.golesLocal}  - #{@bet.partido.visitante}:#{@bet.golesVisitante}" %>   
+<%end %>
 <section class="colocaTuMarcador">
   <div class="imgbienvenida2no"></div>
   <header>
@@ -7,12 +10,12 @@
     <%= flash[:notice] %>
   </div>
   <div class="datosmarcador">
-    <div class="Ligamarcador">Liga Mexicana</div>
+    <div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
     <div class="equipo2"> <%= @partido.local %></div>
     <div class="vsmarcador">VS</div>
     <div class="equipo2"> <%= @partido.visitante %></div>
-    <div class="horamarcador">Oct 5 - 7:45 pm</div>
-    <div class="pjugando2">123 personas jugando</div>
+    <div class="horamarcador"><%= @partido.hora_partido %></div>
+    <div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
   </div>
 </section>
 <% if current_user %>
