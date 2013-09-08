@@ -113,18 +113,28 @@ a:focus{
 	float:right;
 	display: block;
 	background-image: image-url("golazzos2/menu.png");
+
 }
 .botperfil:hover,.navegacion:hover{
 	background-color: #ddd;
+	text-decoration: none;
 }
 .botperfil{
-	height:50px;
-	width:50px;
+	height:45px;
 	border-left:thin solid #CCC;
 	border-right:thin solid #CCC;
 	float:right;
 	display: block;
 	background-image: image-url("golazzos2/persona.png");
+	background-repeat: no-repeat;
+	font-size: 14px;
+	color: #00c9ec;
+	padding-top: 5px;
+	padding-left: 40px;
+	padding-right: 3px;
+	span{
+		color: #0672ab;
+	}
 }
 #perfiluser{
 	text-align: center;

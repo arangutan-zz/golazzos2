@@ -17,7 +17,7 @@ class PartidosController < ApplicationController
   # GET /partidos/1
   # GET /partidos/1.json
   def show
-    @partido = Partido.find(params[:id])
+    @partido = Partido.includes(:bets).find(params[:id])
 
     if params[:betid] && params[:userid]
       @bet = Bet.find(params[:betid])
