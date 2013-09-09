@@ -359,6 +359,28 @@ input.botfacebook:hover, input.botfacebook:focus{
 			padding-top: 10px;
 		}
 	}
+	.amigoreto{
+		padding: 5px 0px;
+		margin: 0px auto;
+		display: block;
+		background-color: #EEEEEE;
+		.fotoamigo{
+			display: inline-block;
+			vertical-align: top;
+			margin: 15px 0px 0px 10px;
+		}
+		.nombreamigoydescripcion{
+			display: inline-block;
+			margin-left: 5px;
+			padding-top: 10px;
+			width: 80%;
+			.nombreamigo{
+				font-family: futura, arial, helvetica;
+				font-size: 15px;
+				color:#0672ab;
+			}
+		}
+	}
 	a{
 		color: #FFF;
 		text-decoration: none;

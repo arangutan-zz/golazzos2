@@ -1,4 +1,16 @@
-
+<% if @user && @bet %>
+<section id="retodeamigo" class="amigosfacebook ">
+	<div class="amigoreto">
+		<div class="fotoamigo">
+			<%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
+		</div>
+		<div class="nombreamigoydescripcion">
+			<p class="nombreamigo"><%= "#{@user.name} te esta retando!"%></p>
+			<p>Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
+		</div>
+	</div>
+</section>
+<%end %>
 <section class="colocaTuMarcador">
 	<div class="imgbienvenida2no"></div>
 	<header>
@@ -96,10 +108,10 @@
 					<%end %>
 					<%end  %>
 				</article>
-</section>
-<%else %>
-<section class="loginfacebook">
-	<h3> Para continuar:</h3>
-	<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin"} %>
-</section>
-<%end %> 
+			</section>
+			<%else %>
+			<section class="loginfacebook">
+				<h3> Para continuar:</h3>
+				<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin"} %>
+			</section>
+			<%end %> 
