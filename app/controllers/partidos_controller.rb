@@ -31,7 +31,8 @@ class PartidosController < ApplicationController
             @friendshipDos = @user.friendships.build(friend_id: current_user.id)
             if @friendship.save && @friendshipDos.save
             #se creo la amistad exitosamente
-            flash[:notice]= "Se creo la amistad Correctamente"
+              flash[:notice]= "Se creo la amistad Correctamente"
+            end
         end
       end
     end
