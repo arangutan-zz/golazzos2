@@ -1,13 +1,19 @@
 <% if @user && @bet %>
-	<section id="retodeamigo" class="amigosfacebook ">
-		<div class="amigoreto">
-			<div class="nombreamigoydescripcion">
-				<p class="nombreamigo"><%= "#{@user.name} te esta retando!"%></p>
-				<p>Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
-			</div>
+<section id="retodeamigo" class="amigosfacebook ">
+	<div class="amigoreto">
+		<div class="nombreamigoydescripcion">
+			<p class="nombreamigo"><%= "#{@user.name} te esta retando!"%></p>
+			<p>Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
 		</div>
-	</section>
+	</div>
+</section>
 <%end %>
+<% if flash[:notice]%>
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<%= flash[:notice] %>
+</div>
+<% end %>
 <section class="colocaTuMarcador">
 	<div class="imgbienvenida2no"></div>
 	<header>
@@ -109,6 +115,6 @@
 			<%else %>
 			<section class="loginfacebook">
 				<h3> Para continuar:</h3>
-				<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin"} %>
+				<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
 			</section>
 			<%end %> 

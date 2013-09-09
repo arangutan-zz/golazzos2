@@ -41,6 +41,11 @@
 		</div>
 	</article>
 </section>
+<section class "amigosfacebook wrapper">
+		<div>
+		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
+	</div>
+</section>
 <section class="loginfacebook">
 	<h3>Invita a tus amigos a Golazzos aquí:</h3>
 	<div class="botonfacebook">
@@ -48,9 +53,6 @@
 	</div>
 </section>
 <section class="amigosfacebook wrapper">
-	<div>
-		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
-	</div>
 	<%= render "invitations/facebook_friends" %>
 </section>
 
