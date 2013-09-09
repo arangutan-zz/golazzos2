@@ -26,7 +26,6 @@ class PartidosController < ApplicationController
         if Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id) || (@user.id == current_user.id)
             #la amistad ya existe!!!
             flash[:notice]= "la amistad ya existe!"
-          end
         else
             @friendship = current_user.friendships.build( friend_id: @user.id)
             @friendshipDos = @user.friendships.build(friend_id: current_user.id)
