@@ -1,15 +1,12 @@
 <% if @user && @bet %>
-<section id="retodeamigo" class="amigosfacebook ">
-	<div class="amigoreto">
-		<div class="fotoamigo">
-			<%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
+	<section id="retodeamigo" class="amigosfacebook ">
+		<div class="amigoreto">
+			<div class="nombreamigoydescripcion">
+				<p class="nombreamigo"><%= "#{@user.name} te esta retando!"%></p>
+				<p>Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
+			</div>
 		</div>
-		<div class="nombreamigoydescripcion">
-			<p class="nombreamigo"><%= "#{@user.name} te esta retando!"%></p>
-			<p>Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
-		</div>
-	</div>
-</section>
+	</section>
 <%end %>
 <section class="colocaTuMarcador">
 	<div class="imgbienvenida2no"></div>
