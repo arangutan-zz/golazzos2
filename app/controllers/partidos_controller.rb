@@ -24,7 +24,7 @@ class PartidosController < ApplicationController
   		@user = User.find(params[:userid])
   		if current_user
         frien = Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id)
-        if !frien.nil? || (@user.id == current_user.id)
+        if !frien.empty? || (@user.id == current_user.id)
             #la amistad ya existe!!!
             flash[:notice]= "la amistad ya existe!"
         else
