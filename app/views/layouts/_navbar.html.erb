@@ -3,8 +3,9 @@
     <a href="#" class="navegacion" id="nav">
     <a href="#" class="botperfil" id="botperfil">
         <%if current_user %>
-             <%=number_to_currency current_user.pezzos, precision: 0  %> <br/>
-            <span><%= number_to_currency 50000, precision: 0 %></span>
+             pezzos: <%=number_to_currency current_user.pezzos, precision: 0  %> 
+             <br/>
+             <span>pesos: <%= number_to_currency 50000, precision: 0 %></span>
         <%end %>
     </a>
 </header>

@@ -16,7 +16,6 @@
 		<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
 	</div>
 </section>
-
 <% if current_user %>
 <section id="apuesta">
 	<article id="miapuesta">
@@ -97,10 +96,10 @@
 					<%end %>
 					<%end  %>
 				</article>
-			</section>
-			<%else %>
-			<section class="loginfacebook">
-				<h3> Para continuar:</h3>
-				<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin"} %>
-			</section>
-			<%end %> 
+</section>
+<%else %>
+<section class="loginfacebook">
+	<h3> Para continuar:</h3>
+	<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin"} %>
+</section>
+<%end %> 
