@@ -23,7 +23,8 @@ class PartidosController < ApplicationController
   		@bet = Bet.find(params[:betid])
   		@user = User.find(params[:userid])
   		if current_user
-        if Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id) || (@user.id == current_user.id)
+        frien = Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id)
+        if !frien.nil? || (@user.id == current_user.id)
             #la amistad ya existe!!!
             flash[:notice]= "la amistad ya existe!"
         else
@@ -130,12 +131,13 @@ class PartidosController < ApplicationController
 		@bet = Bet.find(params[:betid])
 
     @linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
-    	#@linkinvitation = "http://localhost:3000"
-    	@friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
-    end
+    #@linkinvitation = "http://localhost:3000"
+    @friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
+  end
 
-    def estadio
+  def estadio
       @partido = Partido.find(params[:id])
       @friends = current_user.following
-    end
   end
+
+end
