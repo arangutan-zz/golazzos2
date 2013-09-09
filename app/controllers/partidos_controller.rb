@@ -135,7 +135,7 @@ class PartidosController < ApplicationController
     end
 
     def estadio
-      @partido = Partido.find(params[:friend_id])
+      @partido = Partido.find(params[:id])
       @friends = current_user.following
     end
   end
