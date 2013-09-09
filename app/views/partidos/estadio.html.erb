@@ -3,14 +3,18 @@
 		<h2 class="titulosseccion">EL ESTADIO</h2>
 	</header>
 	<article class="amigosfacebook wrapper">
-		<% @following.each  do |friend| %>
+		<% @friends.each  do |friend| %>
 		<div class="amigo">
 			<div class="fotoamigo">
-				<%=image_tag current_user.facebook.get_picture(current_user.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
+				<%=image_tag current_user.facebook.get_picture(friend.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
 			</div>
 			<div class="nombreamigo">
 				<% bet= friend.bets.find_by_partido_id(@partido.id) %>
+				<%if bet %>
 				<%= "#{friend.name} aposto #{bet.golesLocal} - #{bet.golesVisitante}"%>
+				<%else %>
+				<%= "#{friend.name} no ha jugado en este partido. INVITALO!" %>
+				<%end %>
 			</div>
 		</div>  
 		<%end%>

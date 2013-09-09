@@ -11,8 +11,8 @@ class PartidosController < ApplicationController
   	respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @partidos }
+    end
   end
-end
 
   # GET /partidos/1
   # GET /partidos/1.json
@@ -23,25 +23,25 @@ end
   		@bet = Bet.find(params[:betid])
   		@user = User.find(params[:userid])
   		if current_user
-        if true #que no exista la amistad!
-          @friendship = current_user.friendships.build( friend_id: @user.id)
-          @friendshipDos = @user.friendships.build(friend_id: current_user.id)
-          if @friendship.save && @friendshipDos.save
-            #se creo la amistad exitosamente
-            flash[:notice]= "Se creo la amistad Correctamente"
+        if Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id) || (@user.id == current_user.id)
+            #la amistad ya existe!!!
+            flash[:notice]= "la amistad ya existe!"
           end
         else
-          #la amistad ya existe!!!
-          flash[:notice]= "la amistad ya existe!"
+            @friendship = current_user.friendships.build( friend_id: @user.id)
+            @friendshipDos = @user.friendships.build(friend_id: current_user.id)
+            if @friendship.save && @friendshipDos.save
+            #se creo la amistad exitosamente
+            flash[:notice]= "Se creo la amistad Correctamente"
         end
-  		end
-  	end
+      end
+    end
 
-  	respond_to do |format|
+    respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @partido }
-  end    
-end
+    end    
+  end
 
   # GET /partidos/new
   # GET /partidos/new.json
@@ -51,8 +51,8 @@ end
   	respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @partido }
+    end
   end
-end
 
   # GET /partidos/1/edit
   def edit
@@ -123,19 +123,19 @@ end
 	def mostrar
 
 	end
-  
+
 
 	def retar
 		@partido = Partido.find(params[:id])
 		@bet = Bet.find(params[:betid])
 
-  		@linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
+    @linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
     	#@linkinvitation = "http://localhost:3000"
     	@friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
-   	end
+    end
 
-	def estadio
-    @partido = Partido.find(params[:id])
-    @following= current_user.following
-	end
-end
+    def estadio
+      @partido = Partido.find(params[:friend_id])
+      @friends = current_user.following
+    end
+  end
