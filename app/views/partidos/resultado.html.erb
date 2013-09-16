@@ -67,7 +67,7 @@
 			</div>
 			<div class="textosperfil">
 				<div class="names">
-					<%= friend.name %>
+					<%=link_to friend.name , user_path(friend) %>
 				</div>
 				<div class="textopublicacion" >
 					Gano <strong class="pezzares"><%= @partido.ganancias_del_usuario(friend) %>.</strong> ¡La sacaste del Estadio!

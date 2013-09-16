@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_ranking = User.order("pezzos DESC").limit(10)
+    #Golazzos 1
     @user= User.find(params[:id])
     if @user.profile ==nil
       @user.profile =Profile.new
@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     @pezzos_por_amigos= @user.referidos * 5000
     @pezzos_por_actividad= @user.bets.count * 5000
 
+
+    #golazzos2.0
+    #@friends= @user.following
+    @bets = Bet.find(:all, conditions: { user_id: current_user.following_ids})
   end
 
   def update
