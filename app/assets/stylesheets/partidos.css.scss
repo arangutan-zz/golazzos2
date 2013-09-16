@@ -316,6 +316,7 @@ input.botfacebook:hover, input.botfacebook:focus{
 	color:#0672AB;
 	font-family:Futura, Arial, Helvetica, sans-serif;
 	font-size:14px;
+	display: inline-block;
 	/*background-color:#0F0;*/
 	height:23px;
 }
@@ -339,6 +340,7 @@ input.botfacebook:hover, input.botfacebook:focus{
 .botonfacebook{
 	display: inline-block;
 	text-align: center;
+	margin-left: 100px;
 }
 
 /* EL RETO -----------------------------------	*/
@@ -386,6 +388,9 @@ input.botfacebook:hover, input.botfacebook:focus{
 		text-decoration: none;
 	}
 }
+.amigosfb_padding{
+	margin-top: 200px;
+}
 .botpezzos{
 
 	width:300px;
@@ -407,5 +412,11 @@ input.botfacebook:hover, input.botfacebook:focus{
 }
 .botpezzos:hover,.botpezzos:focus{
 	background-color:#00B7D7;
+}
+.linkreglasGolazzos{
+	padding-top: -50px;
+}
+.reglasGolazzos{
+	display: none;
 }
 

@@ -19,21 +19,27 @@ class PartidosController < ApplicationController
   def show
   	@partido = Partido.includes(:bets).find(params[:id])
 
-  	if params[:betid] && params[:userid]
-  		@bet = Bet.find(params[:betid])
-  		@user = User.find(params[:userid])
-  		if current_user
+    #redirecciona al ESTADIO si el partido ya esta cerrado
+    if @partido.cerrado
+      redirect_to estadio_partido_path(@partido)
+      return
+    end
+
+    if params[:betid] && params[:userid]
+      @bet = Bet.find(params[:betid])
+      @user = User.find(params[:userid])
+      if current_user
         frien = Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id)
         if !frien.empty? || (@user.id == current_user.id)
             #la amistad ya existe!!!
             flash[:notice]= "la amistad ya existe!"
-        else
+          else
             @friendship = current_user.friendships.build( friend_id: @user.id)
             @friendshipDos = @user.friendships.build(friend_id: current_user.id)
             if @friendship.save && @friendshipDos.save
             #se creo la amistad exitosamente
-              flash[:notice]= "Se creo la amistad Correctamente"
-            end
+            flash[:notice]= "Se creo la amistad Correctamente"
+          end
         end
       end
     end
@@ -43,6 +49,62 @@ class PartidosController < ApplicationController
       format.json { render json: @partido }
     end    
   end
+
+  def retar
+    @partido = Partido.find(params[:id])
+
+    #redirecciona al ESTADIO si el partido ya esta cerrado
+    if @partido.cerrado
+      redirect_to estadio_partido_path(@partido)
+      return
+    end
+
+    @bet = Bet.find(params[:betid])
+    @linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
+    @friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
+  end
+
+  def estadio
+    @partido = Partido.find(params[:id])
+
+    #SI el partido ya TERMINO y se REPARTIO la plata. Redireccionar al Resultado
+    if @partido.repartido
+      redirect_to resultado_partido_path(@partido)
+      return
+    end
+
+    @bet= current_user.bets.order("created_at DESC").find_by_partido_id(@partido.id)
+    @bets = Bet.find(:all, conditions:{ partido_id:@partido.id, user_id:current_user.following_ids})
+    @friends_in_bet = @bets.uniq {|x| x.user_id}
+    @friends = current_user.following
+  end
+
+  def resultado
+    @partido = Partido.find(params[:id])
+
+    #Redirecciona al SHOW si el aprtido no ha empezado. Todavia se pueden hacer apuestas
+    if !@partido.cerrado
+      redirect_to partido_path( @partido)
+      return
+      #SI EL PARTIDO se cerro pero no se ha repartido la plata, redireccionar al ESTADIO.
+    elsif !@partido.repartido
+      redirect_to estadio_partido_path(@partido)
+      return
+    end
+      
+    @bet = current_user.bets.order("created_at DESC").find_by_partido_id(@partido.id)
+    @bets = Bet.find(:all, conditions: { partido_id: @partido.id, user_id: current_user.following_ids})
+    @friends = current_user.following
+  end
+
+
+
+
+#------------------------------------------
+# NEW _ EDIT _ CREATE _UPDATE _ DESTROY
+#------------------------------------------
+
+
 
   # GET /partidos/new
   # GET /partidos/new.json
@@ -126,18 +188,6 @@ class PartidosController < ApplicationController
 	end
 
 
-	def retar
-		@partido = Partido.find(params[:id])
-		@bet = Bet.find(params[:betid])
 
-    @linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
-    #@linkinvitation = "http://localhost:3000"
-    @friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
-  end
-
-  def estadio
-      @partido = Partido.find(params[:id])
-      @friends = current_user.following
-  end
 
 end

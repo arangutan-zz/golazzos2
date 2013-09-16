@@ -7,6 +7,7 @@ resources :partidos do
   get 'mostrar', on: :collection
   get 'retar', on: :member
   get 'estadio', on: :member
+  get 'resultado', on: :member
   resources :bets
 end
 

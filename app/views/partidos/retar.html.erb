@@ -1,4 +1,3 @@
-<%= @linkinvitation %>
 <section id="retaramigos">
 	<header>
 		<h2 class="titulosseccion"> EL RETO</h2>
@@ -42,17 +41,30 @@
 	</article>
 </section>
 <section class "amigosfacebook wrapper">
-		<div>
+	<div>
 		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
 	</div>
 </section>
 <section class="loginfacebook">
-	<h3>Invita a tus amigos a Golazzos aquí:</h3>
+	<h3>Reta a tus amigos a Golazzos aquí: <%= link_to "lee las reglas antes", "#", {:class => "linkreglasGolazzos"} %></h3>
 	<div class="botonfacebook">
 		<div class="fb-send" data-href=<%= @linkinvitation %>></div>
 	</div>
+	<div class ="reglasGolazzos">
+	<hr>
+	<h3>Reglas de privacidad </h3>
+	<p>
+		Estamos creando la comunidad futbol online mas respetuosa... 
+		"No te dejes sacar tarjeta roja". Sigue estas simples reglas.. <br><br>
+		-Solo reta amigos que conoces. A ese que conociste en una fiesta hace 3 anos y no lo volviste a ver es mejor que no lo retes. <br><br>
+		-Solo reta amigos que les guste el fútbol. No pierdas el tiempo retando a tu abuelita que nunca a cantado un golazzo! <br><br>
+		-Aprovechas y Incluye en el espacio un "saludito" a tus amigos. <br><br>
+		Si piensas que tu privacidad esta comprometida escribenos ya a infogolazzos@gmail.com y tomaremos medidas al
+		respecto. Sacaremos tarjetas amarillas y rojas si es necesario.
+	</p>
+</div>
 </section>
-<section class="amigosfacebook wrapper">
+<section class="amigosfacebook wrapper amigosfb_padding">
 	<%= render "invitations/facebook_friends" %>
 </section>
 

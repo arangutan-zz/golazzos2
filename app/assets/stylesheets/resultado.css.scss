@@ -1,0 +1,21 @@
+.oro{width: 20px;
+	height: 45px;
+	float: left;
+	display: block;
+	background: #F1CE14;
+	background-image: image-url("golazzos2/trofeo.png");
+	background-repeat: none;
+}
+.plata{width: 20px;
+	height: 45px;
+	float: left;
+	display: block;
+	background-image:  image-url("golazzos2/medalla.png");
+}
+.bronce{width: 20px;
+	height: 45px;
+	float: left;
+	display: block;
+	background: linear-gradient(to bottom, rgba(168,93,8,1) 0%,rgba(109,57,12,1) 100%);	
+	background-image: image-url("golazzos2/cinta.png");
+}

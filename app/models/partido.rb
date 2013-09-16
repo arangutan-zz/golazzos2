@@ -149,9 +149,6 @@ class Partido < ActiveRecord::Base
   end
 
 
-
-
-
   def apuestas_del_usuario(user)
     return self.bets.where(user_id: user.id)
   end
@@ -160,7 +157,12 @@ class Partido < ActiveRecord::Base
 
 
   def ganancias_del_usuario(user)
-    return self.apuestas_del_usuario(user).sum(:pezzos_ganados)
+    ganancias = self.apuestas_del_usuario(user).sum(:pezzos_ganados) 
+    if ganancias > 0
+      return ganancias
+    else
+      return (-1 * self.apuestas_del_usuario(user).sum(:monto))
+    end
   end
 
 
@@ -170,6 +172,15 @@ class Partido < ActiveRecord::Base
     return self.bets.where("pezzos_ganados is NOT NULL", nil).order("pezzos_ganados DESC")
   end
 
+  def nombre_del_equipo_que_va_a_ganar_la_apuesta(bet)
+      if bet.golesLocal> bet.golesVisitante
+        "ganando #{self.local}"
+      elsif bet.golesLocal<bet.golesVisitante
+        "ganando #{self.visitante}"
+      else
+        "empatando"
+      end
+  end
 
   def to_param
     "#{id}-#{self.local} vs #{self.visitante}"

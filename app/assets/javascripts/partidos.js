@@ -19,4 +19,7 @@ $(document).ready(function(){
 		$(".cifrasapuestas").text(veces * monto);
 
 	});
+	$(".linkreglasGolazzos").on("click", function(){
+			$(".reglasGolazzos").fadeToggle();
+	});
 });

@@ -79,7 +79,7 @@
 						'100000']%>
 					</div>
 					<p class="retornoesperado">Retorno Esperado: <span class="cifrasapuestas"><%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%></span></p>
-					<%= f.submit "APOSTAR PEZZOS", {:class=> "botpezzos"}%> 
+					<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%> 
 					<%end %>
 					<input type="submit" Value="APOSTAR DINERO" class="botdinero" />
 				</article>

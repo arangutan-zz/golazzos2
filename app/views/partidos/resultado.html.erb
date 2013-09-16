@@ -1,0 +1,81 @@
+<section id="retaramigos">
+	<header>
+		<h2 class="titulosseccion"> EL RESULTADO</h2>
+	</header>
+	<% if flash[:notice]%>
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<%= flash[:notice] %>
+	</div>
+	<% end %>
+	<div class="datosmarcador">
+		<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
+		<div class="equipo2"> <%= @partido.local %></div>
+		<div class="vsmarcador">VS</div>
+		<div class="equipo2"> <%= @partido.visitante %></div>
+		<div class="horamarcador"><%= @partido.hora_partido %></div>
+		<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+	</div>
+</section>
+<section>
+	<article id="miapuesta">
+		<div class="contenedorentrada">
+			<div class="equipin">
+				<div class="imgequipo1">
+					<%= image_tag @partido.logolocal %>
+				</div>
+				<div class="divmarcador">
+					<%= @bet.golesLocal %>
+				</div>
+			</div>
+			<div class="equipin">
+				<div class="divmarcador">
+					<%= @bet.golesVisitante %>
+				</div>
+				<div class="imgequipo2">
+					<%= image_tag @partido.logovisitante %>
+				</div> 
+				<div class="clear"></div> 
+			</div>
+		</div>
+	</article>
+</section>
+<hr>
+<section id="resultadoDeAmigos">
+	<%@friends.each_with_index do |friend, i| %>
+		<div class="boxuser">
+
+			<%case i %>
+			<% when 0 %>
+					<div class="oro"></div>
+			<% when 1%>
+					<div class="plata"></div>
+			<% when 2 %>
+					<div class="bronce"></div>
+			<%end %>
+			<div class="fotoestado">
+				<div class="fotperfil">
+					<%=image_tag current_user.facebook.get_picture(friend.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
+				</div>
+				<div class="estado">
+					<%if @partido.ganancias_del_usuario(friend)>0 %>
+					<%= image_tag "golazzos2/feliz.png" %>
+					<%else %>
+					<%= image_tag "golazzos2/triste.png" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="textosperfil">
+				<div class="names">
+					<%= friend.name %>
+				</div>
+				<div class="textopublicacion" >
+					Gano <strong class="pezzares"><%= @partido.ganancias_del_usuario(friend) %>.</strong> ¡La sacaste del Estadio!
+				</div>
+			</div>
+			<div class="comentarios">
+				<a href="123.html"></a>
+			</div>
+		</div>
+	<% end %>
+</section>
