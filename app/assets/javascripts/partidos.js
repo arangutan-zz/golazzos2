@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$(".marcadoruser1").on("change",function(){
 		var local = $(".marcadorlocal").val();
 		var visitante = $(".marcadorvisitante").val();
@@ -20,6 +21,11 @@ $(document).ready(function(){
 
 	});
 	$(".linkreglasGolazzos").on("click", function(){
-			$(".reglasGolazzos").fadeToggle();
+		$(".reglasGolazzos").fadeToggle();
+	});
+
+	$("input[name=agree]").on("change", function(){
+		$(".botonfacebook").show();
+		$(".terminosycondiciones").hide();
 	});
 });
