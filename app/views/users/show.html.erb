@@ -1,17 +1,17 @@
 <section class="cperfil">
     <div class="modulo1">
-        <div class="fotoperfil"><%=image_tag current_user.facebook.get_picture(current_user.uid, {type: "large"})%></div>
+        <div class="fotoperfil"><%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"})%></div>
         <div> 
             <div class="playerlevel">Level 10</div>
             <div class="nextlevel"> 200,000 pezzos para siguiente nivel.</div>
         </div>
     </div>
     <div class="modulo2">
-        <div class="nombreperfil"><%= current_user.name %> </div>
+        <div class="nombreperfil"><%= @user.name %> </div>
         <div class="logout"><%= link_to "Sign out", signout_path, id: "sign_out" %></div>
         <div class="boxpezzos">
             <div class="topicpezzos">Pezzos</div>
-            <div class="cantidadpezzos"><%= current_user.pezzos %></div>
+            <div class="cantidadpezzos"><%= @user.pezzos %></div>
         </div>
         <div class="boxdinero">
             <div class="topicdinero">Dinero</div>
@@ -41,14 +41,33 @@
             <div class="apuestacolor"></div>
             <div class="fotperfil">
             </div>
-            <div class="estado"><%= image_tag "golazzos2/ok.png", alt:"ok" %></div>
+            <div class="estado">
+                <%if bet.pezzos_ganados.to_i > 0 %>
+                    <%= image_tag "golazzos2/feliz.png", alt:"ok" %>
+                <%else %>
+                    <%= image_tag "golazzos2/triste.png", alt:"ok" %>
+                <% end %>
+                
+            </div>
         </div>
         <div class="textosperfil">
             <div class="names">
                 <%=link_to bet.user.name, user_path(bet.user) %>
             </div>
             <div class="textopublicacion" >
-                Jugo <strong class="pezzares"><%=number_to_currency bet.monto, precision:0%> pezzos</strong> al <strong class="pezzares"><%= bet.golesLocal%> - <%= bet.golesVisitante %></strong> <%= @partido.nombre_del_equipo_que_va_a_ganar_la_apuesta(bet) %>.
+                Jugo 
+                <strong class="pezzares"><%=number_to_currency bet.monto, precision:0%> pezzos</strong> 
+                al 
+                <strong class="pezzares"><%= bet.golesLocal%> - <%= bet.golesVisitante %></strong> 
+                <%= @partido.nombre_del_equipo_que_va_a_ganar_la_apuesta(bet) %>.
+
+                <%if bet.pezzos_ganados.to_i > 0 %>
+                    Gano
+                    <strong class="pezzares"><%= bet.pezzos_ganados %>.</strong>
+                    <%= current_user.frase_de_ganador %>
+                <%else %>
+                     Perdio. <%= current_user.frase_de_perdedor %>
+                <% end %>
             </div>
         </div>
         <div class="comentarios">

@@ -18,7 +18,7 @@ class BetsController < ApplicationController
 			end
 			@bet.create_activity :create, owner: current_user
 		else
-			redirect_to retar_partido_path(@partido, notice: "No tienes suficientes Pezzos para realizar la apuesta!")
+			redirect_to partido_path(@partido, notice: "No tienes suficientes Pezzos para realizar la apuesta!")
 		end
 		redirect_to retar_partido_path(@partido, betid: @bet.id)
 	end

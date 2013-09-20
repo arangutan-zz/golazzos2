@@ -43,39 +43,44 @@
 <hr>
 <section id="resultadoDeAmigos">
 	<%@friends.each_with_index do |friend, i| %>
-		<div class="boxuser">
+	<div class="boxuser">
 
-			<%case i %>
-			<% when 0 %>
-					<div class="oro"></div>
-			<% when 1%>
-					<div class="plata"></div>
-			<% when 2 %>
-					<div class="bronce"></div>
-			<%end %>
-			<div class="fotoestado">
-				<div class="fotperfil">
-					<%=image_tag current_user.facebook.get_picture(friend.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
-				</div>
-				<div class="estado">
-					<%if @partido.ganancias_del_usuario(friend)>0 %>
-					<%= image_tag "golazzos2/feliz.png" %>
-					<%else %>
-					<%= image_tag "golazzos2/triste.png" %>
-					<% end %>
-				</div>
+		<%case i %>
+		<% when 0 %>
+		<div class="oro"></div>
+		<% when 1%>
+		<div class="plata"></div>
+		<% when 2 %>
+		<div class="bronce"></div>
+		<%end %>
+		<div class="fotoestado">
+			<div class="fotperfil">
+				<%=image_tag current_user.facebook.get_picture(friend.uid, {type: "large"}), {:class=> "thumbsail", :width => "40px"}%>
 			</div>
-			<div class="textosperfil">
-				<div class="names">
-					<%=link_to friend.name , user_path(friend) %>
-				</div>
-				<div class="textopublicacion" >
-					Gano <strong class="pezzares"><%= @partido.ganancias_del_usuario(friend) %>.</strong> ¡La sacaste del Estadio!
-				</div>
-			</div>
-			<div class="comentarios">
-				<a href="123.html"></a>
+			<div class="estado">
+				<%if @partido.ganancias_del_usuario(friend)>0 %>
+				<%= image_tag "golazzos2/feliz.png" %>
+				<%else %>
+				<%= image_tag "golazzos2/triste.png" %>
+				<% end %>
 			</div>
 		</div>
+		<div class="textosperfil">
+			<div class="names">
+				<%=link_to friend.name , user_path(friend) %>
+			</div>
+			<div class="textopublicacion" >
+				<%if @partido.ganancias_del_usuario(friend)>0 %>
+					Gano <strong class="pezzares"><%= @partido.ganancias_del_usuario(friend) %>. </strong> <%= current_user.frase_de_ganador %>
+				<%else %>
+					Perdio <strong class="pezzares"><%= @partido.ganancias_del_usuario(friend) %>. </strong> <%= current_user.frase_de_perdedor %>
+				<% end %>
+				 
+			</div>
+		</div>
+		<div class="comentarios">
+			<a href="123.html"></a>
+		</div>
+	</div>
 	<% end %>
 </section>

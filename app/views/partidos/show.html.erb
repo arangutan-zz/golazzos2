@@ -37,6 +37,7 @@
 			<div class="equipin">
 				<div class="imgequipo1">
 					<%= image_tag @partido.logolocal %>
+
 				</div>
 				<div class="divmarcador">
 					<%= f.number_field :golesLocal, {
@@ -67,16 +68,7 @@
 					</div>
 				</div>
 				<div class="opcionesplata">
-					<%= f.select :monto, ['10000',
-						'20000',
-						'30000',
-						'40000',
-						'50000',
-						'60000',
-						'70000',
-						'80000',
-						'90000',
-						'100000']%>
+					<%= f.select :monto, current_user.montos_que_puede_apostar%>
 					</div>
 					<p class="retornoesperado">Retorno Esperado: <span class="cifrasapuestas"><%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%></span></p>
 					<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%> 
