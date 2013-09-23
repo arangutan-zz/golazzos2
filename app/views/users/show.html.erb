@@ -40,6 +40,7 @@
         <div class="fotoestado">
             <div class="apuestacolor"></div>
             <div class="fotperfil">
+                <%=image_tag current_user.facebook.get_picture(bet.user.uid)%>
             </div>
             <div class="estado">
                 <%if bet.pezzos_ganados.to_i > 0 %>
