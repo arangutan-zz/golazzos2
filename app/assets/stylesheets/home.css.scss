@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
+	padding-left: 0px;
+	padding-right: 0px;
 	margin:0px;
 	font-size:100%;
 	background-color: #eeeeee;
@@ -126,7 +128,8 @@ a:focus{
 }
 .botperfil{
 	height:30px;
-	width: 35px;
+	width: 40px;
+	padding-right: 10px;
 	border-left:thin solid #CCC;
 	border-right:thin solid #CCC;
 	float:right;
@@ -152,8 +155,6 @@ a:focus{
 	font-size: 10px;
 	color: #00c9ec;
 	padding-top: 5px;
-	padding-left: 40px;
-	padding-right: 3px;
 	span{
 		color: #0672ab;
 	}
@@ -316,11 +317,11 @@ nav ul li a:hover{
 }
 /* marcadores home*/
 .marcadorCentrado{
-	width:280px;
+	width:230px;
 	margin: 0px auto;
 }
 .escudoequipo{
-	width:80px;
+	width:60px;
 	height:auto;
 	/*background-color:#06C;*/
 	text-align:center;
@@ -337,7 +338,7 @@ nav ul li a:hover{
 	margin:4px;
 }	
 .datospartido{
-	width:120px;
+	width:110px;
 	float:left;
 	/*background-color:#9F0;*/
 	height:100%;
@@ -379,12 +380,12 @@ nav ul li a:hover{
 	margin-bottom:5px;
 }
 .botcontinuar{
-	width: 20px;
+	width: 15px;
 	background-color: rgba(101, 101, 101, 0.14);
 	height: 100%;
 	display: block;
 	float: right;
-	margin-left: 10px;
+	margin-left: 0px;
 	background-image: image-url("golazzos2/flechita.png");
 	background-position: center;
 	background-repeat: no-repeat;

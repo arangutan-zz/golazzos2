@@ -1,44 +1,43 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-   <a class="logo" href=<%= root_path %>></a>
-   <ul class="nav pull-right">
-    <li class="dropdown">
-        <div href="#" class="botperfilpezzos">
-           <%if current_user %>
-           pezzos: <%=number_to_currency current_user.pezzos, precision: 0  %> 
-           <br/>
-           <span>pesos: <%= number_to_currency 50000, precision: 0 %>
-           </span>
-           <%end %>
-       </div>
-   </li>
-   <li class="dropdown">
-    <a href="#" class="dropdown-toggle botperfil" data-toggle="dropdown">
-        <%if current_user %>
-        <%=image_tag current_user.facebook.get_picture(current_user.uid, {type: "square"}), {:class=> "img-circle img-perfil", :width=>"35"}%>
-        <%end %>
-    </a>
-    <ul class="dropdown-menu">
-        <%if current_user %>
+     <a class="logo" href=<%= root_path %>></a>
+     <ul class="nav pull-right">
+        <li class="dropdown">
+            <div href="#" class="botperfilpezzos">
+             <%if current_user %>
+             pezzos: <%=number_to_currency current_user.pezzos, precision: 0  %> 
+             <br/>
+             <span>pesos: <%= number_to_currency 50000, precision: 0 %>
+             </span>
+             <%end %>
+         </div>
+     </li>
+     <li class="dropdown">
+        <a href="#" class="dropdown-toggle botperfil" data-toggle="dropdown">
+            <%if current_user %>
+            <%=image_tag current_user.facebook.get_picture(current_user.uid, {type: "square"}), {:class=> "img-circle img-perfil", :width=>"35"}%>
+            <%end %>
+        </a>
+        <ul class="dropdown-menu">
+            <%if current_user %>
 
-        <li><%= link_to "Logout", signout_path, id: "sign_out"%></li>
-        <li class="divider"></li>
-        <li><%= link_to "Perfil", user_path(current_user)%></li>
-        <li><%= link_to "Partidos", partidos_path %></li>
-        <li><%= link_to "Blog", "http://golazzos2013.wordpress.com/" %></li>
+            <li><%= link_to "Logout", signout_path, id: "sign_out"%></li>
+            <li class="divider"></li>
+            <li><%= link_to "Perfil", user_path(current_user)%></li>
+            <li><%= link_to "Partidos", partidos_path %></li>
+            <li><%= link_to "Blog", "http://golazzos2013.wordpress.com/" %></li>
 
-        <%else %>
+            <%else %>
 
-        <li><%= link_to "Login con facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> ""} %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Partidos", partidos_path %></li>
-        <li><%= link_to "Blog", "http://golazzos2013.wordpress.com/" %></li>
+            <li><%= link_to "Login con facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> ""} %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Partidos", partidos_path %></li>
+            <li><%= link_to "Blog", "http://golazzos2013.wordpress.com/" %></li>
 
-        <%end%>
-        
-    </ul>
-</li>
+            <%end%>
+
+        </ul>
+    </li>
 </ul>
 </div>
-
 </div>
