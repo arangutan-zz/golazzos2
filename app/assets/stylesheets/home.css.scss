@@ -3,9 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-	padding:0px;
 	margin:0px;
 	font-size:100%;
+	background-color: #eeeeee;
+}
+.backcolor{
+	background-color: #ffffff;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
 }
 .wrapper {
 	width: 96%;
@@ -106,13 +111,13 @@ a:focus{
 }
 
 .navegacion{
-	height:50px;
-	width:50px;
+	height:30px;
+	width:20px;
 	border-left:thin solid #CCC;
 	border-right:thin solid #CCC;
-	float:right;
 	display: block;
 	background-image: image-url("golazzos2/menu.png");
+	background-repeat: no-repeat;
 
 }
 .botperfil:hover,.navegacion:hover{
@@ -120,12 +125,29 @@ a:focus{
 	text-decoration: none;
 }
 .botperfil{
-	height:45px;
+	height:30px;
+	width: 35px;
 	border-left:thin solid #CCC;
 	border-right:thin solid #CCC;
 	float:right;
 	display: block;
 	background-image: image-url("golazzos2/persona.png");
+	background-repeat: no-repeat;
+	background-position:center;
+	font-size: 10px;
+	color: #00c9ec;
+	span{
+		color: #0672ab;
+	}
+}
+.img-perfil{
+	padding-left: -10px;
+}
+.botperfilpezzos{
+	height:30px;
+	width: auto;
+	float:right;
+	display: block;
 	background-repeat: no-repeat;
 	font-size: 10px;
 	color: #00c9ec;
@@ -209,6 +231,46 @@ nav ul li a:hover{
 	background-repeat:no-repeat;
 	background-position: center;	
 }
+.imgbienvenida2{
+	width:100%;
+	height:140px;
+	display:block;
+	max-width: 100%;
+	margin-bottom:0px;
+	background-image: image-url("golazzos2/fans-mexico.jpeg");
+	background-repeat:no-repeat;
+	background-position: center;
+}	
+.imgbienvenida3{
+	width:100%;
+	height:140px;
+	display:block;
+	max-width: 100%;
+	margin-bottom:0px;
+	background-image: url("http://cdn.aarp.net/content/dam/aarp/entertainment/leisure_activities/2010_05/420_futbol_mexicano_esp.imgcache.rev1274452127296.jpg");
+	background-repeat:no-repeat;
+	background-position: center;
+}	
+.imgbienvenida4{
+	width:100%;
+	height:140px;
+	display:block;
+	max-width: 100%;
+	margin-bottom:0px;
+	background-image: url("http://www.bolavip.com/wp-content/uploads/2012/02/azteca.jpg");
+	background-repeat:no-repeat;
+	background-position: center;
+}	
+.imgbienvenida5{
+	width:100%;
+	height:140px;
+	display:block;
+	max-width: 100%;
+	margin-bottom:0px;
+	background-image: url("http://periodicodigital.com.mx/media/images/2012/abril/deportes/semana_1/lunes_2/mexico%20campeon%20preolimpico.jpg");
+	background-repeat:no-repeat;
+	background-position: center;
+}	
 /* Frase bienvenida ___________________________*/
 .frasehome{ 
 	color: #157CBA;

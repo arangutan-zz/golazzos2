@@ -393,7 +393,7 @@ input.botfacebook:hover, input.botfacebook:focus{
 .botpezzos{
 
 	width:300px;
-	height:35px;
+	height:30px;
 	font-family:Futura,Arial, Helvetica, sans-serif;
 	font-size:13px;
 	color:#FFF;
@@ -408,9 +408,12 @@ input.botfacebook:hover, input.botfacebook:focus{
 	letter-spacing:.1em;
 	text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
 	margin-bottom:15px;
+	padding-top:15px;
 }
 .botpezzos:hover,.botpezzos:focus{
 	background-color:#00B7D7;
+	color: #ffffff;
+	text-decoration: none;
 }
 .linkreglasGolazzos{
 	padding-top: -50px;
@@ -418,4 +421,6 @@ input.botfacebook:hover, input.botfacebook:focus{
 .reglasGolazzos{
 	display: none;
 }
-
+.terminosycondiciones{
+	line-height: 25px;
+}

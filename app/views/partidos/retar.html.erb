@@ -1,5 +1,6 @@
 <section id="retaramigos">
 	<header>
+		<div class="imgbienvenida3"></div>
 		<h2 class="titulosseccion"> EL RETO</h2>
 	</header>
 	<% if flash[:notice]%>
@@ -47,7 +48,7 @@
 </section>
 <section class="loginfacebook">
 	<div class="terminosycondiciones">
-		<h3>Para continuar: <input type="checkbox" value="0" name="agree"> <%= link_to "acepta los terminos y condiciones", "#", {:class => "linkreglasGolazzos"} %>
+		<h3>Para retar a tus amigos acepta los terminos y condiciónes: <br> <input type="checkbox" value="0" name="agree"> <%= link_to "Terminos y Condiciones", "#", {:class => "linkreglasGolazzos"} %>
 		</h3>
 		<div class ="reglasGolazzos">
 			<h3>Terminos y Condiciónes </h3>
@@ -69,6 +70,7 @@
 
 </section>
 <section class="amigosfacebook wrapper amigosfb_padding">
+	<h3>Aqui tus amigos como referencia.</h3>
 	<%= render "invitations/facebook_friends" %>
 </section>
 
