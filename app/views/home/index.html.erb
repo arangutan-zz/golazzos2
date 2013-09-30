@@ -1,21 +1,28 @@
-<section id="bienvenida">
-  <div class="imgbienvenida"></div>
-  <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
-</section>      
+  <% if flash[:notice]%>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
 
-<section id="partidosSabrozzos" class="clear">
-  <header >
-    <h2 class="titulosseccion clear">PARTIDOS SABROZZOS</h2>
-  </header>  
-  <%@partidos.each do |partido| %>
-  <a href=<%= partido_path(partido)%>> 
-    <article class="cajamarcador">
-      <div class="marcadorCentrado">
-        <div class="escudoequipo">
-         <%= image_tag partido.logolocal %>
-          <h3> <%= partido.local %></h3>
-        </div>
-        <div class="datospartido">
+  <section id="bienvenida">
+    <div class="imgbienvenida"></div>
+    <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
+  </section>      
+
+  <section id="partidosSabrozzos" class="clear">
+    <header >
+      <h2 class="titulosseccion clear">PARTIDOS SABROZZOS</h2>
+    </header>  
+    <%@partidos.each do |partido| %>
+    <a href=<%= partido_path(partido)%>> 
+      <article class="cajamarcador">
+        <div class="marcadorCentrado">
+          <div class="escudoequipo">
+           <%= image_tag partido.logolocal %>
+           <h3> <%= partido.local %></h3>
+         </div>
+         <div class="datospartido">
           <div class="Liga"><%= partido.nombre_torneo %></div>
           <div class="vs">VS</div>
           <div class="hora"><%= partido.hora_partido %></div>

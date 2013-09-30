@@ -1,3 +1,10 @@
+  <% if flash[:notice]%>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
+
 <section id="partidos">
   <header >
     <h2 class="titulosseccion">PARTIDOS</h2>

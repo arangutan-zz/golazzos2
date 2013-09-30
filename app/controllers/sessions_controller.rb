@@ -56,7 +56,12 @@ class SessionsController < ApplicationController
       #flash[:notice] = "Recibes 20.000 Pezzos por tu primera visita"  
       
     end
-    redirect_to :back
+    begin
+      redirect_to :back
+    rescue
+      redirect_to partidos_path, notice: "¡LO SENTIMOS! Vuelve a buscar el partido."
+    end
+
   end
 
   def destroy
