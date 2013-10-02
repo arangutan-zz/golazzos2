@@ -29,4 +29,10 @@ $(document).ready(function(){
 		$(".botonfacebook").show();
 		$(".terminosycondiciones").hide();
 	});
+
+	FB.Event.subscribe('message.send',
+    function(response) {
+        alert('waaah funciona');
+    }
+);
 });
