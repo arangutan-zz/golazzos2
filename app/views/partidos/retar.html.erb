@@ -65,7 +65,9 @@
 	</div>
 	<div class="botonfacebook">
 		<h3>Reta a tus amigos a Golazzos aquí:</h3>
-		<div class="fb-send" data-href=<%= @linkinvitation %>></div>
+		<!--  <div class="fb-send" data-href=<%= @linkinvitation %>></div> -->
+		
+		<fb:send href=<%= @linkinvitation %> colorscheme="light"></fb:send>
 	</div>
 
 </section>
