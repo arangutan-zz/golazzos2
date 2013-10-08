@@ -1,11 +1,14 @@
 <section class="cperfil">
     <div class="modulo1">
-        <div class="fotoperfil">
-            <%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"}), :class=>"img-rounded"%>
+        <div class="fotoperfil"><%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"})%></div>
+        <div> 
+            <div class="playerlevel">Level 10</div>
+            <div class="nextlevel"> 200,000 pezzos para siguiente nivel.</div>
         </div>
     </div>
     <div class="modulo2">
         <div class="nombreperfil"><%= @user.name %> </div>
+        <div class="logout"><%= link_to "Sign out", signout_path, id: "sign_out" %></div>
         <div class="boxpezzos">
             <div class="topicpezzos">Pezzos</div>
             <div class="cantidadpezzos"><%= @user.pezzos %></div>
@@ -31,137 +34,46 @@
         </div>
     </div>
 </section>
-<ul class="nav nav-tabs">
-  <li class ="active"><a href="#actividades" data-toggle="tab" >Actividades</a></li>
-  <li><a href="#ultimas_apuestas" data-toggle="tab">Mis Apuestas</a></li>
-  <li><a href="#amigos" data-toggle="tab">Amigos</a></li>
-</ul>
-
-<div class="tab-content">
-    <div id="actividades" class="tab-pane active">
-        <section>
-            <% @bets.each  do |bet| %>
-            <div class="boxuser">
-                <div class="fotoestado">
-                    <div class="apuestacolor"></div>
-                    <div class="fotperfil">
-                        <%=image_tag current_user.facebook.get_picture(bet.user.uid)%>
-                    </div>
-                    <div class="estado">
-                        <%if bet.pezzos_ganados.to_i > 0 %>
-                        <%= image_tag "golazzos2/feliz.png", alt:"ok" %>
-                        <%else %>
-                        <%= image_tag "golazzos2/triste.png", alt:"ok" %>
-                        <% end %>
-
-                    </div>
-                </div>
-                <div class="textosperfil">
-                    <div class="names">
-                        <%=link_to bet.user.name, user_path(bet.user) %>
-                    </div>
-                    <div class="textopublicacion" >
-                        Jugo 
-                        <strong class="pezzares"><%=number_to_currency bet.monto, precision:0%> pezzos</strong> 
-                        al 
-                        <strong class="pezzares"><%= bet.golesLocal%> - <%= bet.golesVisitante %></strong> 
-                        <%= bet.partido.nombre_del_equipo_que_va_a_ganar_la_apuesta(bet) %>.
-
-                        <%if bet.pezzos_ganados.to_i > 0 %>
-                        Gano
-                        <strong class="pezzares"><%= bet.pezzos_ganados %>.</strong>
-                        <%= current_user.frase_de_ganador %>
-                        <%else %>
-                        Perdio. <%= current_user.frase_de_perdedor %>
-                        <% end %>
-                    </div>
-                </div>
+<section>
+    <% @bets.each  do |bet| %>
+    <div class="boxuser">
+        <div class="fotoestado">
+            <div class="apuestacolor"></div>
+            <div class="fotperfil">
+                <%=image_tag current_user.facebook.get_picture(bet.user.uid)%>
             </div>
-            <% end %>
-        </section> 
-    </div>
-<div id="ultimas_apuestas" class="tab-pane">
-<%@partidos.each do |partido| %>
-<section>  
-    <div class="MiApuesta">
-        <div class="MiApuestaEquipo">
-            <%=image_tag partido.logolocal, :width => "40" %>
-            <%= partido.local %>
-        </div>
-        <div class="MiApuestaMarcador"> <%= "#{partido.resultadoLocal} - #{partido.resultadoVisitante}" %></div>
-        <div class="MiApuestaEquipo">
-            <%= partido.visitante %>
-            <%=image_tag partido.logovisitante, :width => "40" %>
-        </div>
-    </div>
-    <div class >
-        
-       <table class="table"> 
-          <thead>
-            <tr>
-              <th><small>Mi Marcador</small></th>
-              <th><small>Mi Apuesta</small></th>
-              <th><small>Ganancia</small></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%@user.bets.where("partido_id = ?", partido.id).each do |bet|%>
-            <tr>
-                <td><%= "#{bet.golesLocal} - #{bet.golesVisitante}" %></td>
-                <td><%= bet.monto %></td>
-                <%  if bet.partido.repartido == false %>
-                    <td>
-                        Por Jugar
-                    </td>
-                    <td>
-                    </td>
-                <% elsif bet.pezzos_ganados ==nil %>
-                    <td>
-                        <div class="MiApuestaPerdi">
-                        <%= bet.monto * -1 %>
-                        </div>
-                    </td>
-                    <td>
-                        <%= image_tag "golazzos2/triste.png", alt:"triste" %>
-                    </td>
-                <% elsif %>
-                    <td>
-                        <div class="MiApuestaGane">
-                            <%= bet.pezzos_ganados %>
-                        </div>
-                    </td>
-                    <td>
-                       <%= image_tag "golazzos2/feliz.png", alt: "feliz" %>
-                    </td>
+            <div class="estado">
+                <%if bet.pezzos_ganados.to_i > 0 %>
+                    <%= image_tag "golazzos2/feliz.png", alt:"ok" %>
+                <%else %>
+                    <%= image_tag "golazzos2/triste.png", alt:"ok" %>
                 <% end %>
-            </tr>
-            <%end  %>
-          </tbody>
-        </table>
-    </div>
-</section>
-<%end %>
-
-
-</div>
-<div id="amigos" class="tab-pane">
-    <section id="resultadoDeAmigos">
-        <% @friends.each  do |friend| %>
-        <div class="boxuser">
-            <div class="fotoestado">
-                <div class="apuestacolor"></div>
-                <div class="fotperfil">
-                    <%=image_tag current_user.facebook.get_picture(friend.uid)%>
-                </div>
-            </div>
-            <div class="textosperfil">
-                <div class="nombreamigo">
-                    <%=link_to friend.name, user_path(friend) %>
-                </div>
+                
             </div>
         </div>
-        <%end%>
-    </section>
-</div>
-</div>
+        <div class="textosperfil">
+            <div class="names">
+                <%=link_to bet.user.name, user_path(bet.user) %>
+            </div>
+            <div class="textopublicacion" >
+                Jugo 
+                <strong class="pezzares"><%=number_to_currency bet.monto, precision:0%> pezzos</strong> 
+                al 
+                <strong class="pezzares"><%= bet.golesLocal%> - <%= bet.golesVisitante %></strong> 
+                <%= @partido.nombre_del_equipo_que_va_a_ganar_la_apuesta(bet) %>.
+
+                <%if bet.pezzos_ganados.to_i > 0 %>
+                    Gano
+                    <strong class="pezzares"><%= bet.pezzos_ganados %>.</strong>
+                    <%= current_user.frase_de_ganador %>
+                <%else %>
+                     Perdio. <%= current_user.frase_de_perdedor %>
+                <% end %>
+            </div>
+        </div>
+        <div class="comentarios">
+            <a href="123.html"></a>
+        </div>
+    </div>
+    <% end %>
+</section>

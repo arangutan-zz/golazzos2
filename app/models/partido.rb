@@ -182,10 +182,6 @@ class Partido < ActiveRecord::Base
       end
   end
 
-  def enviar_email_se_cerro_el_partido
-      PartidoMailer.partido_cerrado.deliver
-  end
-
   def to_param
     "#{id}-#{self.local} vs #{self.visitante}"
   end 

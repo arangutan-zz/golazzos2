@@ -143,15 +143,6 @@ class PartidosController < ApplicationController
   # PUT /partidos/1.json
   def update
   	@partido = Partido.find(params[:id])
-    
-    #prueba
-    PartidoMailer.partido_cerrado.deliver
-
-    #si el partido se acaba de cerrar enviar email 
-    if @partido.cerrado && !@partido.terminado && !@partido.repartido
-      @partido.enviar_email_se_cerro_el_partido
-      flash[:notice] = "se envio el email"
-    end
 
   	respond_to do |format|
   		if @partido.update_attributes(params[:partido])
