@@ -2,61 +2,88 @@
   <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <%= flash[:notice] %>
-  </div>
-  <% end %>
+</div>
+<% end %>
 
-  <section id="bienvenida">
+<section id="bienvenida">
     <div class="imgbienvenida"></div>
     <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
-  </section>      
+</section>      
 
-  <section id="partidosSabrozzos" class="clear">
+<section id="partidosSabrozzos" class="clear">
     <header >
       <h2 class="titulosseccion clear">PARTIDOS SABROZZOS</h2>
-    </header>  
-    <%@partidos.each do |partido| %>
-    <a href=<%= partido_path(partido)%>> 
+  </header>  
+  <%@partidos.each do |partido| %>
+  <a href=<%= partido_path(partido)%>> 
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">
-           <%= image_tag partido.logolocal %>
-           <h3> <%= partido.local %></h3>
+             <%= image_tag partido.logolocal %>
+             <h3> <%= partido.local %></h3>
          </div>
          <div class="datospartido">
           <div class="Liga"><%= partido.nombre_torneo %></div>
           <div class="vs">VS</div>
           <div class="hora"><%= partido.hora_partido %></div>
           <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
-        </div>
-        <div class="escudoequipo">
+      </div>
+      <div class="escudoequipo">
           <%= image_tag partido.logovisitante %>
           <h3> <%= partido.visitante %></h3>
-        </div>
       </div>
-      <div class="botcontinuar"></div>
-    </article>
-  </a>
-  <%end %>
-  <div class="masPartidos"><%= link_to "ver mas partidos", partidos_path %></div> 
+  </div>
+  <div class="botcontinuar"></div>
+</article>
+</a>
+<%end %>
+<div class="masPartidos"><%= link_to "ver mas partidos", partidos_path %></div> 
 </section>
 
 <section id="sobreGolazzos" class="">
   <header>
     <h2 class="titulosseccion">Sobre Golazzos</h2>
-  </header>
-  <p class="wrapper" id="frase1">Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos..</p>
-  <h3 class="wrapper" id="frase1">Pazzo 1</h3>
-  <p class="wrapper">
-    <strong class="bold">SELECCIONA:</strong> 
-    tu Partido y tu marcador esperado que te dará una ganancia si aciertas</p>
-    <h3 class="wrapper" id="frase1"> Pazzo 2</h3>
+</header>
+<p class="wrapper" id="frase1">Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos..</p>
+
+<div class="pasos">
+    <%= image_tag "golazzos2/paso1.png", :class=> " pull-left" %>
+    <h3 class="wrapper" id="frase1">
+      Pazzo 1
+    </h3>
     <p class="wrapper">
-      <strong class="bold">RETA:</strong> 
-      a tus amigos y apuestas con dinero real o ficticio que llamamos "PeZZos"</p>
-      <h3 class="wrapper" id="frase1">Pazzo 3</h3>
-      <p class="wrapper"><strong class="bold">COMPARTE: </strong>tu pasión en nuestro "Estadio" donde comentas el partido. y Ganas si aciertas el marcador.</p>
-      <div class="masPartidos"></div>
-    </section>
-    <section class="titulosseccion">
-      <h2>Reglas de GOLAZZOS</h2>
-    </section>
+        <strong class="bold">
+            SELECCIONA:
+        </strong> 
+        tu Partido y tu marcador esperado que te dará una ganancia si aciertas
+    </p>
+</div>
+<div class="pasos">
+    <%= image_tag "golazzos2/paso2.png", :class=> " pull-left" %>
+    <h3 class="wrapper" id="frase1"> 
+        Pazzo 2
+    </h3>
+    <p class="wrapper">
+        <strong class="bold">
+        RETA:
+        </strong> 
+        a tus amigos y apuestas con dinero real o ficticio que llamamos "PeZZos"
+    </p>
+</div>
+<div class="pasos">
+    <%= image_tag "golazzos2/paso3.png", :class=> " pull-left" %>
+    <h3 class="wrapper" id="frase1">
+        Pazzo 3
+    </h3>
+    <p class="wrapper">
+        <strong class="bold">COMPARTE:
+        </strong>
+        tu pasión en nuestro "Estadio" donde comentas el partido. y Ganas si aciertas el marcador.
+    </p>
+</div>
+
+<div class="masPartidos"></div>
+</section>
+<section class="titulosseccion ">
+  <h2 class="reglamentoGolazzos"><%= link_to "Reglamento de Golazzos", home_reglamento_path %></h2>
+</section>

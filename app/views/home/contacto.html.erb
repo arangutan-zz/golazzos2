@@ -1,36 +1,12 @@
-Home#contacto
+ <h2 class="titulosseccion">CONTACTANOS</h2>
+ 
+     <div class="wrapper ">
+      <p class="emailcontacto">
+        Para contactarte con nosotros , envianos un email a:
+      </p>
+          <%= link_to "infogolazzos@gmail.com", "#", {:class => "botpezzos"} %> 
+     </div>
 
-<!-->
-<div class= "header-title">
-  <div class="container">
-    <div class="row">
-      <div class="span6 fuenteFuturaB titulo-blanco">
-        <p> <p>
-        <h3><%=image_tag "reglamento/btn_reglamentoTitulos.png"%>CONTACTO</h3>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    
-    
-    <div class= "span6 offset3">
-      <p>
-      <%= link_to "http://www.privacychoice.org/policy/mobile?policy=7890955c691d0a3345987cc63250106f" do%> 
-      <p>
-         Puedes encontrar toda nuestra Política de Seguridad (Privacy Policy) Aquí.
-        <%end%>
-        <p>Para contactarte con nosotros puedes enviar un mail a infogolazzos@gmail.com</p>
-</div>
-</div>
-</div>
-<div class="centro">
+<div class="emailcontacto">
   <%= image_tag "partido/partido_fondoPersonaje.png"%>
 </div>
-
-<%User.correos_usuarios.each do |user|%>
-  <%= "#{user.name} * #{user.email}" %>
-  <br/>
-  <%end%>
-</!-->

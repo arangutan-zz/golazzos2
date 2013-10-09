@@ -80,66 +80,90 @@
             <% end %>
         </section> 
     </div>
-<div id="ultimas_apuestas" class="tab-pane">
-<%@partidos.each do |partido| %>
-<section>  
-    <div class="MiApuesta">
-        <div class="MiApuestaEquipo">
-            <%=image_tag partido.logolocal, :width => "40" %>
-            <%= partido.local %>
-        </div>
-        <div class="MiApuestaMarcador"> <%= "#{partido.resultadoLocal} - #{partido.resultadoVisitante}" %></div>
-        <div class="MiApuestaEquipo">
-            <%= partido.visitante %>
-            <%=image_tag partido.logovisitante, :width => "40" %>
-        </div>
-    </div>
-    <div class >
-        
-       <table class="table"> 
-          <thead>
-            <tr>
-              <th><small>Mi Marcador</small></th>
-              <th><small>Mi Apuesta</small></th>
-              <th><small>Ganancia</small></th>
-              <th></th>
-            </tr>
+    <div id="ultimas_apuestas" class="tab-pane">
+        <%@partidos.each do |partido| %>
+        <section>  
+            <div class="MiApuesta">
+                <div class="horamarcador bloque">
+                    <%= partido.hora_partido %>
+                </div>
+                <div class="MiApuestaEquipo">
+                    <%=image_tag partido.logolocal, :width => "40" %>
+                    <%= partido.local %>
+                </div>
+                <div class="MiApuestaMarcador"> 
+                    <%= "#{partido.resultadoLocal} - #{partido.resultadoVisitante}" %>
+                </div>
+                <div class="MiApuestaEquipo">
+                    <%= partido.visitante %>
+                    <%=image_tag partido.logovisitante, :width => "40" %>
+                </div>
+                <div>
+                    <%= link_to "Ir al estadio", partidos_path(partido) %>
+                </div>
+            </div>
+            <div class >
+
+             <table class="table"> 
+              <thead>
+                <tr>
+                  <th><small>Mi Marcador</small></th>
+                  <th><small>Mi Apuesta</small></th>
+                  <th><small>Mi Retorno</small></th>
+                  <th><small>Ganancia</small></th>
+                  <th></th>
+              </tr>
           </thead>
           <tbody>
             <%@user.bets.where("partido_id = ?", partido.id).each do |bet|%>
-            <tr>
+                 <tr>
                 <td><%= "#{bet.golesLocal} - #{bet.golesVisitante}" %></td>
                 <td><%= bet.monto %></td>
                 <%  if bet.partido.repartido == false %>
-                    <td>
-                        Por Jugar
-                    </td>
-                    <td>
-                    </td>
+                        <td>
+                            <div class="MiApuestaRetornoEstimado">
+                            <%= bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante) %> 
+                        </div>
+                        </td>
+                        <td>
+                            Por Jugar
+                        </td>
+                        <td>
+                        </td>
                 <% elsif bet.pezzos_ganados ==nil %>
+                    <td> 
+                        <div class="MiApuestaRetornoFinal">
+                            <%= bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante) %> 
+                        </div>
+                    </td>
                     <td>
                         <div class="MiApuestaPerdi">
-                        <%= bet.monto * -1 %>
+                            <%= bet.monto * -1 %>
                         </div>
                     </td>
                     <td>
                         <%= image_tag "golazzos2/triste.png", alt:"triste" %>
                     </td>
                 <% elsif %>
-                    <td>
-                        <div class="MiApuestaGane">
-                            <%= bet.pezzos_ganados %>
-                        </div>
-                    </td>
-                    <td>
-                       <%= image_tag "golazzos2/feliz.png", alt: "feliz" %>
-                    </td>
-                <% end %>
-            </tr>
-            <%end  %>
-          </tbody>
-        </table>
-    </div>
+                        <td>
+                            <div class="MiApuestaRetornoFinal">
+                                <%= bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante) %> 
+                            </div>
+                        </td>
+                        <td>
+                            <div class="MiApuestaGane">
+                                <%= bet.pezzos_ganados %>
+                            </div>
+                        </td>
+                        <td>
+                         <%= image_tag "golazzos2/feliz.png", alt: "feliz" %>
+                     </td>
+             <% end %>
+         </tr>
+         <%end  %>
+     </tbody>
+ </table>
+</div>
 </section>
 <%end %>
 

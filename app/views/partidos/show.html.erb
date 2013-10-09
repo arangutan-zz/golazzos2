@@ -2,8 +2,10 @@
 <section id="retodeamigo" class="amigosfacebook ">
 	<div class="amigoreto">
 		<div class="nombreamigoydescripcion">
-			<p class="nombreamigo"><%= "#{@user.name} te esta retando!"%></p>
-			<p>Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
+			<p class="nombreamigo">
+				<%= "#{@user.name} te reta con el #{@bet.golesLocal} - #{@bet.golesVisitante}. ¿Con cual marcador lo retas tu?"%></p>
+			<p>
+			Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
 		</div>
 	</div>
 </section>
