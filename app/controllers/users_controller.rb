@@ -14,27 +14,29 @@ class UsersController < ApplicationController
   def show
     #Golazzos 1
     @user= User.find(params[:id])
-    if @user.profile ==nil
-      @user.profile =Profile.new
-    end
+    #if @user.profile ==nil
+    #  @user.profile =Profile.new
+    #end
 
-    if @user.partidos.any?
-      if params[:partidoId]
-        @partido= Partido.find(params[:partidoId])
-      else
-        @partido = @user.partidos.first
-      end
+    #if @user.partidos.any?
+    #  if params[:partidoId]
+    #    @partido= Partido.find(params[:partidoId])
+    #  else
+    #    @partido = @user.partidos.first
+    #  end
 
-      @bets= @partido.bets.where("user_id = ?", @user.id) 
-    end   
+    #  @bets= @partido.bets.where("user_id = ?", @user.id) 
+    #end   
     #@pezzos_por_amigos= User.where('invitation_id = ?', @user.id).count * 50000
-    @pezzos_por_amigos= @user.referidos * 5000
-    @pezzos_por_actividad= @user.bets.count * 5000
+    #@pezzos_por_amigos= @user.referidos * 5000
+    #@pezzos_por_actividad= @user.bets.count * 5000
 
 
     #golazzos2.0
-    #@friends= @user.following
-    @bets = Bet.find(:all, conditions: { user_id: current_user.following_ids})
+    @friends= @user.following
+    #@bets = Bet.find(:all, conditions: { user_id: current_user.following_ids})
+    @bets = @user.bets.limit(10)
+    @partidos = @user.partidos
   end
 
   def update
