@@ -59,7 +59,7 @@ class SessionsController < ApplicationController
     begin
       redirect_to :back
     rescue
-      redirect_to partidos_path, notice: "LO SENTIMOS Vuelve a buscar el partido."
+      redirect_to partidos_path, notice: "¡LO SENTIMOS! Vuelve a buscar el partido."
     end
 
   end

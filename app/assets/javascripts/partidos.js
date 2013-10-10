@@ -30,11 +30,9 @@ $(document).ready(function(){
 		$(".terminosycondiciones").hide();
 	});
 
-	/*
 	FB.Event.subscribe('message.send',
     function(response) {
         alert('waaah funciona');
     }
-    
-	);*/
+);
 });

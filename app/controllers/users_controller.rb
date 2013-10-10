@@ -19,13 +19,13 @@ class UsersController < ApplicationController
     #end
 
     #if @user.partidos.any?
-    #  if params[:partidoId]
-    #    @partido= Partido.find(params[:partidoId])
-    #  else
-    #    @partido = @user.partidos.first
-    #  end
+      #if params[:partidoId]
+       # @partido= Partido.find(params[:partidoId])
+      #else
+       # @partido = @user.partidos.first
+      #end
 
-    #  @bets= @partido.bets.where("user_id = ?", @user.id) 
+      #@bets= @partido.bets.where("user_id = ?", @user.id) 
     #end   
     #@pezzos_por_amigos= User.where('invitation_id = ?', @user.id).count * 50000
     #@pezzos_por_amigos= @user.referidos * 5000
@@ -33,10 +33,12 @@ class UsersController < ApplicationController
 
 
     #golazzos2.0
-    @friends= @user.following
-    #@bets = Bet.find(:all, conditions: { user_id: current_user.following_ids})
-    @bets = @user.bets.limit(10)
+    #@friends= @user.following
+
+
     @partidos = @user.partidos
+    @bets = Bet.limit(10).find(:all, conditions: { user_id: current_user.following_ids})
+    @friends = @user.following
   end
 
   def update
