@@ -1,4 +1,4 @@
-3<section class="cperfil">
+<section class="cperfil">
     <div class="modulo1">
         <div class="fotoperfil"><%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"})%></div>
         <div> 
@@ -65,7 +65,7 @@
                     <%=image_tag partido.logovisitante, :width => "40" %>
                 </div>
                 <div>
-                    <%= link_to "Ir al estadio", partidos_url(partido) %>
+                    <%= link_to "Ir al estadio", partidos_path(partido) %>
                 </div>
             </div>
             <div class >
