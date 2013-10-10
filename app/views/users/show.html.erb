@@ -1,4 +1,4 @@
-3<section class="cperfil">
+<section class="cperfil">
     <div class="modulo1">
         <div class="fotoperfil"><%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"})%></div>
         <div> 
@@ -42,7 +42,6 @@
             <div class="fotperfil">
                 <%=image_tag current_user.facebook.get_picture(bet.user.uid)%>
             </div>
-<<<<<<< HEAD
             <% end %>
         </section> 
     </div>
@@ -144,20 +143,6 @@
                 <div class="fotperfil">
                     <%=image_tag current_user.facebook.get_picture(friend.uid)%>
                 </div>
-=======
-            <div class="estado">
-                <%if bet.pezzos_ganados.to_i > 0 %>
-                    <%= image_tag "golazzos2/feliz.png", alt:"ok" %>
-                <%else %>
-                    <%= image_tag "golazzos2/triste.png", alt:"ok" %>
-                <% end %>
-                
-            </div>
-        </div>
-        <div class="textosperfil">
-            <div class="names">
-                <%=link_to bet.user.name, user_path(bet.user) %>
->>>>>>> 47aaeb49a3b1febaaa1eaaca9e270a475018b5c7
             </div>
             <div class="textopublicacion" >
                 Jugo 
