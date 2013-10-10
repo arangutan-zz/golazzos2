@@ -146,15 +146,15 @@ end
 
 def frase_de_ganador
 
-	frases=["La sacaste del estadio.","Anótate un 10.",	"Muy bien, campeón.",
+	frases=["",
 		"Ya en el barrio te dicen Messi.","Excelente, aplausos.","Un 'diez' aclamado.",
-		"La perfección tiene tu nombre.","Palmas y ovación."]
+		"La  tiene tu nombre.","Palmas y ."]
 	return frases.sample
 end
 def frase_de_perdedor
-	frases=["Sigue participando.", "Hoy no es tu día.","A llorar donde tu mama. Muy mal.",
-		"Una semana en la banca, te servirá","Reflexiona lo mal que has jugado.",
-		"Te levantaste con el pie izquierdo.","Sacúdase, bulto de sal.", 
+	frases=["Sigue participando.", "Hoy no es tu .","A llorar donde tu mama. Muy mal.",
+		"Una semana en la banca, te ","Reflexiona lo mal que has jugado.",
+		"Te levantaste con el pie izquierdo.",", bulto de sal.", 
 		"No le haces un gol al arco iris."]
 	return frases.sample
 end
