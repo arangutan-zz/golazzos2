@@ -1,7 +1,7 @@
 <div class="container">
 	<%- model_class = Partido -%>
   <div class="row">
-  	<div class="span3">
+  	<div class="span2">
   		<h3>1. <small>Cerrar Apuestas</small></h3>
   		<p>Al cerrar las apuestas, la gente no podra volver a apostar por ningun marcado.</p>
   		<p><strong>Cerrar las apuestas cuando el partido esta por empezar.</strong></p>
@@ -17,7 +17,7 @@
 		   		</button>
 		   	<%end%>
   	</div>
-    <div class="span3">
+    <div class="span2">
     	<h3>2. <small>Agregar Resultado del Partido</small></h3>
     	<div class="">
     		<%if @partido.terminado==false%>
@@ -40,7 +40,6 @@
    <div class="span2">
 		   	<h3>3. <small>Repartir plata a los ganadores</small></h3>
 		   	<p>Se reparte la plata entre la gente que aposto por el marcador ganador.</p>
-		   	<br/><br/><br/><br/><br/>
 		   	<%if @partido.repartido==false%>
 		   	<%= button_to "repartir", {:controller => :partidos, :action => :repartir, :id=> @partido.id}, :class =>"btn btn-block btn-large btn-primary"%>
 	   	<%else%>
