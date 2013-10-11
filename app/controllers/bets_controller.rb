@@ -8,8 +8,8 @@ class BetsController < ApplicationController
 			@bet= @partido.bets.create(params[:bet])
 			@user.descontar_pezzos(params[:bet][:monto].to_i)
 			@user.aumentar_apuestas
-			@user.consignar_pezzos(5000)
-			flash[:notice] = "Tu marcador fue creado correctamente. Recibes 5000 Pezzos por tu actividad."
+			@user.consignar_pezzos(10000)
+			flash[:notice] = "Tu marcador fue creado correctamente. Recibes 10000 Pezzos por tu actividad."
 			if params[:bet][:posteo_fb]
 				mensaje= "Acabo de jugar por el marcador "+@partido.local+" : "+ params[:bet][:golesLocal]+" - "+@partido.visitante+" : "+params[:bet][:golesVisitante]+"\nAdivina el resultado de tus partidos favoritos con Golazzos y gana fabulosos premios."
 				@user.aumentar_posts()

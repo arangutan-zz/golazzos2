@@ -137,7 +137,7 @@ end
 def montos_que_puede_apostar
 	monto=10000
 	montos =[]
-	while monto < self.pezzos
+	while monto < 100000   #self.pezzos
 		montos.push(monto)
 		monto+=10000
 	end
@@ -146,16 +146,26 @@ end
 
 def frase_de_ganador
 
-	frases=["La sacaste del estadio.","Anótate un 10.",	"Muy bien, campeón.",
-		"Ya en el barrio te dicen Messi.","Excelente, aplausos.","Un 'diez' aclamado.",
-		"La perfección tiene tu nombre.","Palmas y ovación."]
+	frases=["La sacaste del estadio.",
+		"Anotate un 10.",	
+		"Muy bien, campeon.",
+		"Ya en el barrio te dicen Messi.",
+		"Excelente, aplausos.",
+		"Un 'diez' aclamado.",
+		"La perfeccion tiene tu nombre.",
+		"Palmas y ovaciones."]
 	return frases.sample
 end
 def frase_de_perdedor
-	frases=["Sigue participando.", "Hoy no es tu día.","A llorar donde tu mama. Muy mal.",
-		"Una semana en la banca, te servirá","Reflexiona lo mal que has jugado.",
-		"Te levantaste con el pie izquierdo.","Sacúdase, bulto de sal.", 
-		"No le haces un gol al arco iris."]
+	frases=["Sigue participando.", 
+		"Un mal dia lo tiene cualquiera,No pierdas la fe.",
+		"Si Messi bota golazzos, tu tambien tienes derecho a fallar.",
+		"Animo, Sigue adelante.",
+		"No hay problema, En la vida siempre hay revancha.", 
+		"La practica hace al maestro, Intenta otra vez.",
+		"A los mejores tambien les pasa, Hay tiempo para mejorar.",
+		"el que persevera, alcanza",
+		"Paciencia, la practica hace al maestro."]
 	return frases.sample
 end
 end

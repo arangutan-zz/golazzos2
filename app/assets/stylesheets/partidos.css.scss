@@ -1,6 +1,4 @@
-¡// Place all the styles related to the Partidos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 
 .imgbienvenida2{
 	width:100%;
@@ -415,6 +413,33 @@ a.botpezzos:hover,a.botpezzos:focus{
 	color: #ffffff;
 	text-decoration: none;
 }
+.botonGolazzos
+{
+	width:auto;
+	font-family:Futura,Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#ffffff;
+	background-color:#00C9EC;
+	border:none;
+	font-size: 16px;
+	padding:3px;
+	text-align:center;
+	cursor:pointer;
+	margin: 10px auto;
+	display:block;
+	letter-spacing:.1em;
+	text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
+	margin-bottom:15px;
+	padding-top:15px;
+	padding-bottom: 15px;
+}
+.botonGolazzos:hover
+{
+	background-color:#00B7D7;
+	color: #ffffff;
+	text-decoration: none;
+}
+
 .linkreglasGolazzos{
 	padding-top: -50px;
 }

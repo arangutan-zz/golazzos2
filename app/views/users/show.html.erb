@@ -3,6 +3,9 @@
         <div class="fotoperfil">
             <%=image_tag current_user.facebook.get_picture(@user.uid, {type: "large"}), :class=>"img-rounded"%>
         </div>
+        <div>
+            <%= link_to "Ir a los Partidos", partidos_path, {:class => "botonGolazzos"} %>
+        </div>
     </div>
     <div class="modulo2">
         <div class="nombreperfil"><%= @user.name %> </div>
@@ -99,7 +102,7 @@
                     <%=image_tag partido.logovisitante, :width => "40" %>
                 </div>
                 <div>
-                    <%= link_to "Ir al estadio", partidos_url(partido) %>
+                    <%= link_to "Ir al partido", partido_path(partido) %>
                 </div>
             </div>
             <div class >

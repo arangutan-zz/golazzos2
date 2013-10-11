@@ -30,9 +30,7 @@ $(document).ready(function(){
 		$(".terminosycondiciones").hide();
 	});
 
-	FB.Event.subscribe('message.send',
-    function(response) {
-        alert('waaah funciona');
-    }
-);
+	$("input[name=dinero]").on("click", function(){
+  	 alert("Todavia no hemos lanzado la version paga de Golazzos. PROXIMAMENTE. :)");
+  });
 });

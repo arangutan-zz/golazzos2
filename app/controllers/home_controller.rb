@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
   def index
+
+
+    redirect_to user_path(current_user) if current_user #redireccionar al usuario si esta logeado
+
     @partidos = Partido.where("diapartido > ?", Time.now).order("diapartido ASC").limit(3)
     #track_ga_event("Users", "Login", "Standard")
     #@partido = Partido.find(64)

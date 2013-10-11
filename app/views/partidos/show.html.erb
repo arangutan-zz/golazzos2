@@ -72,13 +72,18 @@
 				<div class="opcionesplata">
 					<%= f.select :monto, current_user.montos_que_puede_apostar%>
 					</div>
-					<p class="retornoesperado">Retorno Esperado: <span class="cifrasapuestas"><%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%></span></p>
+					<p class="retornoesperado">
+						Retorno Estimado: 
+						<span class="cifrasapuestas">
+							<%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%>
+						</span>
+					</p>
 					<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%> 
 					<%end %>
-					<input type="submit" Value="APOSTAR DINERO" class="botdinero" />
+				<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
 				</article>
 				<article class="retaramigos" id="retaramigos">
-					<input type="submit" Value="Retar a tus amigos" class="botfacebook" />
+					<input type="submit" Value="Retar a tus amigos" class="botfacebook"/>
 					<p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
 					<div class="vermas">
 						<a href="partidos.html">jugar solo</a>
@@ -105,7 +110,8 @@
 			</section>
 			<%else %>
 			<section class="loginfacebook">
-				<h3> Para continuar:</h3>
-				<%= link_to "login con Facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
+
+				<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
+				<%= link_to "Reta a tus amigos", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
 			</section>
 			<%end %> 

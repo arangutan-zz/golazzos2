@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     session['fb_access_token'] = @user.oauth_token
     ##############
     if@user.visits_number==1
-      @user.consignar_pezzos(50000)
+      @user.consignar_pezzos(100000)
       
       #revisa referido
       #@invitacion= Invitation.find_by_token(session['guacamaya'])
