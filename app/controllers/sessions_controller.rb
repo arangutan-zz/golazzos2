@@ -60,7 +60,7 @@ class SessionsController < ApplicationController
       redirect_to :back
     rescue
       #redirect_to partidos_path, notice: "¡LO SENTIMOS! Vuelve a buscar el partido."
-      redirect_to partidos_path
+      redirect_to current_user
     end
 
   end
