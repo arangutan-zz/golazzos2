@@ -149,8 +149,8 @@ class PartidosController < ApplicationController
 
     #si el partido se acaba de cerrar enviar email 
     if @partido.cerrado && !@partido.terminado && !@partido.repartido
-      @partido.enviar_email_se_cerro_el_partido
-      flash[:notice] = "se envio el email"
+      #@partido.enviar_email_se_cerro_el_partido
+      #flash[:notice] = "se envio el email"
     end
 
   	respond_to do |format|
