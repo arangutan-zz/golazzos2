@@ -145,7 +145,7 @@ class PartidosController < ApplicationController
   	@partido = Partido.find(params[:id])
     
     #prueba
-    PartidoMailer.partido_cerrado.deliver
+    #PartidoMailer.partido_cerrado.deliver
 
     #si el partido se acaba de cerrar enviar email 
     if @partido.cerrado && !@partido.terminado && !@partido.repartido
