@@ -158,7 +158,7 @@ def frase_de_ganador
 end
 def frase_de_perdedor
 	frases=["Sigue participando.", 
-		"Un mal dia lo tiene cualquiera,No pierdas la fe.",
+		"Un mal dia lo tiene cualquiera, No pierdas la fe.",
 		"Si Messi bota golazzos, tu tambien tienes derecho a fallar.",
 		"Animo, Sigue adelante.",
 		"No hay problema, En la vida siempre hay revancha.", 
