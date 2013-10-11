@@ -160,7 +160,7 @@ class PartidosController < ApplicationController
   			else
   				@partido.create_activity :update, owner: current_user
   			end
-  			format.html { redirect_to @partido, notice: 'Partido was successfully updated.' }
+  			format.html { redirect_to edit_partido_path @partido, notice: 'Partido was successfully updated.' }
   			format.json { head :no_content }
   		else
   			format.html { render action: "edit" }
