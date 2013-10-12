@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
-    <title>Rack::Cache <%= title %></title>
-    <link rel='stylesheet' href='rack-cache.css' type='text/css' media='all'>
-    <script type='text/javascript' src='http://code.jquery.com/jquery-1.2.3.js'></script>
-    <script type='text/javascript' src='http://tomayko.com/js/tomayko.js'></script>
-  </head>
-  <body>
-    <div id='container'>
-      <div id='header'>
-        <h1><a href="./">rack-cache</a></h1>
-        <p>
-          <a href="./configuration" title='Configuration Language Documentation'>Config</a> |
-          <a href="./storage" title='Cache Storage Documentation'>Storage</a> |
-          <a href="http://tomayko.com/writings/things-caches-do" title="Things Caches Do">Things</a> |
-          <a href="./faq" title='Frequently Asked Questions'>FAQ</a> |
-          <a href="./api/" title='Fucking Sucks.'>RDoc</a>
-        </p>
-      </div>
-      <div id='content'><%= content %></div>
-      <div id='footer'>
-        <p class='rights'>
-          Copyright
-          <a href="./license" rel="license">&copy;</a>
-          2003-2008
-          by
-          <a href='http://tomayko.com/about' rel='me author'>Ryan Tomayko</a>
-        </p>
-      </div>
+<head>
+  <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+  <title>Rack::Cache <%= title %></title>
+  <link rel='stylesheet' href='rack-cache.css' type='text/css' media='all'>
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.2.3.js'></script>
+  <script type='text/javascript' src='http://tomayko.com/js/tomayko.js'></script>
+
+
+  <meta property="fb:app_id"          content=<%= Rails.configuration.fb_app_id %> /> 
+  <meta property="og:type"            content="social-cookbook:recipe" /> 
+  <meta property="og:url"             content="http://samples.ogp.me/136756249803614" /> 
+  <meta property="og:title"           content="Chocolate Pecan Pie" /> 
+  <meta property="og:image"           content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-prn1/851565_496755187057665_544240989_n.jpg" /> 
+  <meta property="cookbook:author"    content="http://samples.ogp.me/390580850990722" /> 
+</head>
+<body>
+  <div id='container'>
+    <div id='header'>
+      <h1><a href="./">rack-cache</a></h1>
+      <p>
+        <a href="./configuration" title='Configuration Language Documentation'>Config</a> |
+        <a href="./storage" title='Cache Storage Documentation'>Storage</a> |
+        <a href="http://tomayko.com/writings/things-caches-do" title="Things Caches Do">Things</a> |
+        <a href="./faq" title='Frequently Asked Questions'>FAQ</a> |
+        <a href="./api/" title='Fucking Sucks.'>RDoc</a>
+      </p>
     </div>
-  </body>
+    <div id='content'><%= content %></div>
+    <div id='footer'>
+      <p class='rights'>
+        Copyright
+        <a href="./license" rel="license">&copy;</a>
+        2003-2008
+        by
+        <a href='http://tomayko.com/about' rel='me author'>Ryan Tomayko</a>
+      </p>
+    </div>
+  </div>
+</body>
 </html>
