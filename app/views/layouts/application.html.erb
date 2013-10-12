@@ -8,9 +8,9 @@
 
   <meta property="fb:app_id"          content=<%= Rails.configuration.fb_app_id %> /> 
   <meta property="og:url"             content="http://goldos.herokuapp.com/" /> 
-  <meta property="og:title"           content="Partido" /> 
+  <meta property="og:title"           content="¡Tu amigo te esta retando en el partido!" /> 
   <meta property="og:image"           content=<%= "#{request.protocol}#{request.host_with_port}#{asset_path("golazzos2/logo.png")}" %> />
-  <meta property="og:description"     content="¡Tu amigo te esta retando, Retalo con tu propio marcador!">
+  <meta property="og:description"     content="¡Reta a tus amigos con Golazzos en los partidos de futbol, y demuestrales quien sabe mas!">
   <title>
     <%= content_for?(:title) ? yield(:title) : "Golazzos" %>
   </title>
