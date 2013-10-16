@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
 
     @partidos = @user.partidos
-    @bets = Bet.limit(10).find(:all, conditions: { user_id: current_user.following_ids})
+    @bets = Bet.limit(10).find(:all, conditions: { user_id: current_user.following_ids}, order: "created_at DESC")
     @friends = @user.following
   end
 

@@ -32,7 +32,10 @@
                     <li><%= link_to "Blog", "http://golazzos2013.wordpress.com/" %></li>
                     <li><%= link_to "Contactanos", home_contacto_path %></li>
                     <li><%= link_to "Reglamento", home_reglamento_path %></li>
-
+                        <% if current_user.administrator %>
+                            <li class="divider"></li>
+                            <li><%= link_to "Partido Nuevo", new_partido_path %></li>
+                        <%end %>
 
                     <%else %>
 

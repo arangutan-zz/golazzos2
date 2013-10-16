@@ -137,7 +137,7 @@ end
 def montos_que_puede_apostar
 	monto=10000
 	montos =[]
-	while monto < 100000   #self.pezzos
+	while monto <= 100000   #self.pezzos
 		montos.push(monto)
 		monto+=10000
 	end

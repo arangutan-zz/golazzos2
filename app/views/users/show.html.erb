@@ -20,7 +20,7 @@
         <div class="modulo3">
 
             <div class="logrosuser">
-                <div class="nombrelogro" id="puntos">Acumulado</div>
+                <div class="nombrelogro" id="puntos">Pezzos Ganados</div>
                 <div class="numerologro">0</div>
             </div>
             <div class="logrosuser">
@@ -112,8 +112,8 @@
                 <tr>
                   <th><small>Mi Marcador</small></th>
                   <th><small>Mi Apuesta</small></th>
-                  <th><small>Mi Retorno</small></th>
-                  <th><small>Ganancia</small></th>
+                  <th><small>Mi Retorno Esperado</small></th>
+                  <th><small>Retorno Final</small></th>
                   <th></th>
               </tr>
           </thead>
@@ -121,11 +121,11 @@
             <%@user.bets.where("partido_id = ?", partido.id).each do |bet|%>
                  <tr>
                 <td><%= "#{bet.golesLocal} - #{bet.golesVisitante}" %></td>
-                <td><%= bet.monto %></td>
+                <td><%= number_to_currency bet.monto, precision: 0%></td>
                 <%  if bet.partido.repartido == false %>
                         <td>
                             <div class="MiApuestaRetornoEstimado">
-                            <%= bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante) %> 
+                            <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
                         </div>
                         </td>
                         <td>
@@ -136,12 +136,12 @@
                 <% elsif bet.pezzos_ganados ==nil %>
                     <td> 
                         <div class="MiApuestaRetornoFinal">
-                            <%= bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante) %> 
+                            <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision:0 %> 
                         </div>
                     </td>
                     <td>
                         <div class="MiApuestaPerdi">
-                            <%= bet.monto * -1 %>
+                            <%=number_to_currency bet.monto * -1, precision: 0%>
                         </div>
                     </td>
                     <td>
@@ -150,12 +150,12 @@
                 <% elsif %>
                         <td>
                             <div class="MiApuestaRetornoFinal">
-                                <%= bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante) %> 
+                                <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
                             </div>
                         </td>
                         <td>
                             <div class="MiApuestaGane">
-                                <%= bet.pezzos_ganados %>
+                                <%= number_to_currency bet.pezzos_ganados, precision: 0 %>
                             </div>
                         </td>
                         <td>
