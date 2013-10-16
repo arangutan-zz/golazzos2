@@ -117,15 +117,21 @@
 			<%end %> 
 
 
-			<div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10" data-width="770"></div>
+			<div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
 
+
+			<style type="text/css">
+				.fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
+    				width: 100% !important;
+				}
+			</style>
 
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;
 			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=193467880799348";
+			  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1416693088547826";
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script>
 
