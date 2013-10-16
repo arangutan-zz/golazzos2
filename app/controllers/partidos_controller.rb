@@ -1,7 +1,7 @@
 class PartidosController < ApplicationController
   # GET /partidos
   # GET /partidos.json
-  before_filter :require_login, except: [:index,:mostrar,:show]
+  before_filter :require_login, except: [:index,:show]
   before_filter :require_admin_login , :only => [:new,:edit,:update,:destroy,:create,:repartir]
 
   def index
@@ -193,7 +193,7 @@ class PartidosController < ApplicationController
 	end
 
 	def mostrar
-
+    @partidos = Partido.all
 	end
 
 

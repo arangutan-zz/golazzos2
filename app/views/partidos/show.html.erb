@@ -4,143 +4,148 @@
 		<div class="nombreamigoydescripcion">
 			<p class="nombreamigo">
 				<%= "#{@user.name} te reta con el #{@bet.golesLocal} - #{@bet.golesVisitante}. ¿Con cual marcador lo retas tu?"%></p>
-			<p>
-			Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
+				<p>
+					Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
+				</div>
+			</div>
+		</section>
+		<%end %>
+		<% if flash[:notice]%>
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<%= flash[:notice] %>
 		</div>
-	</div>
-</section>
-<%end %>
-<% if flash[:notice]%>
-<div class="alert alert-success">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<%= flash[:notice] %>
-</div>
-<% end %>
-<section class="colocaTuMarcador">
-	<div class="imgbienvenida2"></div>
-	<header>
-		<h2 class="titulosseccion">MI APUESTA</h2>
-	</header>
-	<div class="datosmarcador">
-		<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
-		<div class="equipo2"> <%= @partido.local %></div>
-		<div class="vsmarcador">VS</div>
-		<div class="equipo2"> <%= @partido.visitante %></div>
-		<div class="horamarcador"><%= @partido.hora_partido %></div>
-		<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
-	</div>
-</section>
-<% if current_user %>
-<section id="apuesta">
-	<article id="miapuesta">
-		<%= form_for([@partido, @partido.bets.build]) do |f| %>
-		<%= f.hidden_field :user_id, value: current_user.id%>
-		<div class="contenedorentrada">
-			<div class="equipin">
-				<div class="imgequipo1">
-					<%= image_tag @partido.logolocal %>
+		<% end %>
+		<section class="colocaTuMarcador">
+			<div class="imgbienvenida2"></div>
+			<header>
+				<h2 class="titulosseccion">MI APUESTA</h2>
+			</header>
+			<div class="datosmarcador">
+				<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
+				<div class="equipo2"> <%= @partido.local %></div>
+				<div class="vsmarcador">VS</div>
+				<div class="equipo2"> <%= @partido.visitante %></div>
+				<div class="horamarcador"><%= @partido.hora_partido %></div>
+				<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+			</div>
+		</section>
+		<% if current_user %>
+		<section id="apuesta">
+			<article id="miapuesta">
+				<%= form_for([@partido, @partido.bets.build]) do |f| %>
+				<%= f.hidden_field :user_id, value: current_user.id%>
+				<div class="contenedorentrada">
+					<div class="equipin">
+						<div class="imgequipo1">
+							<%= image_tag @partido.logolocal %>
 
-				</div>
-				<div class="divmarcador">
-					<%= f.number_field :golesLocal, {
-						:value => "0",
-						:max=>"10" ,
-						:min=>"0" ,
-						:placeholder=>"0",
-						:size=>"10px", 
-						:class=>"marcadoruser1 marcadorlocal",  
-						:align=>"middle"}  %>
-					</div>
-				</div>
-				<div class="equipin">
-					<div class="divmarcador">
-						<%= f.number_field :golesVisitante, {
-							:value => "0",
-							:max=>"10" ,
-							:min=>"0" ,
-							:placeholder=>"0",
-							:size=>"10px", 
-							:class=>"marcadoruser1 marcadorvisitante",  
-							:align=>"middle"}%>
 						</div>
-						<div class="imgequipo2">
-							<%= image_tag @partido.logovisitante %>
-						</div> 
-						<div class="clear"></div> 
-					</div>
-				</div>
-				<div class="opcionesplata">
-					<%= f.select :monto, current_user.montos_que_puede_apostar%>
-					</div>
-					<p class="retornoesperado">
-						Retorno Estimado: 
-						<span class="cifrasapuestas">
-							<%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%>
-						</span>
-					</p>
-					<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%> 
-					<%end %>
-				<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
-				</article>
-				<article class="retaramigos" id="retaramigos">
-					<input type="submit" Value="Retar a tus amigos" class="botfacebook"/>
-					<p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
-					<div class="vermas">
-						<a href="partidos.html">jugar solo</a>
-					</div>
-				</article>
-				<article>
-					<% for i in 0..10 %>
-					<% for j in 0..10 %>
-					<div class=<%= "local#{i}visitante#{j}"%> 
-						data-10000=<%= @partido.xveces_el_resultado(i,j,10000).round(3) %>
-						data-20000=<%= @partido.xveces_el_resultado(i,j,20000).round(3) %>
-						data-30000=<%= @partido.xveces_el_resultado(i,j,30000).round(3) %>
-						data-40000=<%= @partido.xveces_el_resultado(i,j,40000).round(3) %> 
-						data-50000=<%= @partido.xveces_el_resultado(i,j,50000).round(3) %>    
-						data-60000=<%= @partido.xveces_el_resultado(i,j,60000).round(3) %> 
-						data-70000=<%= @partido.xveces_el_resultado(i,j,70000).round(3) %> 
-						data-80000=<%= @partido.xveces_el_resultado(i,j,80000).round(3) %> 
-						data-90000=<%= @partido.xveces_el_resultado(i,j,90000).round(3) %> 
-						data-100000=<%= @partido.xveces_el_resultado(i,j,100000).round(3) %>> 
-					</div>
-					<%end %>
-					<%end  %>
-				</article>
-			</section>
-			<%else %>
-			<section class="loginfacebook">
+						<div class="divmarcador">
+							<%= f.number_field :golesLocal, {
+								:value => "0",
+								:max=>"10" ,
+								:min=>"0" ,
+								:placeholder=>"0",
+								:size=>"10px", 
+								:class=>"marcadoruser1 marcadorlocal",  
+								:align=>"middle"}  %>
+							</div>
+						</div>
+						<div class="equipin">
+							<div class="divmarcador">
+								<%= f.number_field :golesVisitante, {
+									:value => "0",
+									:max=>"10" ,
+									:min=>"0" ,
+									:placeholder=>"0",
+									:size=>"10px", 
+									:class=>"marcadoruser1 marcadorvisitante",  
+									:align=>"middle"}%>
+								</div>
+								<div class="imgequipo2">
+									<%= image_tag @partido.logovisitante %>
+								</div> 
+								<div class="clear"></div> 
+							</div>
+						</div>
+						<div class="opcionesplata">
+							<%= f.select :monto, current_user.montos_que_puede_apostar%>
+						</div>
+						<p class="retornoesperado">
+							Retorno Estimado: 
+							<span class="cifrasapuestas">
+								<%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%>
+							</span>
+							<br>
+							Retorno Minimo:
+							<span class="cifrasapuestas" id="cifrasapuestasminimo">
+								<%= number_with_precision(20000, precision: 0)%>
+							</span>
+						</p>
+						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%> 
+						<%end %>
+						<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
+					</article>
+					<article class="retaramigos" id="retaramigos">
+						<input type="submit" Value="Retar a tus amigos" class="botfacebook"/>
+						<p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
+						<div class="vermas">
+							<a href="partidos.html">jugar solo</a>
+						</div>
+					</article>
+					<article>
+						<% for i in 0..10 %>
+						<% for j in 0..10 %>
+						<div class=<%= "local#{i}visitante#{j}"%> 
+							data-10000=<%= @partido.xveces_el_resultado(i,j,10000).round(3) %>
+							data-20000=<%= @partido.xveces_el_resultado(i,j,20000).round(3) %>
+							data-30000=<%= @partido.xveces_el_resultado(i,j,30000).round(3) %>
+							data-40000=<%= @partido.xveces_el_resultado(i,j,40000).round(3) %> 
+							data-50000=<%= @partido.xveces_el_resultado(i,j,50000).round(3) %>    
+							data-60000=<%= @partido.xveces_el_resultado(i,j,60000).round(3) %> 
+							data-70000=<%= @partido.xveces_el_resultado(i,j,70000).round(3) %> 
+							data-80000=<%= @partido.xveces_el_resultado(i,j,80000).round(3) %> 
+							data-90000=<%= @partido.xveces_el_resultado(i,j,90000).round(3) %> 
+							data-100000=<%= @partido.xveces_el_resultado(i,j,100000).round(3) %>> 
+						</div>
+						<%end %>
+						<%end  %>
+					</article>
+				</section>
+				<%else %>
+				<section class="loginfacebook">
 
-				<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
-				<%= link_to "Reta a tus amigos", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
-			</section>
-			<%end %> 
+					<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
+					<%= link_to "Reta a tus amigos", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
+				</section>
+				<%end %> 
 
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+				<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-			<div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
+				<div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
 
 
-			<style type="text/css">
+				<style type="text/css">
 				.fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
-    				width: 100% !important;
+					width: 100% !important;
 				}
-			</style>
+				</style>
 
 
-			<div id="fb-root"></div>
-			<script>(function(d, s, id) {
-			  var js, fjs = d.getElementsByTagName(s)[0];
-			  if (d.getElementById(id)) return;
-			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1416693088547826";
-			  fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
+				<div id="fb-root"></div>
+				<script>(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1416693088547826";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));</script>
 
-			<script type="text/javascript">
+				<script type="text/javascript">
 				$(function(){
 					$('.fb-comments').data('href',window.location.href);
 				});
-			</script>
+				</script>
 
 

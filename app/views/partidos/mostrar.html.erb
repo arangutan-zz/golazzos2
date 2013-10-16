@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Local</th>
+      <th>Marcador Local</th>
+      <th>Visitante</th>
+      <th>Marcador Visitante</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@partidos.each do |partido| %>
+      <tr>
+        <td><%= partido.local %></td>
+        <td><%= partido.resultadoLocal %></td>
+        <td><%= partido.visitante %></td>
+        <td><%= partido.resultadoVisitante %></td>
+        <td><%= link_to "Edit", edit_partido_path(partido) %></td>
+      </tr>
+    <%end %>
+  </tbody>
+</table>

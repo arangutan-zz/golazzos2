@@ -18,6 +18,7 @@ $(document).ready(function(){
 		var veces = $(".local"+local+"visitante"+visitante).data(monto);
 
 		$(".cifrasapuestas").text(veces * monto);
+		$("#cifrasapuestasminimo").text(monto *2);
 
 	});
 	$(".linkreglasGolazzos").on("click", function(event){
