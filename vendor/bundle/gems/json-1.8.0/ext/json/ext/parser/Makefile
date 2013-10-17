@@ -98,7 +98,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin12.4.1
+arch = x86_64-darwin12.3.0
 sitearch = $(arch)
 ruby_version = 2.0.0
 ruby = $(bindir)/ruby
@@ -145,8 +145,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/json-1.8.0/lib$(target_prefix)
-RUBYARCHDIR = /Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/json-1.8.0/lib$(target_prefix)
+RUBYLIBDIR = /Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/json-1.8.0/lib$(target_prefix)
+RUBYARCHDIR = /Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/json-1.8.0/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 

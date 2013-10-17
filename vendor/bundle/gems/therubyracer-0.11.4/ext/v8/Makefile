@@ -78,11 +78,11 @@ optflags = -O3 -fno-fast-math
 debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings  -Wshorten-64-to-32 
 CFLAGS   = -fno-common  -O3 -Wno-error=shorten-64-to-32  -pipe $(ARCH_FLAG)
-INCFLAGS = -I. -I/Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/libv8-3.11.8.17-x86_64-darwin-12/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
+INCFLAGS = -I. -I/Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/libv8-3.11.8.17-x86_64-darwin-12/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
 CPPFLAGS =  -I'/Users/yepesasecas/.rbenv/versions/2.0.0-p0/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags) -Wall -g -rdynamic
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = /Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/libv8-3.11.8.17-x86_64-darwin-12/vendor/v8/out/x64.release/libv8_base.a /Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/libv8-3.11.8.17-x86_64-darwin-12/vendor/v8/out/x64.release/libv8_snapshot.a -L. -L'/Users/yepesasecas/.rbenv/versions/2.0.0-p0/lib' 
+ldflags  = /Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/libv8-3.11.8.17-x86_64-darwin-12/vendor/v8/out/x64.release/libv8_base.a /Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/libv8-3.11.8.17-x86_64-darwin-12/vendor/v8/out/x64.release/libv8_snapshot.a -L. -L'/Users/yepesasecas/.rbenv/versions/2.0.0-p0/lib' 
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -98,7 +98,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin12.4.1
+arch = x86_64-darwin12.3.0
 sitearch = $(arch)
 ruby_version = 2.0.0
 ruby = $(bindir)/ruby
@@ -145,8 +145,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/therubyracer-0.11.4/lib$(target_prefix)
-RUBYARCHDIR = /Users/yepesasecas/Documents/Golazzos/Heroku/golazzos/vendor/bundle/gems/therubyracer-0.11.4/lib$(target_prefix)
+RUBYLIBDIR = /Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/therubyracer-0.11.4/lib$(target_prefix)
+RUBYARCHDIR = /Users/yepesasecas/Desktop/golazzos/vendor/bundle/gems/therubyracer-0.11.4/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 
