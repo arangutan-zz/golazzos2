@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523153953) do
+ActiveRecord::Schema.define(:version => 20131017181140) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -140,6 +140,9 @@ ActiveRecord::Schema.define(:version => 20130523153953) do
     t.integer  "local_apostado",     :default => 0
     t.integer  "visitante_apostado", :default => 0
     t.integer  "referidos",          :default => 0
+    t.integer  "pezzos_acumulados",  :default => 0
+    t.integer  "partidos_ganados",   :default => 0
+    t.integer  "partidos_perdidos",  :default => 0
   end
 
 end

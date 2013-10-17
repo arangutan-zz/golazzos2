@@ -43,10 +43,11 @@
 </section>
 <div>
 	<%= link_to "Jugar otra vez", partido_path(@partido), {:class => "botpezzos"} %>
+	<%= link_to "Retar amigos", estadio_partido_path(@partido), {:class => "botpezzos"} %>
 </div>
 
 <section class="estadisticas clear">
-	<div class="tiulosestad"><h3>Estadísticas</h3></div>
+	<div class="MiApuesta"><h3>Estadísticas</h3></div>
 	<div class="contenedordatosapuesas">
 		<div class="itemsicono"><%= image_tag "golazzos2/amigos.png", alt:"amigos"%></div>
 		<div class="itemsapuestaestadio">Amigos</div>
@@ -75,7 +76,7 @@
 </section>
 
 <section>
-	<div class="tiulosestad">
+	<div class="MiApuesta">
 		<h3>
 			Actividades
 		</h3>
@@ -101,7 +102,7 @@
 	<% end %>
 </section>
 <section>
-	<div class="tiulosestad">
+	<div class="MiApuesta">
 		<h3>
 			Comenta el Partido con tus Amigos
 		</h3>
@@ -127,13 +128,4 @@
    <div id="fb-root"></div>
 </section>
 
-<script type="text/javascript">
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1416693088547826";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
 

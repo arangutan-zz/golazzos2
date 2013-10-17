@@ -21,15 +21,15 @@
 
             <div class="logrosuser">
                 <div class="nombrelogro" id="puntos">Pezzos Ganados</div>
-                <div class="numerologro">0</div>
+                <div class="numerologro"><%= @user.pezzos_acumulados %></div>
             </div>
             <div class="logrosuser">
                 <div class="nombrelogro" id="ganados">Ganados</div>
-                <div class="numerologro">0</div>
+                <div class="numerologro"><%= @user.partidos_ganados %></div>
             </div>
             <div class="logrosuser">
                 <div class="nombrelogro" id="perdidos">Perdidos</div>
-                <div class="numerologro">0</div>
+                <div class="numerologro"><%= @user.partidos_perdidos %></div>
             </div>
         </div>
     </div>
@@ -105,14 +105,18 @@
                     <%= link_to "Ir al Estadio", estadio_partido_path(partido) %>
                 </div>
             </div>
-            <div class >
+            <div>
 
-             <table class="table"> 
+             <table class="table tablapartidos"> 
               <thead>
                 <tr>
-                  <th><small>Mi Marcador</small></th>
-                  <th><small>Mi Apuesta</small></th>
-                  <th><small>Mi Retorno Esperado</small></th>
+                  <th><small>Marcador</small></th>
+                  <th><small>Apuesta</small></th>
+                  <th><small>
+                         
+                        <div class="MiApuestaRetornoEstimado">Retorno Esperado</div> / <br>
+                        <div class="MiApuestaRetornoFinal">Retorno Garantizado</div>
+                        </small></th>
                   <th><small>Retorno Final</small></th>
                   <th></th>
               </tr>

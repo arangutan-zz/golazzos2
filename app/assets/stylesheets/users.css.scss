@@ -204,11 +204,18 @@ color: #fff;
 }
 .MiApuestaRetornoEstimado{
 	color: #00C9EC;
+	display: inline-block;
 }
 .MiApuestaRetornoFinal{
 	color: #00B581;
+	display: inline-block;
 }
 .bloque{
 	display: block;
+}
+.tablapartidos{
+	td, th{
+		text-align: center;
+	}
 }
 

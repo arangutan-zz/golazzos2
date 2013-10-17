@@ -142,9 +142,15 @@ class Partido < ActiveRecord::Base
   def repartir_la_plata
     bets_ganadoras = self.apuestas_en_el_resultado(self.resultadoLocal, self.resultadoVisitante)
     bets_ganadoras.each do |bet|
+      user = User.find(bet.user_id)
       pezzos_ganados = bet.monto * xveces_el_resultado(self.resultadoLocal, self.resultadoVisitante)
       bet.update_attributes(pezzos_ganados: pezzos_ganados, repartido: true)
-      User.find(bet.user_id).consignar_pezzos(pezzos_ganados) 
+      user.consignar_pezzos(pezzos_ganados)
+      user.partidos_ganados  += 1 #
+      user.partidos_perdidos = user.bets.count - user.partidos_ganados
+      user.pezzos_acumulados += pezzos_ganados
+
+      user.save  
     end
   end
 

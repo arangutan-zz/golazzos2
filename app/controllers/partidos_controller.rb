@@ -33,13 +33,16 @@ class PartidosController < ApplicationController
         if !frien.empty? || (@user.id == current_user.id)
             #la amistad ya existe!!!
             flash[:notice]= "la amistad ya existe!"
-          else
+        else
             @friendship = current_user.friendships.build( friend_id: @user.id)
             @friendshipDos = @user.friendships.build(friend_id: current_user.id)
             if @friendship.save && @friendshipDos.save
-            #se creo la amistad exitosamente
-            flash[:notice]= "Se creo la amistad Correctamente"
-          end
+              #se les dan 50,000 pezzos por la nueva amistad
+              current_user.consignar_pezzos(50000)
+              @user.consignar_pezzos(50000)
+              #se creo la amistad exitosamente
+              flash[:notice]= "Se creo la amistad Correctamente. Se les consignaron $50,000 pezzos en sus cuentas :)."
+            end
         end
       end
     end

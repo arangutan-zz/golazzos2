@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
 attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, 
 :uid, :pezzos, :administrator, :invitation_token, :visits_number, 
 :invitation_number, :invitation_id, :post_on_fb, :bets_number, :age,
-:pezzos_que_apuesta, :local_apostado, :visitante_apostado, :referidos
+:pezzos_que_apuesta, :local_apostado, :visitante_apostado, :referidos,
+:pezzos_acumulados, :partidos_ganados, :partidos_perdidos
 
 
 validates :pezzos, :numericality => {:greater_than_or_equal_to => 0, :message => "no puedes tener menos de 0 pezzos"}
