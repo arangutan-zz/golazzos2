@@ -108,27 +108,32 @@
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-	<div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
+  <div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
 
 
-	<style type="text/css">
-	.fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
-		width: 100% !important;
-	}
-	</style>
+  <style type="text/css">
+  .fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
+    width: 100% !important;
+  }
+  </style>
 
 
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1416693088547826";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript">
 
-	<script type="text/javascript">
-		$('.fb-comments').data('href',window.location.href);
-	</script>
+      $('.fb-comments').attr('data-href',window.location.href);
+  
+  </script>
+
+   <div id="fb-root"></div>
 </section>
+
+<script type="text/javascript">
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1416693088547826";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 
