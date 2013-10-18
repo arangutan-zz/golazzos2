@@ -40,13 +40,14 @@
 			</div>
 		</div>
 	</article>
-	<article>
-		<%= render "partidos/redes_sociales" %>
-	</article>
+
 </section>
 <section class "amigosfacebook wrapper">
 	<div>
 		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
+	</div>
+	<div>
+		<%= render "partidos/redes_sociales" %>
 	</div>
 </section>
 <section class="loginfacebook">
@@ -76,6 +77,7 @@
 	</div>
 
 </section>
+
 <section class="amigosfacebook wrapper amigosfb_padding">
 	<h3>Aqui tus amigos como referencia.</h3>
 	<%= render "invitations/facebook_friends" %>

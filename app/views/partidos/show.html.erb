@@ -29,7 +29,7 @@
 				<div class="horamarcador"><%= @partido.hora_partido %></div>
 				<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
 			</div>
-			<%= render "partidos/redes_sociales" %>
+
 		</section>
 		<% if current_user %>
 		<section id="apuesta">
@@ -84,7 +84,10 @@
 								<%= number_with_precision(20000, precision: 0)%>
 							</span>
 						</p>
-						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%> 
+						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%>			
+						<div>
+							<%= render "partidos/redes_sociales" %>
+						</div>
 						<%end %>
 						<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
 					</article>

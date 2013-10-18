@@ -5,33 +5,38 @@
   </div>
   <% end %>
 
-<section id="partidos">
-  <header >
-    <h2 class="titulosseccion">PARTIDOS</h2>
-  </header> 
+  <section id="partidos">
+    <header >
+      <h2 class="titulosseccion">PARTIDOS</h2>
+    </header> 
     <%@partidos.each do |partido| %>
-      <a href=<%= partido_path(partido)%>> 
-        <article class="cajamarcador">
-          <div class="marcadorCentrado">
-            <div class="escudoequipo">
-              <%= image_tag partido.logolocal %>
-              <h3> <%= partido.local %></h3>
-            </div>
-            <div class="datospartido">
-              <div class="Liga"><%= partido.nombre_torneo %></div>
-              <div class="vs">VS</div>
-              <div class="hora"><%= partido.hora_partido %></div>
-              <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
-            </div>
-            <div class="escudoequipo">
-              <%= image_tag partido.logovisitante %>
-              <h3> <%= partido.visitante %></h3>
-            </div>
+    <a href=<%= partido_path(partido)%>> 
+      <article class="cajamarcador">
+        <div class="marcadorCentrado">
+          <div class="escudoequipo">
+            <%= image_tag partido.logolocal %>
+            <h3> <%= partido.local %></h3>
           </div>
-          <div class="botcontinuar"></div>
-        </article>
-      </a>
-  <%end %>
-</section>
+          <div class="datospartido">
+            <div class="Liga"><%= partido.nombre_torneo %></div>
+            <div class="vs">VS</div>
+            <div class="hora"><%= partido.hora_partido %></div>
+            <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
+          </div>
+          <div class="escudoequipo">
+            <%= image_tag partido.logovisitante %>
+            <h3> <%= partido.visitante %></h3>
+          </div>
+        </div>
+        <div class="botcontinuar"></div>
+        <% if current_user.administrator %>
+        <%= link_to "Editar", edit_partido_path(partido), :class =>"btn" %>
+        <%= button_to "Eliminar", partido, :method=>:delete, :class => "btn btn-danger" %>
+        <% end %>
+      </article>
+    </a>
+
+    <%end %>
+  </section>
 
   
