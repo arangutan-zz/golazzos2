@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	$(".marcadoruser1").on("change",function(){
 		var local = $(".marcadorlocal").val();
 		var visitante = $(".marcadorvisitante").val();
@@ -32,6 +31,6 @@ $(document).ready(function(){
 	});
 
 	$("input[name=dinero]").on("click", function(){
-  	 alert("Todavia no hemos lanzado la version paga de Golazzos. PROXIMAMENTE. :)");
-  });
+		alert("Todavia no hemos lanzado la version paga de Golazzos. PROXIMAMENTE. :)");
+	});
 });
