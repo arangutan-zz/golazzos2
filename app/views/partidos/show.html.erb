@@ -29,6 +29,7 @@
 				<div class="horamarcador"><%= @partido.hora_partido %></div>
 				<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
 			</div>
+			<%= render "partidos/redes_sociales" %>
 		</section>
 		<% if current_user %>
 		<section id="apuesta">

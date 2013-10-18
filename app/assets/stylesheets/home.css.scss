@@ -334,9 +334,11 @@ nav ul li a:hover{
 	height:auto;
 
 }
-.escudoequipo h3{
-	margin:4px;
-}	
+.escudoequipo h3 {
+	margin: 4px;
+	line-height: 15px;
+	font-size: 12px;
+}
 .datospartido{
 	width:110px;
 	float:left;
@@ -425,9 +427,27 @@ nav ul li a:hover{
 .emailcontacto{
 	text-align: center;
 }
+
+
+.wrap-social{
+	text-align: center;
+}
+.twitter-follow-button{
+	vertical-align:top
+}
+.twitter-follow{
+	display: inline-block;
+	vertical-align:top
+}
+.fb-like{
+	display: inline-block;
+	vertical-align:top
+}
+
+
 .fb-like span, .fb-like iframe { 
 	height:25px !important; 
-	width:150px !important;
+	width:110px !important;
 }
 
 
