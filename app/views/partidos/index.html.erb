@@ -29,10 +29,12 @@
           </div>
         </div>
         <div class="botcontinuar"></div>
-        <% if current_user.administrator %>
-        <%= link_to "Editar", edit_partido_path(partido), :class =>"btn" %>
-        <%= button_to "Eliminar", partido, :method=>:delete, :class => "btn btn-danger" %>
-        <% end %>
+        <div>
+          <% if current_user && current_user.administrator %>
+          <%= link_to "Editar", edit_partido_path(partido), :class =>"btn" %>
+          <%= button_to "Eliminar", partido, :method=>:delete, :class => "btn btn-danger" %>
+          <% end %>
+        </div>
       </article>
     </a>
 
