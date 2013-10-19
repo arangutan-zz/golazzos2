@@ -11,6 +11,10 @@ resources :partidos do
   resources :bets
 end
 
+  get "home/reglamento"
+  get "home/contacto"
+  get "home/privacidad"
+
 #---------------------------------------------------------------------
 #-----------GOLAZZOS 1.0
   get "activities/index"
@@ -33,8 +37,7 @@ end
   resources :activities
   
   get "home/index2"
-  get "home/reglamento"
-  get "home/contacto"
+
 #
   get "home/invitacion"
   post "home/inivitacion"

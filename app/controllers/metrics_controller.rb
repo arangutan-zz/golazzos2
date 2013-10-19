@@ -9,7 +9,7 @@ class MetricsController < ApplicationController
   end
   
   def emails
-		@users = User.all
+		#@users = User.all
   end
   
   def estampas
