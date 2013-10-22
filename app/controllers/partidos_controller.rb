@@ -19,20 +19,30 @@ class PartidosController < ApplicationController
   def show
   	@partido = Partido.includes(:bets).find(params[:id])
 
+
+    #--REDIRECCIONAMIENTO BEGINS----
     #redirecciona al ESTADIO si el partido ya esta cerrado
     if @partido.cerrado
-      redirect_to estadio_partido_path(@partido)
+      redirect_to estadio_partido_path @partido 
+      return
+    #-- Si el Usuario ya aposto en el partido, ir al estadio directamente
+    elsif current_user.partidos.include?(@partido) and params[:ir_estadio]
+      redirect_to estadio_partido_path @partido
       return
     end
+    #--REDIRECCIONAMIENTO ENDS----
 
-    if params[:betid] && params[:userid]
+    #-- PARAMS del RETO BEGINS --
+    if params[:betid] and params[:userid]
       @bet = Bet.find(params[:betid])
       @user = User.find(params[:userid])
       if current_user
         frien = Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id)
         if !frien.empty? || (@user.id == current_user.id)
             #la amistad ya existe!!!
-            flash[:notice]= "la amistad ya existe!"
+            current_user.consignar_pezzos(25000)
+            @user.consignar_pezzos(25000)
+            flash[:notice]= "la amistad ya existe! Se les consignaron $25,000 pezzos en sus cuentas por retarse!"
         else
             @friendship = current_user.friendships.build( friend_id: @user.id)
             @friendshipDos = @user.friendships.build(friend_id: current_user.id)
@@ -45,7 +55,9 @@ class PartidosController < ApplicationController
             end
         end
       end
+
     end
+    #-- PARAMS del RETO ENDS --
 
     respond_to do |format|
       format.html # show.html.erb

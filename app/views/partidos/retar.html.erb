@@ -43,17 +43,23 @@
 
 </section>
 <section class "amigosfacebook wrapper">
-	<div>
-		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
-	</div>
+	
 	<div>
 		<%= render "partidos/redes_sociales" %>
 	</div>
 </section>
 <section class="loginfacebook">
+	<div>
+		<h2 class="titulosseccion"> Reta a tus amigos</h2>
+	</div>
 	<div class="terminosycondiciones">
 		<h3>+ Amigos Retes + Puede Subir Tu Retorno</h3>
-		<h3>Para retar a tus amigos acepta los terminos y condiciónes: <br> <input type="checkbox" value="0" name="agree"> <%= link_to "Terminos y Condiciones", "#", {:class => "linkreglasGolazzos"} %>
+		<h3>
+			Los RETOS aceptados dan Pezzo$ para ambos: <br>
+			-Primer RETO a nuevo amigo: $50,000 Pezzos <br>
+			-RETO a amistades existentes: $25,000 Pezzos.
+		</h3>
+		<h3><input type="checkbox" value="0" name="agree"> Para retar a tus amigos acepta los <%= link_to "Terminos y Condiciones", "#", {:class => "linkreglasGolazzos"} %>
 		</h3>
 		<div class ="reglasGolazzos">
 			<h3>Terminos y Condiciónes </h3>
@@ -68,17 +74,20 @@
 			</p>
 		</div>
 	</div>
+	
 	<div class="botonfacebook">
 		<h3>+ Amigos Retes + Puede Subir Tu Retorno</h3>
 		<h3>Haz click en el boton de "ENVIAR" para RETAR:</h3>
 		<!--  <div class="fb-send" data-href=<%= @linkinvitation %>></div> -->
-		
 		<fb:send href=<%= @linkinvitation %> colorscheme="light"></fb:send>
 	</div>
 
 </section>
 
 <section class="amigosfacebook wrapper amigosfb_padding">
+	<div>
+		<%= link_to "Continuar al Estadio", estadio_partido_path(@partido), {:class => "botpezzos"} %>
+	</div>
 	<h3>Aqui tus amigos como referencia.</h3>
 	<%= render "invitations/facebook_friends" %>
 </section>

@@ -10,7 +10,7 @@
       <h2 class="titulosseccion">PARTIDOS</h2>
     </header> 
     <%@partidos.each do |partido| %>
-    <a href=<%= partido_path(partido)%>> 
+    <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>> 
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">

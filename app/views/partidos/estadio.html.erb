@@ -46,7 +46,7 @@
 </div>
 <div>
 	<%= link_to "Jugar otra vez", partido_path(@partido), {:class => "botpezzos"} %>
-	<%= link_to "Retar amigos", retar_partido_path(@partido), {:class => "botpezzos"} %>
+	<%= link_to "Retar amigos", retar_partido_path(@partido, params:{betid: @bet.id}), {:class => "botpezzos"} %>
 </div>
 
 <section class="estadisticas clear">
@@ -123,9 +123,7 @@
 
 
   <script type="text/javascript">
-
       $('.fb-comments').attr('data-href',window.location.href);
-  
   </script>
 
    <div id="fb-root"></div>
