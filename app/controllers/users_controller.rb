@@ -40,8 +40,8 @@ class UsersController < ApplicationController
     @bets = Bet.limit(10).find(:all, conditions: { user_id: current_user.following_ids}, order: "created_at DESC")
     @ranking =@user.following
     @ranking.push(@user)
-    @friends = @ranking.sort_by! {|u| u.pezzos_acumulados}
-
+    #@friends = @ranking.sort_by! {|u| u.pezzos_acumulados}
+    @friends = @ranking.sort { |x,y| y.pezzos_acumulados <=> x.pezzos_acumulados }
   end
 
   def update

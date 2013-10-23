@@ -218,7 +218,8 @@
             <tbody>
 
              <% @friends.each_with_index  do |friend, i| %>
-             <tr>
+             <tr class=<%= "grismio" if friend.id == @user.id %>>
+
                 <td>
                     <%= i +1 %>
                 </td>
