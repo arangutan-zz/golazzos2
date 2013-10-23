@@ -26,7 +26,7 @@ class PartidosController < ApplicationController
       redirect_to estadio_partido_path @partido 
       return
     #-- Si el Usuario ya aposto en el partido, ir al estadio directamente
-    elsif current_user.partidos.include?(@partido) and params[:ir_estadio]
+    elsif current_user and current_user.partidos.include?(@partido) and params[:ir_estadio]
       redirect_to estadio_partido_path @partido
       return
     end
