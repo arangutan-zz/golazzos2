@@ -30,7 +30,8 @@ class PartidosController < ApplicationController
       redirect_to estadio_partido_path @partido
       return
     elsif current_user and !current_user.partidos.include?(@partido) and @partido.cerrado
-        redirect_to resultado_partido_path @partido
+      redirect_to resultado_partido_path @partido
+      return
     end
     #--REDIRECCIONAMIENTO ENDS----
 
