@@ -219,19 +219,7 @@
              <% @friends.each  do |friend| %>
              <tr>
                  <td>
-                     <div class="boxuser">
-                        <div class="fotoestado">
-                            <div class="apuestacolor"></div>
-                            <div class="fotperfil">
-                                <%=image_tag current_user.facebook.get_picture(friend.uid)%>
-                            </div>
-                        </div>
-                        <div class="textosperfil">
-                            <div class="nombreamigo">
-                                <%=link_to friend.name, user_path(friend) %>
-                            </div>
-                        </div>
-                    </div>
+                    <%=link_to friend.name, user_path(friend) %>
                 </td>
                 <td>
                     <%= friend.pezzos_acumulados %>
