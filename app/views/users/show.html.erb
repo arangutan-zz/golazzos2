@@ -207,6 +207,7 @@
         <table class="table tablapartidos">
             <thead>
                 <tr>
+                    <th></th>
                     <th><small>Amigo</small></th>
                     <th><small>$ ganados</small></th>
                     <th><small> Ganados</small></th>
@@ -216,8 +217,11 @@
             </thead>
             <tbody>
 
-             <% @friends.each  do |friend| %>
+             <% @friends.each_with_index  do |friend, i| %>
              <tr>
+                <td>
+                    <%= i +1 %>
+                </td>
                  <td>
                     <%=link_to friend.name, user_path(friend) %>
                 </td>
