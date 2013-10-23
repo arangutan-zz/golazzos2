@@ -11,7 +11,7 @@
         <div class="nombreperfil"><%= @user.name %> </div>
         <div class="boxpezzos">
             <div class="topicpezzos">Pezzos</div>
-            <div class="cantidadpezzos"><%= @user.pezzos %></div>
+            <div class="cantidadpezzos"><%= number_to_currency @user.pezzos,  precision:0%></div>
         </div>
         <div class="boxdinero">
             <div class="topicdinero">Dinero</div>
@@ -21,7 +21,7 @@
 
             <div class="logrosuser">
                 <div class="nombrelogro" id="puntos">$ Ganados</div>
-                <div class="numerologro"><%= @user.pezzos_acumulados %></div>
+                <div class="numerologro"><%=number_to_currency @user.pezzos_acumulados,  precision:0%></div>
             </div>
             <div class="logrosuser">
                 <div class="nombrelogro" id="ganados">Ganados</div>
@@ -73,10 +73,10 @@
 
                             <%if bet.pezzos_ganados.to_i > 0 %>
                             Gano
-                            <strong class="pezzares"><%= bet.pezzos_ganados %>.</strong>
+                            <strong class="pezzares"><%= number_to_currency bet.pezzos_ganados, precision:0 %>.</strong>
                             <%= current_user.frase_de_ganador %>
                             <%else %>
-                            Perdio. <%= current_user.frase_de_perdedor %>
+                            Perdiste. <%= current_user.frase_de_perdedor %>
                             <% end %>
                         </div>
                     </div>
