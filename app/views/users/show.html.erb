@@ -101,99 +101,103 @@
                     <div class="hora"><%= partido.hora_partido %></div>
                     <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
                     <div>
-                        <%= link_to "Ir al Estadio", estadio_partido_path(partido) %>
-                    </div>
-                </div>
-                <div class="escudoequipo">
-                    <%= image_tag partido.logovisitante %>
-                    <h3> <%= partido.visitante %></h3>
-                </div>
+                     <% if partido.terminado %>
+                     <%= link_to "Ir al Resultado", resultado_partido_path(partido) %>
+                     <%else %>
+                     <%= link_to "Ir al Estadio", estadio_partido_path(partido) %>
+                     <%end %>
+                 </div>
+             </div>
+             <div class="escudoequipo">
+                <%= image_tag partido.logovisitante %>
+                <h3> <%= partido.visitante %></h3>
             </div>
-        </article>
-        <div>
-
         </div>
-    </div>
+    </article>
     <div>
 
-       <table class="table tablapartidos"> 
-          <thead>
-            <tr>
-              <th><small>Marcador</small></th>
-              <th><small>Apuesta</small></th>
-              <th>
-                <small> 
-                    <% if partido.cerrado %>
-                    <div class="MiApuestaRetornoFinal"> Retorno Garantizado</div>
-                    <% else %>
-                    <div class="MiApuestaRetornoEstimado">Retorno Esperado</div>
+    </div>
+</div>
+<div>
 
-                    <% end %>
-                </small>
-            </th>
-            <th><small>Retorno Final</small></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <%@user.bets.where("partido_id = ?", partido.id).each do |bet|%>
+   <table class="table tablapartidos"> 
+      <thead>
         <tr>
-            <td><%= "#{bet.golesLocal} - #{bet.golesVisitante}" %></td>
-            <td><%= number_to_currency bet.monto, precision: 0%></td>
-            <% if bet.partido.cerrado %>
-            <td>
-                <div class="MiApuestaRetornoFinal">
-                    <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
-                </div>
-            </td>
-            <td>
-                Por Jugar
-            </td>
-            <td>
-            </td>
-            <%  elsif bet.partido.repartido == false %>
-            <td>
-                <div class="MiApuestaRetornoEstimado">
-                    <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
-                </div>
-            </td>
-            <td>
-                Por Jugar
-            </td>
-            <td>
-            </td>
-            <% elsif bet.pezzos_ganados ==nil %>
-            <td> 
-                <div class="MiApuestaRetornoFinal">
-                    <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision:0 %> 
-                </div>
-            </td>
-            <td>
-                <div class="MiApuestaPerdi">
-                    <%=number_to_currency bet.monto * -1, precision: 0%>
-                </div>
-            </td>
-            <td>
-                <%= image_tag "golazzos2/triste.png", alt:"triste" %>
-            </td>
-            <% elsif %>
-            <td>
-                <div class="MiApuestaRetornoFinal">
-                    <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
-                </div>
-            </td>
-            <td>
-                <div class="MiApuestaGane">
-                    <%= number_to_currency bet.pezzos_ganados, precision: 0 %>
-                </div>
-            </td>
-            <td>
-               <%= image_tag "golazzos2/feliz.png", alt: "feliz" %>
-           </td>
-           <% end %>
-       </tr>
-       <%end  %>
-   </tbody>
+          <th><small>Marcador</small></th>
+          <th><small>Apuesta</small></th>
+          <th>
+            <small> 
+                <% if partido.cerrado %>
+                <div class="MiApuestaRetornoFinal"> Retorno Garantizado</div>
+                <% else %>
+                <div class="MiApuestaRetornoEstimado">Retorno Esperado</div>
+
+                <% end %>
+            </small>
+        </th>
+        <th><small>Retorno Final</small></th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    <%@user.bets.where("partido_id = ?", partido.id).each do |bet|%>
+    <tr>
+        <td><%= "#{bet.golesLocal} - #{bet.golesVisitante}" %></td>
+        <td><%= number_to_currency bet.monto, precision: 0%></td>
+        <% if bet.partido.cerrado %>
+        <td>
+            <div class="MiApuestaRetornoFinal">
+                <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
+            </div>
+        </td>
+        <td>
+            Por Jugar
+        </td>
+        <td>
+        </td>
+        <%  elsif bet.partido.repartido == false %>
+        <td>
+            <div class="MiApuestaRetornoEstimado">
+                <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
+            </div>
+        </td>
+        <td>
+            Por Jugar
+        </td>
+        <td>
+        </td>
+        <% elsif bet.pezzos_ganados ==nil %>
+        <td> 
+            <div class="MiApuestaRetornoFinal">
+                <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision:0 %> 
+            </div>
+        </td>
+        <td>
+            <div class="MiApuestaPerdi">
+                <%=number_to_currency bet.monto * -1, precision: 0%>
+            </div>
+        </td>
+        <td>
+            <%= image_tag "golazzos2/triste.png", alt:"triste" %>
+        </td>
+        <% elsif %>
+        <td>
+            <div class="MiApuestaRetornoFinal">
+                <%=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0 %> 
+            </div>
+        </td>
+        <td>
+            <div class="MiApuestaGane">
+                <%= number_to_currency bet.pezzos_ganados, precision: 0 %>
+            </div>
+        </td>
+        <td>
+           <%= image_tag "golazzos2/feliz.png", alt: "feliz" %>
+       </td>
+       <% end %>
+   </tr>
+   <%end  %>
+</tbody>
 </table>
 </div>
 </section>
@@ -222,8 +226,17 @@
 
                 <td>
                     <%= i +1 %>
+                    <%case i %>
+                    <% when 0 %>
+                    <div class="oro"></div>
+                    <% when 1%>
+                    <div class="plata"></div>
+                    <% when 2 %>
+                    <div class="bronce"></div>
+                    <%end  %>
+                    
                 </td>
-                 <td>
+                <td>
                     <%=link_to friend.name, user_path(friend) %>
                 </td>
                 <td>
