@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     #@friends= @user.following
 
 
-    @partidos = @user.partidos
+    @partidos = @user.partidos.order("diapartido DESC")
     @bets = Bet.limit(10).find(:all, conditions: { user_id: current_user.following_ids}, order: "created_at DESC")
     @ranking =@user.following
     @ranking.push(@user)
