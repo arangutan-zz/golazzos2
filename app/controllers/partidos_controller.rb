@@ -39,7 +39,7 @@ class PartidosController < ApplicationController
     if params[:betid] and params[:userid]
       @bet = Bet.find(params[:betid])
       @user = User.find(params[:userid])
-      if current_user
+      if current_user and current_user != @user
         frien = Friendship.where("friend_id = ? AND user_id = ?", @user.id, current_user.id)
         if !frien.empty? || (@user.id == current_user.id)
             #la amistad ya existe!!!

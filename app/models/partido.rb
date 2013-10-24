@@ -25,7 +25,7 @@ class Partido < ActiveRecord::Base
     when 4
       "Liga Postobon"
     when 5
-      "Liga BBVA"
+      "Liga Española"
     when 6
       "Premier League"
     when 7
