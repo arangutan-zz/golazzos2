@@ -21,19 +21,20 @@
 			<header>
 				<h2 class="titulosseccion">MI APUESTA</h2>
 			</header>
-			<div class="datosmarcador">
-				<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
-				<div class="equipo2"> <%= @partido.local %></div>
-				<div class="vsmarcador">VS</div>
-				<div class="equipo2"> <%= @partido.visitante %></div>
-				<div class="horamarcador"><%= @partido.hora_partido %></div>
-				<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
-			</div>
+
 
 		</section>
 		<% if current_user %>
 		<section id="apuesta">
 			<article id="miapuesta">
+				<div class="datosmarcador">
+					<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
+					<div class="equipo2"> <%= @partido.local %></div>
+					<div class="vsmarcador">VS</div>
+					<div class="equipo2"> <%= @partido.visitante %></div>
+					<div class="horamarcador"><%= @partido.hora_partido %></div>
+					<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+				</div>
 				<%= form_for([@partido, @partido.bets.build]) do |f| %>
 				<%= f.hidden_field :user_id, value: current_user.id%>
 				<div class="contenedorentrada">
@@ -118,23 +119,24 @@
 					</article>
 				</section>
 				<%else %>
-				<div class="contenedorentrada">
-					<div class="equipin">
-						<div class="imgequipo1">
+				<article class="cajamarcadorApuesta">
+					<div class="marcadorCentrado">
+						<div class="escudoequipo">
 							<%= image_tag @partido.logolocal %>
+							<h3> <%= @partido.local %></h3>
 						</div>
-						<div class="divmarcador">
+						<div class="datospartido">
+							<div class="Liga"><%= @partido.nombre_torneo %></div>
+							<div class="vs">VS</div>
+							<div class="hora"><%= @partido.hora_partido %></div>
+							<div class="pjugando"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
 						</div>
-					</div>
-					<div class="equipin">
-						<div class="divmarcador">
-						</div>
-						<div class="imgequipo2">
+						<div class="escudoequipo">
 							<%= image_tag @partido.logovisitante %>
-						</div> 
-						<div class="clear"></div> 
+							<h3> <%= @partido.visitante %></h3>
+						</div>
 					</div>
-				</div>
+				</article>
 				<section class="loginfacebook">
 					<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
 					<%= link_to "Reta a tus amigos", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
