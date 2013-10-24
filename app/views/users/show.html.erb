@@ -1,3 +1,4 @@
+
 <section class="cperfil">
     <div class="modulo1">
         <div class="fotoperfil">
@@ -52,7 +53,9 @@
                             <%=image_tag current_user.facebook.get_picture(bet.user.uid)%>
                         </div>
                         <div class="estado">
-                            <%if bet.pezzos_ganados.to_i > 0 %>
+                            <% if !bet.partido.terminado%>
+                            <!-- No se agrega ninguna carita. -->
+                            <%elsif bet.pezzos_ganados.to_i > 0 %>
                             <%= image_tag "golazzos2/feliz.png", alt:"ok" %>
                             <%else %>
                             <%= image_tag "golazzos2/triste.png", alt:"ok" %>
@@ -65,19 +68,41 @@
                             <%=link_to bet.user.name, user_path(bet.user) %>
                         </div>
                         <div class="textopublicacion" >
-                            Jugo 
-                            <strong class="pezzares"><%=number_to_currency bet.monto, precision:0%> pezzos</strong> 
-                            al 
-                            <strong class="pezzares"><%= bet.golesLocal%> - <%= bet.golesVisitante %></strong> 
-                            <%= bet.partido.nombre_del_equipo_que_va_a_ganar_la_apuesta(bet) %>.
+                            Jugó
+                            <strong class="pezzares">
+                            <%=number_to_currency bet.monto, precision:0%>   
+                            </strong>
+                            pezzos a
+                            <strong class="pezzares">
+                            <%= link_to "#{bet.partido.local} #{bet.golesLocal} - #{bet.golesVisitante} #{bet.partido.visitante}", bet.partido %>
+                            .
+                            </strong>
 
-                            <%if bet.pezzos_ganados.to_i > 0 %>
-                            Gano
-                            <strong class="pezzares"><%= number_to_currency bet.pezzos_ganados, precision:0 %>.</strong>
-                            <%= current_user.frase_de_ganador %>
+                            <!-- EL PARTIDO NO A EMPEZADO -->
+                            <%if !bet.partido.cerrado %>
+                            ¡Apuesta y reta a tus amigos!
+                            <%= link_to "ir al partido.", bet.partido %>
+
+                            <!-- EL PARTIDO YA EMPEZO Y NO A TERMINADO -->
+                            <%elsif !bet.partido.terminado %>
+                            ¡El partido ya empezo, no se aceptan mas apuestas!
+
+                            <!-- GANO LA APUESTA -->
+                            <%elsif bet.pezzos_ganados.to_i >0  %>
+                                    Gano
+                                    <strong class="pezzares">
+                                    <%= number_to_currency bet.pezzos_ganados, precision:0 %>
+                                    </strong>
+                                    . <%= current_user.frase_de_ganador %>
+                                    
+                            <!-- PERDIO LA APUESTA -->
                             <%else %>
-                            Perdiste. <%= current_user.frase_de_perdedor %>
-                            <% end %>
+                                    Perdio
+                                    <strong class="pezzares">
+                                    <%= number_to_currency bet.pezzos_ganados, precision:0 %>
+                                    </strong>
+                                    . <%= current_user.frase_de_perdedor %>
+                            <%end %>
                         </div>
                     </div>
                 </div>
@@ -89,7 +114,7 @@
         <%@partidos.each do |partido| %>
         <section>  
             <div class="MiApuesta">
-              <article class="cajamarcador">
+              <article class="cajamarcadorDos">
                 <div class="marcadorCentrado">
                   <div class="escudoequipo">
                     <%= image_tag partido.logolocal %>
@@ -260,21 +285,21 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-  <div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
+    <div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
 
 
-  <style type="text/css">
-  .fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
-    width: 100% !important;
-  }
-  </style>
+    <style type="text/css">
+    .fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
+        width: 100% !important;
+    }
+    </style>
 
 
-  <script type="text/javascript">
-      $('.fb-comments').attr('data-href',window.location.href);
-  </script>
+    <script type="text/javascript">
+    $('.fb-comments').attr('data-href',window.location.href);
+    </script>
 
-   <div id="fb-root"></div>
+    <div id="fb-root"></div>
 </section>
 </div>
 </div>

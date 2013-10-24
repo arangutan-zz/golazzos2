@@ -118,8 +118,24 @@
 					</article>
 				</section>
 				<%else %>
+				<div class="contenedorentrada">
+					<div class="equipin">
+						<div class="imgequipo1">
+							<%= image_tag @partido.logolocal %>
+						</div>
+						<div class="divmarcador">
+						</div>
+					</div>
+					<div class="equipin">
+						<div class="divmarcador">
+						</div>
+						<div class="imgequipo2">
+							<%= image_tag @partido.logovisitante %>
+						</div> 
+						<div class="clear"></div> 
+					</div>
+				</div>
 				<section class="loginfacebook">
-
 					<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
 					<%= link_to "Reta a tus amigos", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
 				</section>
