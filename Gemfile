@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'rake', '0.9.6'
+#gem 'rake', '0.9.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -29,7 +29,8 @@ gem 'jquery-rails'
 
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails",'2.1.7'
+
 gem 'omniauth-facebook', '1.3.0'
 gem 'omniauth', '1.1.1'
 gem "fb_graph"
