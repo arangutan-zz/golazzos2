@@ -44,7 +44,8 @@ class UsersController < ApplicationController
       @followings = @followings.uniq
     end
 
-    @bets = Bet.limit(10).find(:all, conditions: { user_id: @followings}, order: "created_at DESC")
+    #@bets = Bet.limit(10).find(:all, conditions: { user_id: @followings}, order: "created_at DESC")
+    @bets = Bet.limit(10).where(user_id:@followings).order("created_at DESC")
     @ranking =@user.following
     @ranking.push(@user)
     #@friends = @ranking.sort_by! {|u| u.pezzos_acumulados}

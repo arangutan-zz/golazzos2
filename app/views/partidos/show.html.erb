@@ -45,25 +45,25 @@
 						</div>
 						<div class="divmarcador">
 							<%= f.number_field :golesLocal, {
-								:value => "0",
-								:max=>"10" ,
-								:min=>"0" ,
-								:placeholder=>"0",
-								:size=>"10px", 
-								:class=>"marcadoruser1 marcadorlocal",  
-								:align=>"middle"}  %>
+								:value       => "0",
+								:max         =>"10" ,
+								:min         =>"0" ,
+								:placeholder =>"0",
+								:size        =>"10px", 
+								:class       =>"marcadoruser1 marcadorlocal",  
+								:align       =>"middle"}  %>
 							</div>
 						</div>
 						<div class="equipin">
 							<div class="divmarcador">
 								<%= f.number_field :golesVisitante, {
-									:value => "0",
-									:max=>"10" ,
-									:min=>"0" ,
-									:placeholder=>"0",
-									:size=>"10px", 
-									:class=>"marcadoruser1 marcadorvisitante",  
-									:align=>"middle"}%>
+									:value       => "0",
+									:max         =>"10" ,
+									:min         =>"0" ,
+									:placeholder =>"0",
+									:size        =>"10px", 
+									:class       =>"marcadoruser1 marcadorvisitante",  
+									:align       =>"middle"}%>
 								</div>
 								<div class="imgequipo2">
 									<%= image_tag @partido.logovisitante %>
@@ -76,12 +76,12 @@
 						</div>
 						<p class="retornoesperado">
 							Retorno Estimado: 
-							<span class="cifrasapuestas">
+							<span class="cifrasapuestas" id="retornoEstimado">
 								<%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%>
 							</span>
 							<br>
 							Retorno Minimo Garantizado:
-							<span class="cifrasapuestas" id="cifrasapuestasminimo">
+							<span class="cifrasapuestas" id="retornoMinimoGarantizado">
 								<%= number_with_precision(20000, precision: 0)%>
 							</span>
 						</p>

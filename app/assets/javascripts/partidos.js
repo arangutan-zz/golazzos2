@@ -6,7 +6,8 @@ $(document).ready(function(){
 
 		var veces = $(".local"+local+"visitante"+visitante).data(monto);
 		
-		$(".cifrasapuestas").text(veces *monto);
+		$("#retornoEstimado").text(veces *monto);
+		$("#retornoMinimoGarantizado").text(monto *2);
 
 	});
 	$("#bet_monto").on("change",function(){
@@ -16,8 +17,8 @@ $(document).ready(function(){
 
 		var veces = $(".local"+local+"visitante"+visitante).data(monto);
 
-		$(".cifrasapuestas").text(veces * monto);
-		$("#cifrasapuestasminimo").text(monto *2);
+		$("#retornoEstimado").text(veces * monto);
+		$("#retornoMinimoGarantizado").text(monto *2);
 
 	});
 	$(".linkreglasGolazzos").on("click", function(event){

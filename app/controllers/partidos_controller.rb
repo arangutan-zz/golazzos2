@@ -92,7 +92,8 @@ class PartidosController < ApplicationController
     end
 
     @bet= current_user.bets.order("created_at DESC").find_by_partido_id(@partido.id)
-    @bets = Bet.find(:all, conditions:{ partido_id:@partido.id, user_id:current_user.following_ids})
+    #@bets = Bet.find(:all, conditions:{ partido_id:@partido.id, user_id:current_user.following_ids})
+    @bets = Bet.where(partido_id: @partido.id, user_id: current_user.following_ids)
     @friends_in_bet = @bets.uniq {|x| x.user_id}
     @friends = current_user.following
   end
@@ -111,8 +112,12 @@ class PartidosController < ApplicationController
     end
       
     @bet = current_user.bets.order("created_at DESC").find_by_partido_id(@partido.id)
-    @bets = Bet.find(:all, conditions: { partido_id: @partido.id, user_id: current_user.following_ids})
-    @friends = current_user.following
+    #@bets = Bet.find(:all, conditions: { partido_id: @partido.id, user_id: current_user.following_ids})
+    @bets = Bet.where(partido_id: @partido.id, user_id: current_user.following_ids)
+    
+    #@friends = current_user.following
+    @friends = User.joins(:partidos).where(partidos: {id: @partido.id}, 
+                                              users: {id: current_user.following_ids})
   end
 
 
