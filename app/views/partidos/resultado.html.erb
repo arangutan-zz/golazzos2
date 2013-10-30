@@ -44,9 +44,13 @@
 <div>
 	<%= render "partidos/redes_sociales" %>
 </div>
-<hr>
 <section id="resultadoDeAmigos">
-	<%@friends.each_with_index do |friend, i| %>
+	<div class="MiApuesta">
+		<h3>
+			Actividades
+		</h3>
+	</div>
+		<%@friends.each_with_index do |friend, i| %>
 	<div class="boxuser">
 
 		<%case i %>
@@ -84,6 +88,9 @@
 		</div>
 	</div>
 	<% end %>
+	<%if @friends.empty?%>
+		<p>Ningun amigo tuyo jugó. No se te olvide retarlos en el proximo partido. <%= link_to "Ver mas Partidos", partidos_path%></p>
+	<%end%>
 
 	<br>
 
