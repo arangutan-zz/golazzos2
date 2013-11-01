@@ -31,6 +31,8 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails",'2.1.7'
 
+gem 'haml'
+
 gem 'omniauth-facebook', '1.3.0'
 gem 'omniauth', '1.1.1'
 gem "fb_graph"
