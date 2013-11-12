@@ -104,7 +104,7 @@
 	</div>
 	<% end %>
 	<% if @bets.empty? %>
-		<p>Ningun amigo tuyo esta jugando! <%= link_to "Retalos aquí!", retar_partido_path(@partido, params:{betid: @bet.id}) %></p>
+		<p class="wrapper">Ningun amigo tuyo esta jugando! <%= link_to "Retalos aquí!", retar_partido_path(@partido, params:{betid: @bet.id}) %></p>
 	<% end%>
 </section>
 <section>

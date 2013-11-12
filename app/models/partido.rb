@@ -193,6 +193,6 @@ class Partido < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{self.local} vs #{self.visitante}"
+    "#{id}-#{self.local}_vs_#{self.visitante}"
   end 
 end

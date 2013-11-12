@@ -11,3 +11,5 @@ $(document).ready(function(){
 	});
 
 });
+
+$(document).on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() });
