@@ -9,8 +9,12 @@
     <header >
       <h2 class="titulosseccion">PARTIDOS</h2>
     </header> 
+    <div class="MiApuesta opcionesplata">
+            <%= select_tag(:torneo,options_for_select([["Todos los Torneos",0],["Champions League",1],["Eliminatoria Sudamericana",2],["Copa Libertadores",3],["Liga Postobon",4],["Liga Espanola",5],["Premier League", 6],["Liga Mexicana",7],["Liga del Peru",8]]), :id=>"torneoSelector") %>
+    </div>
     <%@partidos.each do |partido| %>
-    <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>> 
+    <div class="partido torneo<%=partido.torneo%>">
+    <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>   > 
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">
@@ -37,7 +41,7 @@
         </div>
       </article>
     </a>
-
+  </div>
     <%end %>
   </section>
 

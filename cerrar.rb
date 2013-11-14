@@ -1,3 +1,10 @@
+
+
+#-----------------------------------
+# COMANDO:   rails runner "cerrado.rb"
+#-----------------------------------
+
+
 @yesterday = Time.now - 1.day
 @partidos = Partido.where("diapartido < ?", @yesterday)
 
