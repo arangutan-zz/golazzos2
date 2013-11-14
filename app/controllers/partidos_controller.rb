@@ -5,7 +5,7 @@ class PartidosController < ApplicationController
   before_filter :require_admin_login , :only => [:new,:edit,:update,:destroy,:create,:repartir]
 
   def index
-  	@hora = Time.now - 1.day
+  	@hora = Time.now.utc - 1.day
   	@partidos = Partido.where("diapartido > ?", @hora ).order("diapartido ASC")
 
   	respond_to do |format|
@@ -18,7 +18,9 @@ class PartidosController < ApplicationController
   # GET /partidos/1.json
   def show
   	@partido = Partido.includes(:bets).find(params[:id])
-
+    #Cerrar el patido automaticamente,
+    @hoy = Time.now.utc-5.hours
+    @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
 
     #--REDIRECCIONAMIENTO BEGINS----
     #redirecciona al ESTADIO si el partido ya esta cerrado
@@ -87,6 +89,9 @@ class PartidosController < ApplicationController
 
   def estadio
     @partido = Partido.find(params[:id])
+        #Cerrar el patido automaticamente,
+    @hoy = Time.now.utc-5.hours
+    @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
 
     #SI el partido ya TERMINO y se REPARTIO la plata. Redireccionar al Resultado
     if @partido.repartido
@@ -95,6 +100,8 @@ class PartidosController < ApplicationController
     end
 
     @bet= current_user.bets.order("created_at DESC").find_by_partido_id(@partido.id)
+    @bet= Bet.first if !@bet
+
     #@bets = Bet.find(:all, conditions:{ partido_id:@partido.id, user_id:current_user.following_ids})
     @bets = Bet.where(partido_id: @partido.id, user_id: current_user.following_ids)
     @friends_in_bet = @bets.uniq {|x| x.user_id}
