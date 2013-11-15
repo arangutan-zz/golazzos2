@@ -32,7 +32,26 @@ class Partido < ActiveRecord::Base
       "Liga Mexicana"
     when 8
       "liga del Peru"
+    when 9
+      "Amistosos"
+    when 10
+      "Repechaje"
     end
+  end
+
+  def self.torneos
+    [
+      ["Champions League",1],
+      ["Eliminatoria Sudamericana",2],
+      ["Copa Libertadores",3],
+      ["Liga Postobon",4],
+      ["Liga Espanola",5],
+      ["Premier League", 6],
+      ["Liga Mexicana",7],
+      ["Liga del Peru",8],
+      ["Amistosos",9],
+      ["Repechaje",10]
+    ]
   end
   
   def hora_partido
