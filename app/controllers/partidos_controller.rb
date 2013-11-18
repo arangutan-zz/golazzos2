@@ -152,7 +152,11 @@ class PartidosController < ApplicationController
 
   # GET /partidos/1/edit
   def edit
-  	@partido = Partido.find(params[:id])
+      @partido = Partido.find(params[:id])
+
+      #Cerrar el patido automaticamente,
+      @hoy = Time.now.utc-5.hours
+      @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
   end
 
   # POST /partidos
