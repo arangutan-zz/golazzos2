@@ -66,6 +66,7 @@
                     <div class="textosperfil">
                         <div class="names">
                             <%=link_to bet.user.name, user_path(bet.user) %>
+                            <small class="timeago"><%=distance_of_time_in_words( bet.created_at, Time.now) %> ago</small>
                         </div>
                         <div class="textopublicacion" >
                             Jugó

@@ -136,9 +136,11 @@ def self.correos_usuarios
 end
 
 def montos_que_puede_apostar
-	monto=10000
+	maxApostable = 100000
+	maxApuestaPersonal = maxApostable > self.pezzos ? self.pezzos : maxApostable 
+	monto= 10000
 	montos =[]
-	while monto <= 100000   #self.pezzos
+	while monto <= maxApuestaPersonal #self.pezzos
 		montos.push(monto)
 		monto+=10000
 	end
@@ -146,7 +148,6 @@ def montos_que_puede_apostar
 end
 
 def frase_de_ganador
-
 	frases=["La sacaste del estadio.",
 		"Anotate un 10.",	
 		"Muy bien, campeon.",
