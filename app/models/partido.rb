@@ -41,6 +41,7 @@ class Partido < ActiveRecord::Base
 
   def self.torneos
     [
+      ["Todos los torneos", 0],
       ["Champions League",1],
       ["Eliminatoria Sudamericana",2],
       ["Copa Libertadores",3],

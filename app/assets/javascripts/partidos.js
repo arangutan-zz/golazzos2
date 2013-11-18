@@ -44,7 +44,7 @@ function verificarMarcadores(){
 		$(".marcadorvisitante").val(0);
 	}
 }
-function compartirEnFacebook(event){
+function compartirEnFacebook(){
 	//event.preventDefault();
 	//$('#myModal').modal();
 }
@@ -63,7 +63,7 @@ $(document).ready(function(){
 					   .on("click", compartirEnFacebook);
 
 	//CATEGORIZAR LOS PARTIDOS POR TORNEOS EN [PARTIDOS]
-	$("#torneoSelector").on("change", categorizarPartidos(e));
+	$("#torneoSelector").on("change", categorizarPartidos);
 
 	//REGLAS DE GOLAZZOS EN EL [RETO]
 	//$(".linkreglasGolazzos").on("click", function(event){
