@@ -35,7 +35,7 @@
 					<div class="horamarcador"><%= @partido.hora_partido %></div>
 					<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
 				</div>
-				<%= form_for([@partido, @partido.bets.build], remote: true) do |f| %>
+				<%= form_for([@partido, @partido.bets.build]) do |f| %>
 				<%= f.hidden_field :user_id, value: current_user.id%>
 				<div class="contenedorentrada">
 					<div class="equipin">

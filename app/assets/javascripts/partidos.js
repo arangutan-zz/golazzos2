@@ -59,8 +59,7 @@ $(document).ready(function(){
 	$(".marcadoruser1").on("change",actualizarRetornos);
 	$("#bet_monto").on("change", actualizarRetornos);
 
-	$("#jugarPezzos").on("click", verificarMarcadores)
-					   .on("click", compartirEnFacebook);
+	$("#jugarPezzos").on("click", verificarMarcadores); //.on("click", compartirEnFacebook);
 
 	//CATEGORIZAR LOS PARTIDOS POR TORNEOS EN [PARTIDOS]
 	$("#torneoSelector").on("change", categorizarPartidos);
