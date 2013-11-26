@@ -43,7 +43,7 @@
           <div class="Liga"><%= partido.nombre_torneo %></div>
           <div class="vs">VS</div>
           <div class="hora"><%= partido.hora_partido %></div>
-          <%if @partido.users.uniq.count >=10%>
+          <%if partido.users.uniq.count >=10%>
             <div class="pjugando2"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
           <%end%>
         </div>
