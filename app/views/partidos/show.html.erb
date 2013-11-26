@@ -33,7 +33,9 @@
 					<div class="vsmarcador">VS</div>
 					<div class="equipo2"> <%= @partido.visitante %></div>
 					<div class="horamarcador"><%= @partido.hora_partido %></div>
-					<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+					<%if @partido.users.uniq.count >=10%>
+						<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+					<%end%>
 				</div>
 				<%= form_for([@partido, @partido.bets.build]) do |f| %>
 				<%= f.hidden_field :user_id, value: current_user.id%>

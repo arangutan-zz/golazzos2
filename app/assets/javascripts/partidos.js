@@ -1,23 +1,7 @@
 //---------------------------------------------------------------------------
 // FUNCIONES
 //---------------------------------------------------------------------------
-function validarApuesta(){
-	var url="/bet_validation/index";
-	var data= "user_id="+$("input#bet_user_id").val() + "?";
 
-
-	$.ajax({
-	  dataType: "json",
-	  url: url,
-	  data: data,
-	  success: function(response){
-	  	console.log(response);
-	  },
-	  beforeSend: function(){
-	  	console.log("enviando: " + data );
-	  }
-	});
-}
 
 
 function actualizarRetornos(){
@@ -81,6 +65,22 @@ function compartirEnFacebook(){
 	});
 
 }
+
+//function validarApuesta(){
+	//var url="/bet_validation/index";
+	//var data= "user_id="+$("input#bet_user_id").val() + "?";
+	//$.ajax({
+	  //dataType: "json",
+	  //url: url,
+	  //data: data,
+	  //success: function(response){
+	  //	console.log(response);
+	  //},
+	  //beforeSend: function(){
+	  //	console.log("enviando: " + data );
+	  //}
+	//});
+//}
 
 //---------------------------------------------------------------------------
 // DOCUMENT READY

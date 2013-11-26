@@ -9,14 +9,7 @@
 		<%= flash[:notice] %>
 	</div>
 	<% end %>
-	<div class="datosmarcador">
-		<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
-		<div class="equipo2"> <%= @partido.local %></div>
-		<div class="vsmarcador">VS</div>
-		<div class="equipo2"> <%= @partido.visitante %></div>
-		<div class="horamarcador"><%= @partido.hora_partido %></div>
-		<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
-	</div>
+	<%=render "datos_marcador"%>
 </section>
 <section>
 	<article id="miapuesta">

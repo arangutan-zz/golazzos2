@@ -8,20 +8,7 @@
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			= flash[:notice]
 
-	.datosmarcador
-		.Ligamarcador
-			=@partido.nombre_torneo
-		.equipo2
-			=@partido.local
-		.vsmarcador
-			VS
-		.equipo2
-			=@partido.visitante
-		.horamarcador
-			=@partido.hora_partido
-		.pjugando2
-			=pluralize( @partido.users.uniq.count, "persona")
-			jugando
+	=render "datos_marcador"
 
 %section 
 	%article#miapuesta
