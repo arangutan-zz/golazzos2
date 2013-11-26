@@ -19,7 +19,7 @@ class BetsController < ApplicationController
 				mensaje= "Acabo de jugar por el marcador: "+@partido.local+" "+ params[:bet][:golesLocal]+" - "+params[:bet][:golesVisitante]+" "+@partido.visitante
 				@user.aumentar_posts()
 				@user.consignar_pezzos(10000)
-				@user.facebook.put_object("me", "feed", :message => mensaje, :picture => 'https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-snc7/578495_319362508165730_718918976_n.jpg', :link => 'http://www.golazzos.com/partidos/#{@partido.id}', :name => 'Golazzos', :description => 'La plataforma de apuestas sociales en Futbol. Reta a tus amigos, apuesta con ellos, y demuestra quien sabe mas de futbol.')
+				@user.facebook.put_object("me", "feed", :message => mensaje, :picture => 'https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-snc7/578495_319362508165730_718918976_n.jpg', :link => 'http://www.golazzos.com', :name => 'Golazzos', :description => 'La plataforma de apuestas sociales en Futbol. Reta a tus amigos, apuesta con ellos, y demuestra quien sabe mas de futbol.')
   				flash[:notice] = "Gracias por postear en tu muro. Tu marcador fue creado correctamente. Recibes 20000 Pezzos por tu actividad."
 			end
 			@bet.create_activity :create, owner: current_user
