@@ -1,21 +1,48 @@
 //---------------------------------------------------------------------------
 // FUNCIONES
 //---------------------------------------------------------------------------
+function validarApuesta(){
+	var url="/bet_validation/index";
+	var data= "user_id="+$("input#bet_user_id").val() + "?";
+
+
+	$.ajax({
+	  dataType: "json",
+	  url: url,
+	  data: data,
+	  success: function(response){
+	  	console.log(response);
+	  },
+	  beforeSend: function(){
+	  	console.log("enviando: " + data );
+	  }
+	});
+}
+
 
 function actualizarRetornos(){
 	var local = +$(".marcadorlocal").val();
 	var visitante = +$(".marcadorvisitante").val();
 	var monto = $("#bet_monto").val();
+	var totalApostado = + $("#bets-info").data("total");
+	var minimoTotal = + $("#bets-info").data("minimototal");
 	var veces = $(".local"+local+"visitante"+visitante).data(monto);
 	var retornoEstimado = veces *monto;
 	var retornoMinimo = monto*2;
-	
-	if (retornoEstimado < retornoMinimo) {
-		retornoEstimado = "por definir";
-	}
 
-	$("#retornoEstimado").text(retornoEstimado);
-	$("#retornoMinimoGarantizado").text(retornoMinimo);
+	if (retornoEstimado < retornoMinimo && totalApostado > minimoTotal) {
+		$("#marcadorAbierto").hide();
+		$("#marcadorBloqueado").show();
+		$("input#jugarPezzos").hide();
+	}
+	else
+	{
+		$("#marcadorBloqueado").hide();
+		$("#marcadorAbierto").show();
+		$("input#jugarPezzos").show();
+		$("#retornoEstimado").text(retornoEstimado);
+		$("#retornoMinimoGarantizado").text(retornoMinimo);
+	}
 }
 
 function categorizarPartidos(){
@@ -45,8 +72,14 @@ function verificarMarcadores(){
 	}
 }
 function compartirEnFacebook(){
-	//event.preventDefault();
-	//$('#myModal').modal();
+	$("form#new_bet").submit(function(){
+		var compartir = confirm("¿Deseas compartir tu apuesta con tus amigos en Facebook? Recibes 20,000 pezzos por compartir.");
+		if(compartir===true)
+		{
+			$("form#new_bet").prepend('<input id="bet_posteo_fb" name="bet[posteo_fb]" type="hidden" value="true">');
+		}
+	});
+
 }
 
 //---------------------------------------------------------------------------
@@ -56,13 +89,14 @@ $(document).ready(function(){
 
 	//ACTUALIZAR RETORNOS EN LA [APUESTA]
 	actualizarRetornos();
-	$(".marcadoruser1").on("change",actualizarRetornos);
-	$("#bet_monto").on("change", actualizarRetornos);
+	$(".marcadoruser1").on("change",actualizarRetornos) //.on("change",validarApuesta);
+	$("#bet_monto").on("change", actualizarRetornos)      //.on("change",validarApuesta);
 
-	$("#jugarPezzos").on("click", verificarMarcadores); //.on("click", compartirEnFacebook);
+	$("#jugarPezzos").on("click", verificarMarcadores).on("click", compartirEnFacebook);
 
 	//CATEGORIZAR LOS PARTIDOS POR TORNEOS EN [PARTIDOS]
 	$("#torneoSelector").on("change", categorizarPartidos);
+
 
 	//REGLAS DE GOLAZZOS EN EL [RETO]
 	//$(".linkreglasGolazzos").on("click", function(event){

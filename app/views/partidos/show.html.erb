@@ -72,7 +72,7 @@
 						<div class="opcionesplata">
 							<%= f.select :monto, current_user.montos_que_puede_apostar%>
 						</div>
-						<p class="retornoesperado">
+						<p class="retornoesperado" id="marcadorAbierto">
 							Retorno Estimado: 
 							<span class="cifrasapuestas" id="retornoEstimado">
 								<!-- JAVASCRIPT partidos.js -->
@@ -81,6 +81,11 @@
 							Retorno Minimo Garantizado:
 							<span class="cifrasapuestas" id="retornoMinimoGarantizado">
 								<!-- JAVASCRIPT partidos.js -->
+							</span>
+						</p>
+						<p class="retornoesperado" id="marcadorBloqueado">
+							<span class="cifrasapuestas">
+								¡Marcador bloqueado temporalmente!
 							</span>
 						</p>
 						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos", :id => "jugarPezzos"}%>			
@@ -97,7 +102,7 @@
 							<a href="partidos.html">jugar solo</a>
 						</div>
 					</article>
-					<article>
+					<article id="bets-info" data-total=<%=@partido.monto_total_apostado%> data-minimototal=<%=Partido.minimo_total%>>
 						<% for i in 0..10 %>
 						<% for j in 0..10 %>
 						<div class=<%= "local#{i}visitante#{j}"%> 

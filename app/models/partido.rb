@@ -69,7 +69,9 @@ class Partido < ActiveRecord::Base
     return self.apuestas_en_el_resultado(local,visitante).sum(:monto).to_f
   end
 
-
+  def self.minimo_total
+    500000
+  end
 
 
   def porcentaje_en_el_resultado(local, visitante, monto_futuro=0)
@@ -102,7 +104,16 @@ class Partido < ActiveRecord::Base
     return self.bets.sum(:monto)
   end
 
+def puedo_apostar_en_el_marcador?(local, visitante, monto_futuro=0)
 
+    if self.monto_total_apostado<= Partido.minimo_total
+      true
+    elsif xveces_el_resultado(local, visitante, monto_futuro)>= 2
+      true
+    else
+      false
+    end
+end
 
 
 
