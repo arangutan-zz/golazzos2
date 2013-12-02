@@ -14,8 +14,9 @@
 						.hora
 							=partido.hora_partido
 						.pjugando
-							=pluralize(partido.users.uniq.count, "persona")
-							jugando
+							- if partido.users.uniq.count >=10
+								=pluralize(partido.users.uniq.count, "persona")
+								jugando
 						%div
 							-if partido.terminado
 								=link_to "Ir al Resultado", resultado_partido_path(partido)

@@ -19,7 +19,7 @@ class PartidosController < ApplicationController
   def show
   	@partido = Partido.includes(:bets).find(params[:id])
     #Cerrar el patido automaticamente,
-    @hoy = Time.now.utc-5.hours
+    @hoy = Time.now.utc-5.hours-15.minutes
     @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
 
     #--REDIRECCIONAMIENTO BEGINS----
@@ -90,7 +90,7 @@ class PartidosController < ApplicationController
   def estadio
     @partido = Partido.find(params[:id])
         #Cerrar el patido automaticamente,
-    @hoy = Time.now.utc-5.hours
+    @hoy = Time.now.utc-5.hours-15.minutes
     @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
 
     #SI el partido ya TERMINO y se REPARTIO la plata. Redireccionar al Resultado
@@ -155,7 +155,7 @@ class PartidosController < ApplicationController
       @partido = Partido.find(params[:id])
 
       #Cerrar el patido automaticamente,
-      @hoy = Time.now.utc-5.hours
+      @hoy = Time.now.utc-5.hours-15.minutes
       @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
   end
 

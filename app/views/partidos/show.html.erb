@@ -36,6 +36,7 @@
 					<%if @partido.users.uniq.count >=10%>
 						<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
 					<%end%>
+					<div class="pjugando">in <%=distance_of_time_in_words( @partido.diapartido, Time.now) %></div>
 				</div>
 				<%= form_for([@partido, @partido.bets.build]) do |f| %>
 				<%= f.hidden_field :user_id, value: current_user.id%>
@@ -134,7 +135,10 @@
 							<div class="Liga"><%= @partido.nombre_torneo %></div>
 							<div class="vs">VS</div>
 							<div class="hora"><%= @partido.hora_partido %></div>
-							<div class="pjugando"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+							<%if @partido.users.uniq.count >=10%>
+								<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+							<%end%>
+							<div class="pjugando">in <%=distance_of_time_in_words( @partido.diapartido, Time.now) %></div>
 						</div>
 						<div class="escudoequipo">
 							<%= image_tag @partido.logovisitante %>

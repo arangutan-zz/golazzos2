@@ -28,6 +28,7 @@
             <%if partido.users.uniq.count >=10%>
               <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
             <%end%>
+              <div class="pjugando">in <%=distance_of_time_in_words( partido.diapartido, Time.now) %></div>
           </div>
           <div class="escudoequipo">
             <%= image_tag partido.logovisitante %>

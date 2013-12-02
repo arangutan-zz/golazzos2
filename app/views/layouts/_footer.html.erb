@@ -1,5 +1,16 @@
 <footer>
-<p>Golazzos &copy; Todos los derechos reservados.</p>
+	<p> 
+		<% if current_user%>
+			<%= link_to "Perfil", current_user%> | 
+		<%end%>
+		<%= link_to "Partidos", partidos_path%> |
+		<%= link_to "Blog","http://golazzos2013.wordpress.com/"%> |
+		<%= link_to "Contactanos", home_contacto_path%> |
+		<%= link_to "Reglamento", home_reglamento_path%>
+	</p>
+	<p>
+		Golazzos &copy; Todos los derechos reservados.
+</p>
 </footer>
 <%= debug(params) if Rails.env.development? %>
      
