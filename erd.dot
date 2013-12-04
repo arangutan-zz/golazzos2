@@ -1,0 +1,158 @@
+digraph Gollazos {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial Bold";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+label = "Gollazos domain model\n\n";
+m_Bet [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Bet</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="golesLocal">golesLocal <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="golesVisitante">golesVisitante <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="monto">monto <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="notificado">notificado <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="pezzos_ganados">pezzos_ganados <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="posteo_fb">posteo_fb <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="repartido">repartido <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+</table>
+>];
+m_Friendship [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Friendship</font></td></tr>
+</table>
+>];
+m_Invitation [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Invitation</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="demora">demora <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="recipient_uid">recipient_uid <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="sent_at">sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="token">token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="used">used <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+</table>
+>];
+m_Metrics [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Metrics</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="apuestas_usuario">apuestas_usuario <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="login_usuario">login_usuario <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="posts_usuario">posts_usuario <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="referidos_usuario">referidos_usuario <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="sinapostar_usuarios">sinapostar_usuarios <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="sininvitar_usuarios">sininvitar_usuarios <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="total_apuestas">total_apuestas <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="total_referidos">total_referidos <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="total_usuarios">total_usuarios <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_Partido [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Partido</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="cerrado">cerrado <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="diapartido">diapartido <font face="Arial Italic" color="grey60">datetime ∗</font></td></tr>
+  <tr><td align="left" width="130" port="local">local <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="logolocal">logolocal <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="logovisitante">logovisitante <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="repartido">repartido <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="resultadoLocal">resultadoLocal <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="resultadoVisitante">resultadoVisitante <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="terminado">terminado <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="torneo">torneo <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="visitante">visitante <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+>];
+m_Profile [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Profile</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="apostaria">apostaria <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="camiseta_de">camiseta_de <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="celular">celular <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="ciudad">ciudad <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="direccion">direccion <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="equipos_favoritos">equipos_favoritos <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="nombre">nombre <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="num_visitas">num_visitas <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="pais">pais <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="talla">talla <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="twitter">twitter <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+"m_PublicActivity::ORM::ActiveRecord::Activity" [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">PublicActivity::ORM::ActiveRecord::Activity</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="key">key <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="owner_id">owner_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="owner_type">owner_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="parameters">parameters <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="recipient_id">recipient_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="recipient_type">recipient_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="trackable_type">trackable_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Tokenreferido [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Tokenreferido</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="tokenr">tokenr <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="administrator">administrator <font face="Arial Italic" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="age">age <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="bets_number">bets_number <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="invitation_number">invitation_number <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="local_apostado">local_apostado <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="oauth_expires_at">oauth_expires_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="oauth_token">oauth_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="partidos_ganados">partidos_ganados <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="partidos_perdidos">partidos_perdidos <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="pezzos">pezzos <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="pezzos_acumulados">pezzos_acumulados <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="pezzos_que_apuesta">pezzos_que_apuesta <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="post_on_fb">post_on_fb <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="provider">provider <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="referidos">referidos <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="uid">uid <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="visitante_apostado">visitante_apostado <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="visits_number">visits_number <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+  m_Partido -> m_Bet [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Bet [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Bet -> "m_PublicActivity::ORM::ActiveRecord::Activity" [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Partido -> "m_PublicActivity::ORM::ActiveRecord::Activity" [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_User -> m_Friendship [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Friendship [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Invitation [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Invitation -> m_User [arrowhead = "none", arrowtail = "none", weight = "1"];
+  m_Partido -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "2", constraint = "false"];
+  m_User -> m_Profile [arrowhead = "none", arrowtail = "none", weight = "1"];
+  m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+}
