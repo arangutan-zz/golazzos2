@@ -224,6 +224,6 @@ end
   end
 
   def to_param
-    "#{id}-#{self.local}_vs_#{self.visitante}"
+    "#{id}-#{self.local}_vs_#{self.visitante}_partidoid"
   end 
 end
