@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
        #@invitacion= Invitation.find_by_recipient_uid(@user.uid)
       if @anfitrion==nil #No es referido
-        flash[:notice] = "Recibes 50.000 Pezzos por tu primera visita"
+        flash[:notice] = "Recibes 100.000 Pezzos por tu primera visita"
       else
         #if @invitacion.recipient_uid == @user.uid
         if @user.uid == @user.uid
@@ -51,10 +51,8 @@ class SessionsController < ApplicationController
         end
 
       end      
-      #BD
-      
-      #flash[:notice] = "Recibes 20.000 Pezzos por tu primera visita"  
-      
+      #grrrrrr ----
+      redirect_to user_path(@user, :nuevousuario=>"true")
     end
     begin
       redirect_to :back

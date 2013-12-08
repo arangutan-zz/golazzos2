@@ -10,9 +10,10 @@ class HomeController < ApplicationController
   end
   def index2
   end
+  
   def reglamento
-    
   end
+  
   def contacto
     
   end
