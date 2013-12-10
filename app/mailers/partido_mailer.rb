@@ -1,5 +1,5 @@
 class PartidoMailer < ActionMailer::Base
-  default from: "golazzos@golazzos.com"
+  default from: "noticias@golazzos.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -10,7 +10,7 @@ class PartidoMailer < ActionMailer::Base
     @partido = partido
     @user = user
     @bets = bets
-    mail to: @user.email, subject: 'Se cerro el partido'
+    mail to: @user.email, subject: "Finalizan las apuestas del partido #{@partido.local} vs #{@partido.visitante}."
   end
 
   def email_prueba(user)
