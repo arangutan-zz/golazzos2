@@ -5,7 +5,6 @@ class PartidosController < ApplicationController
   before_filter :require_admin_login , :only => [:new,:edit,:update,:destroy,:create,:repartir]
 
   def index
-      PartidoMailer.partido_cerrado.deliver
   	@hora = Time.now.utc - 1.day
   	@partidos = Partido.where("diapartido > ?", @hora ).order("diapartido ASC")
 
