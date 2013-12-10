@@ -28,6 +28,6 @@ class PartidoMailer < ActionMailer::Base
     @partido = partido
     @greeting = "Hi"
 
-    mail to: "yepes07@gmail.com", subject: '¡ganaste en el partido!'
+    mail to: "yepes07@gmail.com", subject: 'ganaste en el partido!'
   end
 end
