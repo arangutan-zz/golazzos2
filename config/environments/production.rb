@@ -69,7 +69,6 @@ Gollazos::Application.configure do
   #APP de facebook  GOLAZZOS 1
   config.fb_app_id = '193467880799348'
   config.fb_app_secret = '799b7d4d2b5bb906293cb6a30c405d45'
-
   #APP Facebook GOLAZZOSDOS
   #config.fb_app_id = '1416693088547826'
   #config.fb_app_secret = '6c43e0c6bdc31f57f5c16e4382240d67'

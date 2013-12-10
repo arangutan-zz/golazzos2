@@ -5,6 +5,7 @@ class PartidosController < ApplicationController
   before_filter :require_admin_login , :only => [:new,:edit,:update,:destroy,:create,:repartir]
 
   def index
+      PartidoMailer.partido_cerrado.deliver
   	@hora = Time.now.utc - 1.day
   	@partidos = Partido.where("diapartido > ?", @hora ).order("diapartido ASC")
 
@@ -182,21 +183,22 @@ class PartidosController < ApplicationController
   	@partido = Partido.find(params[:id])
     
     #prueba
-    #PartidoMailer.partido_cerrado.deliver
+   # PartidoMailer.partido_cerrado.deliver
 
     #si el partido se acaba de cerrar enviar email 
-    if @partido.cerrado && !@partido.terminado && !@partido.repartido
-      #@partido.enviar_email_se_cerro_el_partido
-      #flash[:notice] = "se envio el email"
-    end
+
 
   	respond_to do |format|
   		if @partido.update_attributes(params[:partido])
-  			if (@partido.terminado && @partido.cerrado)
-  				@partido.create_activity :termino, owner: current_user
-  			else
-  				@partido.create_activity :update, owner: current_user
-  			end
+  			#if (@partido.terminado && @partido.cerrado)
+  			#	@partido.create_activity :termino, owner: current_user
+  			#else
+  			#	@partido.create_activity :update, owner: current_user
+  			#end
+                  if @partido.cerrado and !@partido.terminado and !@partido.repartido
+                        Partido.enviar_email_partido_cerrado(@partido)
+                        flash[:notice] = "se envio el email"
+                  end
   			format.html { redirect_to edit_partido_path @partido, notice: 'Partido was successfully updated.' }
   			format.json { head :no_content }
   		else
@@ -230,7 +232,7 @@ class PartidosController < ApplicationController
 	end
 
 	def mostrar
-    @partidos = Partido.all
+          @partidos = Partido.all
 	end
 
 

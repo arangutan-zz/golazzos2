@@ -8,6 +8,7 @@ resources :partidos do
   get 'retar', on: :member
   get 'estadio', on: :member
   get 'resultado', on: :member
+  get 'email', on: :member
   resources :bets
 end
 

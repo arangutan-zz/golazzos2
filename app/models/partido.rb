@@ -219,8 +219,13 @@ end
       end
   end
 
-  def enviar_email_se_cerro_el_partido
-      PartidoMailer.partido_cerrado.deliver
+  def self.enviar_email_partido_cerrado(partido)
+    users = partido.users.uniq
+    users.each do |user|
+      bets= partido.apuestas_del_usuario(user)
+      #PartidoMailer.email_prueba(user).deliver
+      PartidoMailer.partido_cerrado(partido, user, bets ).deliver
+    end  
   end
 
   def to_param
