@@ -206,7 +206,7 @@ class PartidosController < ApplicationController
                   if @partido.cerrado and !@partido.terminado and !@partido.repartido
                         Partido.enviar_email_partido_cerrado(@partido)
                         flash[:notice] = "se envio el email"
-                  end
+                  end                    
   			format.html { redirect_to edit_partido_path @partido, notice: 'Partido was successfully updated.' }
   			format.json { head :no_content }
   		else
@@ -233,6 +233,7 @@ class PartidosController < ApplicationController
 		if @partido.terminado && @partido.cerrado
 			@partido.repartir_la_plata
 			@partido.update_attributes(repartido: true)
+                  Partido.enviar_email_partido_terminado(@partido)
 			redirect_to partido_path(@partido), notice: "Se repartio la plata !"
 		else
 			redirect_to edit_partido_path(@partido), notice: "Asegurate de Cerrar la apuesta y de agregar el marcador"

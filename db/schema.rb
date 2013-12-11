@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017181140) do
+ActiveRecord::Schema.define(:version => 20131211203434) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -85,14 +85,16 @@ ActiveRecord::Schema.define(:version => 20131017181140) do
     t.string   "logolocal"
     t.string   "logovisitante"
     t.datetime "diapartido"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.integer  "resultadoLocal"
     t.integer  "resultadoVisitante"
     t.boolean  "terminado"
     t.boolean  "cerrado"
     t.boolean  "repartido"
     t.integer  "torneo"
+    t.boolean  "email_partido_cerrado",   :default => false
+    t.boolean  "email_partido_terminado", :default => false
   end
 
   create_table "profiles", :force => true do |t|

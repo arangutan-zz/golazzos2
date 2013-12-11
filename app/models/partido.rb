@@ -2,7 +2,8 @@ class Partido < ActiveRecord::Base
   include PublicActivity::Common
   
   attr_accessible :diapartido, :local, :logolocal, :logovisitante, :visitante, 
-  :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo
+  :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo,
+  :email_partido_cerrado, :email_partido_terminado
 
   validates :diapartido, presence: true 
   validates :local, presence: true
@@ -220,12 +221,32 @@ end
   end
 
   def self.enviar_email_partido_cerrado(partido)
-    users = partido.users.uniq
-    users.each do |user|
-      bets= partido.apuestas_del_usuario(user)
-      #PartidoMailer.email_prueba(user).deliver
-      PartidoMailer.partido_cerrado(partido, user, bets ).deliver
-    end  
+    if partido.email_partido_cerrado==false
+      partido.update_attributes(email_partido_cerrado: true)
+      users = partido.users.uniq
+          users.each do |user|
+            bets= partido.apuestas_del_usuario(user)
+            #PartidoMailer.email_prueba(user).deliver
+            PartidoMailer.partido_cerrado(partido, user, bets ).deliver
+      end  
+    end
+  end
+
+  def self.enviar_email_partido_terminado(partido)
+      if partido.email_partido_terminado==false
+          partido.update_attributes(email_partido_terminado: true)
+          users = partido.users.uniq
+          users.each do |user|
+              bets = partido.apuestas_del_usuario(user)
+              if partido.ganancias_del_usuario(user)>0
+                #enviar email de ganaste
+                PartidoMailer.ganador_del_partido(partido, user, bets ).deliver
+              else
+                #enviar email de perdiste 
+                #PartidoMailer.perdedor_del_partido(partido, user, bets ).deliver
+              end
+          end
+      end
   end
 
   def to_param
