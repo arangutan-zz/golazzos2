@@ -243,7 +243,7 @@ end
                 PartidoMailer.ganador_del_partido(partido, user, bets ).deliver
               else
                 #enviar email de perdiste 
-                #PartidoMailer.perdedor_del_partido(partido, user, bets ).deliver
+                PartidoMailer.perdedor_del_partido(partido, user, bets ).deliver
               end
           end
       end
