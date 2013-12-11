@@ -13,9 +13,8 @@ class PartidoMailer < ActionMailer::Base
     mail to: @user.email, subject: "Finalizan las apuestas del partido #{@partido.local} vs #{@partido.visitante}."
   end
 
-  def email_prueba(user)
-    @user = user
-    mail to: @user.email , subject: 'Email de prueba'
+  def email_prueba
+    mail to: ['brigitteragam@hotmail.com', 'yepes07@gmail.com'] , subject: "Ganaste con Golazzos!  Cúcuta vs Fortaleza."
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

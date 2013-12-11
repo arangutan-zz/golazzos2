@@ -20,7 +20,10 @@ class PartidosController < ApplicationController
   	@partido = Partido.includes(:bets).find(params[:id])
     #Cerrar el patido automaticamente,
     @hoy = Time.now.utc-5.hours-15.minutes
-    @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
+    if @partido.diapartido < @hoy
+      @partido.update_attributes(cerrado: true)
+      Partido.enviar_email_partido_cerrado(@partido)
+    end
 
     #--REDIRECCIONAMIENTO BEGINS----
     #redirecciona al ESTADIO si el partido ya esta cerrado
@@ -156,7 +159,10 @@ class PartidosController < ApplicationController
 
       #Cerrar el patido automaticamente,
       @hoy = Time.now.utc-5.hours-15.minutes
-      @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
+      if @partido.diapartido < @hoy
+          @partido.update_attributes(cerrado: true)
+          Partido.enviar_email_partido_cerrado(@partido)
+      end
   end
 
   # POST /partidos
@@ -233,8 +239,4 @@ class PartidosController < ApplicationController
 	def mostrar
           @partidos = Partido.all
 	end
-
-
-
-
 end
