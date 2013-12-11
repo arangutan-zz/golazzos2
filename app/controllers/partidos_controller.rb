@@ -94,7 +94,10 @@ class PartidosController < ApplicationController
     @partido = Partido.find(params[:id])
         #Cerrar el patido automaticamente,
     @hoy = Time.now.utc-5.hours-15.minutes
-    @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
+    if @partido.diapartido < @hoy
+      @partido.update_attributes(cerrado: true)
+      Partido.enviar_email_partido_cerrado(@partido)
+    end
 
     #SI el partido ya TERMINO y se REPARTIO la plata. Redireccionar al Resultado
     if @partido.repartido

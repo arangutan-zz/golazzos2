@@ -14,7 +14,7 @@ class PartidoMailer < ActionMailer::Base
   end
 
   def email_prueba
-    mail to: ['brigitteragam@hotmail.com', 'yepes07@gmail.com'] , subject: "Ganaste con Golazzos!  Cúcuta vs Fortaleza."
+    mail to: ['brigitteragam@hotmail.com', 'yepes07@gmail.com'] , subject: "Ganaste con Golazzos!  Cucuta vs Fortaleza."
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
