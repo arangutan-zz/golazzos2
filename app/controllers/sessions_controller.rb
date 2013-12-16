@@ -53,12 +53,15 @@ class SessionsController < ApplicationController
       end      
       #grrrrrr ----
       redirect_to user_path(@user, :nuevousuario=>"true")
+      return
     end
     begin
       redirect_to :back
+      return
     rescue
       #redirect_to partidos_path, notice: "¡LO SENTIMOS! Vuelve a buscar el partido."
       redirect_to current_user
+      return
     end
 
   end
