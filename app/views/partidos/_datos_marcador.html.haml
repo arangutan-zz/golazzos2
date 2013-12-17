@@ -13,6 +13,3 @@
 		.pjugando2
 			=pluralize( @partido.users.uniq.count, "persona")
 			jugando
-	.pjugando2
-		in
-		=distance_of_time_in_words( @partido.diapartido, Time.now)
