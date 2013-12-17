@@ -1,0 +1,51 @@
+%br
+%h2.titulosseccion 
+	Recarga tu cuenta
+.wrapper
+%form{ action: "https://gateway.payulatam.com/ppp-web-gateway/", method: "get", id:"form_compra", target:"_blank"}
+	%input{type: "hidden",name:"merchantId", value:"503728"}
+	%input{type:"hidden" ,name:"ApiKey" ,value:"3u3skvsqrab1sp9rk4d83vnkto"}
+	%input{type:"hidden" ,name:"referenceCode" ,value:"1"}
+	%input{type:"hidden" ,name:"accountId" ,value:"504663"}
+	%input{type:"hidden" ,name:"description" ,value:"Recargar cuenta de #{current_user.name}"}
+	%label 
+		Monto a pagar(pesos mexicanos)
+	%select{name:"amount",id:"monto_r"}
+		%option{value:"40"}
+			40
+		%option{value:"50"}
+			50
+		%option{value:"70"}
+			70
+		%option{value:"100"}
+			100
+	</select><br>
+	%input{type:"hidden" ,name:"tax" ,value:"0"}
+	%input{type:"hidden" ,name:"taxReturnBase" ,value:"0"}
+	%input{type:"hidden" ,name:"currency" ,value:"MXN"}
+	%input{type:"hidden" ,name:"signature" ,value:"c3b1579c83fa821c3b8dbaeba82d22cb", id:"signa"}
+	%label 
+		Correo comprobación
+	%input{type:"text" ,name:"buyerEmail" ,value:"#{current_user.email}" ,size:"30"}
+	%br
+	%br
+	%input{type: "submit", value: "Recargar", class:"btn btn-primary", id:"btn_recarga"}
+.emailcontacto
+	= image_tag "partido/partido_fondoPersonaje.png"
+
+
+%script{src:"http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+%script{src:"http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"}
+
+:javascript 
+	$(function(){
+		$('#btn_recarga').on('click',function(e){
+			e.preventDefault();
+			var hash = CryptoJS.MD5("3u3skvsqrab1sp9rk4d83vnkto~"+Math.floor((Math.random()*10000000000)+1)+"~"+$("#monto_r").val().trim()+"~MXN");
+			$("#signa").val(hash);
+			console.log(hash.toString());
+			$("#form_compra").submit();
+		});
+		//ApiKey~merchantId~referenceCode~tx_value~currency
+	});	
+
