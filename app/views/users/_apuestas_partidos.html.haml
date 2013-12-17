@@ -36,12 +36,12 @@
 						%small 
 							-if partido.cerrado
 								.MiApuestaRetornoFinal
-									Retorno garantizado
+									Ganancia confirmada
 							-else
 								.MiApuestaRetornoEstimado
-									Retorno estimado
+									Ganancia estimado
 					%th
-						%small Ganancia
+						%small Ganancia final
 					%th
 			%tbody
 				-@user.bets.where("partido_id = ?",partido.id).each do |bet|

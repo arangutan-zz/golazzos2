@@ -14,6 +14,10 @@ function actualizarRetornos(){
 	var retornoEstimado = veces *monto;
 	var retornoMinimo = monto*2;
 
+	if(retornoEstimado < retornoMinimo && totalApostado <= minimoTotal){
+		retornoEstimado = "Por definir";
+	}
+
 	if (retornoEstimado < retornoMinimo && totalApostado > minimoTotal) {
 		$("#marcadorAbierto").hide();
 		$("#marcadorBloqueado").show();
