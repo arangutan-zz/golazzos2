@@ -32,7 +32,27 @@ class Partido < ActiveRecord::Base
       "Liga Mexicana"
     when 8
       "liga del Peru"
+    when 9
+      "Amistosos"
+    when 10
+      "Repechaje"
     end
+  end
+
+  def self.torneos
+    [
+      ["Todos los torneos", 0],
+      ["Champions League",1],
+      ["Eliminatoria Sudamericana",2],
+      ["Copa Libertadores",3],
+      ["Liga Postobon",4],
+      ["Liga Espanola",5],
+      ["Premier League", 6],
+      ["Liga Mexicana",7],
+      ["Liga del Peru",8],
+      ["Amistosos",9],
+      ["Repechaje",10]
+    ]
   end
   
   def hora_partido
@@ -49,7 +69,9 @@ class Partido < ActiveRecord::Base
     return self.apuestas_en_el_resultado(local,visitante).sum(:monto).to_f
   end
 
-
+  def self.minimo_total
+    500000
+  end
 
 
   def porcentaje_en_el_resultado(local, visitante, monto_futuro=0)
@@ -82,7 +104,16 @@ class Partido < ActiveRecord::Base
     return self.bets.sum(:monto)
   end
 
+def puedo_apostar_en_el_marcador?(local, visitante, monto_futuro=0)
 
+    if self.monto_total_apostado<= Partido.minimo_total
+      true
+    elsif xveces_el_resultado(local, visitante, monto_futuro)>= 2
+      true
+    else
+      false
+    end
+end
 
 
 
@@ -193,6 +224,6 @@ class Partido < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{self.local} vs #{self.visitante}"
+    "#{id}-#{self.local}_vs_#{self.visitante}"
   end 
 end

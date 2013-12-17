@@ -1,0 +1,15 @@
+.datosmarcador
+	.Ligamarcador
+		=@partido.nombre_torneo
+	.equipo2
+		=@partido.local
+	.vsmarcador
+		VS
+	.equipo2
+		=@partido.visitante
+	.horamarcador
+		=@partido.hora_partido
+	=if @partido.users.uniq.count >= 10
+		.pjugando2
+			=pluralize( @partido.users.uniq.count, "persona")
+			jugando

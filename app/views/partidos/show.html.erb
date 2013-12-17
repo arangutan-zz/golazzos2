@@ -33,7 +33,9 @@
 					<div class="vsmarcador">VS</div>
 					<div class="equipo2"> <%= @partido.visitante %></div>
 					<div class="horamarcador"><%= @partido.hora_partido %></div>
-					<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+					<%if @partido.users.uniq.count >=10%>
+						<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+					<%end%>
 				</div>
 				<%= form_for([@partido, @partido.bets.build]) do |f| %>
 				<%= f.hidden_field :user_id, value: current_user.id%>
@@ -45,7 +47,6 @@
 						</div>
 						<div class="divmarcador">
 							<%= f.number_field :golesLocal, {
-								:value       => "0",
 								:max         =>"10" ,
 								:min         =>"0" ,
 								:placeholder =>"0",
@@ -57,7 +58,6 @@
 						<div class="equipin">
 							<div class="divmarcador">
 								<%= f.number_field :golesVisitante, {
-									:value       => "0",
 									:max         =>"10" ,
 									:min         =>"0" ,
 									:placeholder =>"0",
@@ -74,18 +74,23 @@
 						<div class="opcionesplata">
 							<%= f.select :monto, current_user.montos_que_puede_apostar%>
 						</div>
-						<p class="retornoesperado">
+						<p class="retornoesperado" id="marcadorAbierto">
 							Retorno Estimado: 
 							<span class="cifrasapuestas" id="retornoEstimado">
-								<%= number_with_precision(@partido.xveces_el_resultado(0,0,10000).round(3)*10000, precision: 0)%>
+								<!-- JAVASCRIPT partidos.js -->
 							</span>
 							<br>
 							Retorno Minimo Garantizado:
 							<span class="cifrasapuestas" id="retornoMinimoGarantizado">
-								<%= number_with_precision(20000, precision: 0)%>
+								<!-- JAVASCRIPT partidos.js -->
 							</span>
 						</p>
-						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos"}%>			
+						<p class="retornoesperado" id="marcadorBloqueado">
+							<span class="cifrasapuestas">
+								¡Marcador bloqueado temporalmente!
+							</span>
+						</p>
+						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos", :id => "jugarPezzos"}%>			
 						<div>
 							<%= render "partidos/redes_sociales" %>
 						</div>
@@ -99,7 +104,7 @@
 							<a href="partidos.html">jugar solo</a>
 						</div>
 					</article>
-					<article>
+					<article id="bets-info" data-total=<%=@partido.monto_total_apostado%> data-minimototal=<%=Partido.minimo_total%>>
 						<% for i in 0..10 %>
 						<% for j in 0..10 %>
 						<div class=<%= "local#{i}visitante#{j}"%> 
@@ -139,9 +144,20 @@
 				</article>
 				<section class="loginfacebook">
 					<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
-					<%= link_to "Reta a tus amigos", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
+					<%= link_to "¡Registrate y reta!", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
 				</section>
 				<%end %> 
 
 
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Deseas compartir tu apuesta con tus amigos en Facebook?</h3>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Continuar, sin compartir</button>
+    <button class="btn btn-primary">Compartir</button>
+  </div>
+</div>
 

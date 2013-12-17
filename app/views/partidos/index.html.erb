@@ -9,8 +9,12 @@
     <header >
       <h2 class="titulosseccion">PARTIDOS</h2>
     </header> 
+    <div class="MiApuesta opcionesplata">
+            <%= select_tag(:torneo,options_for_select(Partido.torneos), :id=>"torneoSelector") %>
+    </div>
     <%@partidos.each do |partido| %>
-    <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>> 
+    <div class="partido torneo<%=partido.torneo%>">
+    <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>   > 
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">
@@ -21,7 +25,9 @@
             <div class="Liga"><%= partido.nombre_torneo %></div>
             <div class="vs">VS</div>
             <div class="hora"><%= partido.hora_partido %></div>
-            <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
+            <%if partido.users.uniq.count >=10%>
+              <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
+            <%end%>
           </div>
           <div class="escudoequipo">
             <%= image_tag partido.logovisitante %>
@@ -37,7 +43,7 @@
         </div>
       </article>
     </a>
-
+  </div>
     <%end %>
   </section>
 

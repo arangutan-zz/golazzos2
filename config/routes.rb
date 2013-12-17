@@ -14,6 +14,7 @@ resources :partidos do
   resources :bets
 end
 
+  get "bet_validation/index"
   get "home/reglamento"
   get "home/contacto"
   get "home/privacidad"

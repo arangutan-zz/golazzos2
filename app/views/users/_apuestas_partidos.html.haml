@@ -1,0 +1,81 @@
+-@partidos.each do |partido|
+	%section 
+		.MiApuesta
+			%article.cajamarcadorDos 
+				.marcadorCentrado
+					.escudoequipo
+						=image_tag partido.logolocal
+						%h3=partido.local
+					.datospartido
+						.liga
+							=partido.nombre_torneo
+						.vs
+							="#{partido.resultadoLocal} - #{partido.resultadoVisitante}"
+						.hora
+							=partido.hora_partido
+						.pjugando
+							=pluralize(partido.users.uniq.count, "persona")
+							jugando
+						%div
+							-if partido.terminado
+								=link_to "Ir al Resultado", resultado_partido_path(partido)
+							-else
+								=link_to "Ir al Estadio", estadio_partido_path(partido)
+					.escudoequipo
+						=image_tag partido.logovisitante
+						%h3=partido.visitante
+		%table.table.tablapartidos
+			%thead 
+				%tr 
+					%th
+						%small Marcador
+					%th 
+						%small Apuesta
+					%th
+						%small 
+							-if partido.cerrado
+								.MiApuestaRetornoFinal
+									Retorno garantizado
+							-else
+								.MiApuestaRetornoEstimado
+									Retorno estimado
+					%th
+						%small Ganancia
+					%th
+			%tbody
+				-@user.bets.where("partido_id = ?",partido.id).each do |bet|
+					%tr
+						%td= "#{bet.golesLocal} - #{bet.golesVisitante}"
+						%td= number_to_currency bet.monto, precision: 0
+
+						-if bet.partido.repartido
+							%td 
+								.MiApuestaRetornoFinal
+									=number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision:0
+							-if bet.pezzos_ganados==nil
+								%td 
+									.MiApuestaPerdi
+										=number_to_currency bet.monto * -1, precision: 0
+								%td
+									=image_tag "golazzos2/triste.png", alt:"triste"  
+							-else
+								%td 
+									.MiApuestaGane
+										=number_to_currency bet.pezzos_ganados, precision: 0
+								%td
+									=image_tag "golazzos2/feliz.png", alt:"feliz" 
+
+						-elsif bet.partido.cerrado
+							%td
+								.MiApuestaRetornoFinal
+									= number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0
+							%td ¡Jugandose!
+							%td
+
+						-elsif bet.partido.cerrado==false
+							%td 
+								.MiApuestaRetornoEstimado
+									= number_to_currency bet.partido.xveces_el_resultado(bet.golesLocal, bet.golesVisitante)* bet.monto, precision: 0
+							%td ¡Por jugar!
+							%td
+

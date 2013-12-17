@@ -9,14 +9,7 @@
 		<%= flash[:notice] %>
 	</div>
 	<% end %>
-	<div class="datosmarcador">
-		<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
-		<div class="equipo2"> <%= @partido.local %></div>
-		<div class="vsmarcador">VS</div>
-		<div class="equipo2"> <%= @partido.visitante %></div>
-		<div class="horamarcador"><%= @partido.hora_partido %></div>
-		<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
-	</div>
+	<%=render "datos_marcador"%>
 </section>
 <section>
 	<article id="miapuesta">
@@ -44,10 +37,12 @@
 <div>
 	<%= render "partidos/redes_sociales" %>
 </div>
-<div>
-	<%= link_to "Jugar otra vez", partido_path(@partido), {:class => "botpezzos"} %>
-	<%= link_to "Retar amigos", retar_partido_path(@partido, params:{betid: @bet.id}), {:class => "botpezzos"} %>
-</div>
+<% if @partido.cerrado==false%>
+	<div>
+		<%= link_to "Jugar otra vez", partido_path(@partido), {:class => "botpezzos"} %>
+		<%= link_to "Retar amigos", retar_partido_path(@partido, params:{betid: @bet.id}), {:class => "botpezzos"} %>
+	</div>
+<%end%>
 
 <section class="estadisticas clear">
 	<div class="MiApuesta"><h3>Estadísticas</h3></div>
@@ -96,6 +91,9 @@
 		<div class="textosperfil">
 			<div class="names">
 				<%=link_to bet.user.name, user_path(bet.user) %>
+				<small class="timeago">
+					<%=distance_of_time_in_words( bet.created_at, Time.now) %> ago
+				</small>
 			</div>
 			<div class="textopublicacion" >
 				Jugo <strong class="pezzares"><%=number_to_currency bet.monto, precision:0%> pezzos</strong> al <strong class="pezzares"><%= bet.golesLocal%> - <%= bet.golesVisitante %></strong> <%= @partido.nombre_del_equipo_que_va_a_ganar_la_apuesta(bet) %>.
@@ -103,8 +101,10 @@
 		</div>
 	</div>
 	<% end %>
-	<% if @bets.empty? %>
-		<p>Ningun amigo tuyo esta jugando! <%= link_to "Retalos aquí!", retar_partido_path(@partido, params:{betid: @bet.id}) %></p>
+	<% if @bets.empty? and @partido.cerrado==false %>
+		<p class="wrapper">Ningun amigo tuyo esta jugando! <%= link_to "Retalos aquí!", retar_partido_path(@partido, params:{betid: @bet.id}) %></p>
+	<%elsif @bets.empty? and @partido.cerrado%>
+		<p class="wrapper">¡El partido ya empezo! Ninguno de tus amigos esta jugando, no se te olvide retarlo en el proximo partido.</p>
 	<% end%>
 </section>
 <section>

@@ -36,6 +36,7 @@
                         <% if current_user.administrator %>
                             <li class="divider"></li>
                             <li><%= link_to "Partido Nuevo", new_partido_path %></li>
+                            <li><%= link_to "Metricas", metrics_index_path %></li>
                         <%end %>
                     <li class="divider"></li>
                     <li><%= link_to "Recargar tu cuenta", home_comprar_pesos_path %></li>

@@ -1,0 +1,42 @@
+%section#retaramigos
+	%header 
+		.imgbienvenida3
+		%h2.titulosseccion EL RETO
+
+	- if flash[:notice]
+		.alert.alert-success
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			= flash[:notice]
+
+	=render "datos_marcador"
+
+%section 
+	%article#miapuesta
+		.contenedorentrada
+			.equipin
+				.imgequipo1
+					=image_tag @partido.logolocal
+				.divmarcador
+					=@bet.golesLocal
+			.equipin
+				.divmarcador
+					=@bet.golesVisitante
+				.imgequipo2
+					=image_tag @partido.logovisitante
+				.clear
+
+%section.amigosfacebook.wrapper
+	=render "partidos/redes_sociales"
+	=link_to("Continuar al estadio", estadio_partido_path(@partido), {:class =>"botpezzos"})
+
+%section.seccionRetarAmigos
+	%header.MiApuesta
+		%h3 Reta a tus amigos
+	.wrapper
+		%p Reta a tus amigos a traves de Facebook. Por cada amigo que acepte el reto, recibes $25,000 pezzos. Entre mas amigos acepten, mas pezzos ganas.
+		%fb:send{ href: @linkinvitation, coloscheme: "light"}
+
+
+
+	
+
