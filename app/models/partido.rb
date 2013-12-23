@@ -232,6 +232,10 @@ end
     end
   end
 
+  def self.enviar_email_nueva_apuesta(user,bet)
+    PartidoMailer.email_apuesta_realizada(user, bet).deliver
+  end
+
   def self.enviar_email_partido_terminado(partido)
       if partido.email_partido_terminado==false
           partido.update_attributes(email_partido_terminado: true)

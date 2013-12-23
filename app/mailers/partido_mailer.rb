@@ -38,4 +38,12 @@ class PartidoMailer < ActionMailer::Base
     mail to: @user.email, subject: "Sigue intentando con Golazzos! #{@partido.local} vs #{@partido.visitante}."
   end
 
+  def email_apuesta_realizada(user, bet)
+    @user = user
+    @bet = bet
+    @partido = bet.partido
+
+    mail to: @user.email, subject: "Confirmamos tu apuesta al partido #{@partido.local} vs #{@partido.visitante}."
+  end
+
 end
