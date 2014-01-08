@@ -17,7 +17,7 @@ class MetricsController < ApplicationController
 
 
        #Usuarios Activos
-       @usuarios_activos = Metrics.usuarios_activos
+       @usuarios_activos = Metrics.usuarios_activos.sort
 
        #VIRALIDAD GOLAZZOS 2.0
        @usuariosreferidos = User.sum(:referidos)
