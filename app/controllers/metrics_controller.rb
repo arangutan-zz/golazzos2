@@ -15,6 +15,10 @@ class MetricsController < ApplicationController
        @usuariosConEdad                    = User.average(:age)
        @numeroApuestasPromedio             = User.average(:bets_number)
 
+
+       #Usuarios Activos
+       @usuarios_activos = Metrics.usuarios_activos
+
        #VIRALIDAD GOLAZZOS 2.0
        @usuariosreferidos = User.sum(:referidos)
   end

@@ -59,6 +59,19 @@
 				%td 1
 				%td Usuarios referidos a traves de retos 
 				%td= @usuariosreferidos
+	.MiApuesta
+		%h3 Usuarios Activos
+	%table.table.table-striped
+		%thead
+			%tr 
+				%th Numero de Apuestas
+				%th Numero de Usuarios
+		%tbody
+			-@usuarios_activos.each do |numApuestas, numUsers|
+				%tr
+					%td=numApuestas
+					%td=numUsers
+
 	/		
 		.MiApuesta
 			%h3 Metricas de los partidos
