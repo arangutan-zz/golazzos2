@@ -17,4 +17,21 @@ class Metrics < ActiveRecord::Base
 		#Retorna { numApuestas => numUsers }
 		return retorno
 	end  
+	def self.recurrencia_en_meses
+		users = User.includes(:bets).all
+		retorno={}
+
+		users.each do |user|
+			grouped_bets_by_month = user.bets.group_by { |bet| bet.created_at.beginning_of_month } 
+			months_betted = grouped_bets_by_month.keys.count
+
+			if retorno[months_betted]==nil
+				retorno[months_betted]=1
+			else
+				retorno[months_betted]+=1
+			end
+		end
+		return retorno
+	end
+
 end

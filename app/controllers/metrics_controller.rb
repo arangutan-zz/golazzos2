@@ -19,6 +19,9 @@ class MetricsController < ApplicationController
        #Usuarios Activos
        @usuarios_activos = Metrics.usuarios_activos.sort
 
+       #Recurrencia en Meses
+       @recurrencia_de_usuarios = Metrics.recurrencia_en_meses.sort
+
        #VIRALIDAD GOLAZZOS 2.0
        @usuariosreferidos = User.sum(:referidos)
   end
