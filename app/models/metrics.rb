@@ -27,7 +27,7 @@ class Metrics < ActiveRecord::Base
 			actual = bets_months[i]
 			siguiente = bets_months[i+1]
 			siguiente = Date.today unless siguiente
-			users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at  < ?", actual, siguiente )
+			users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
 			retorno[actual] = users_de_ese_mes.count
 		end
 
