@@ -21,13 +21,22 @@ class Metrics < ActiveRecord::Base
 	def self.porcentaje_usuarios_activos_al_mes
 		retorno={}
 		bets_months =  Bet.includes(:user).all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
-		total_usuarios = User.count
 
-		bets_months.each_index do | i | 
+
+		bets_months.each_index do | i |
+
+			#Meses a consultar
 			actual = bets_months[i]
 			siguiente = bets_months[i+1]
 			siguiente = Date.today unless siguiente
+			
+			#Usuarios que apostaron en los meses
 			users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
+			
+			#Total de usuarios registrados en esos meses
+			total_usuarios = User.where( "created_at < ?", siguiente ).count
+
+			#Definiendo el porcentaje ( usuarios activos / total de usuarios )
 			porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
 			retorno[actual] = porcentaje.round(5)
 		end
