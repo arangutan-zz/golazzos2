@@ -133,7 +133,7 @@
                   <tr>
                       <td><%="#{bet.golesLocal} - #{bet.golesVisitante} " %></td>
                       <td><%= number_to_currency bet.monto, precision:0%></td>
-                      <% @xveces = @partido.xveces_el_resultado( bet.golesLocal, bet.golesVisitante, bet.monto ) %>
+                      <% @xveces = @partido.xveces_el_resultado( bet.golesLocal, bet.golesVisitante ) %>
                       <td> <%= number_to_currency @xveces * bet.monto, precision:0 %></td>
                   </tr>
                   <%end%>
