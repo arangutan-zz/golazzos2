@@ -84,8 +84,18 @@
 					%tr
 						%td=numMeses
 						%td=numUsers
-	
-	=@porcentaje_usuarios_activos_al_mes
+	.MiApuesta
+		%h3 Porcentaje de usuarios activos por mes
+	%table.table.table-striped
+		%thead
+			%tr 
+				%th Mes
+				%th Porcentaje Usuarios activos
+		%tbody
+			-@porcentaje_usuarios_activos_al_mes.each do |mes, porcentaje|
+				%tr
+					%td=mes.strftime("%B %Y")
+					%td=porcentaje
 
 
 
