@@ -16,7 +16,16 @@ class Metrics < ActiveRecord::Base
 		
 		#Retorna { numApuestas => numUsers }
 		return retorno
-	end  
+	end 
+
+	def self.porcentaje_usuarios_activos_al_mes
+		bets= Bet.includes(:user).all
+		bets_grouped_by_month = bets.group_by { |bet| bet.created_at.beginning_of_month}
+		bets_months =  bets_grouped_by_month.keys.sort
+		#users = User.joins(:bets).where( bets: { created_at: 1. } ).uniq.inspect
+
+	end
+
 	def self.recurrencia_en_meses
 		users = User.includes(:bets).all
 		retorno={}
