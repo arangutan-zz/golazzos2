@@ -18,7 +18,8 @@ class MetricsController < ApplicationController
 
        #Usuarios Activos
        @usuarios_activos = Metrics.usuarios_activos.sort
-
+       @porcentaje_usuarios_activos_al_mes= Metrics.porcentaje_usuarios_activos_al_mes
+       
        #Recurrencia en Meses
        @recurrencia_de_usuarios = Metrics.recurrencia_en_meses.sort
 
