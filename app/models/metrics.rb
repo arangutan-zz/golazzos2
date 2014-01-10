@@ -29,7 +29,7 @@ class Metrics < ActiveRecord::Base
 			siguiente = Date.today unless siguiente
 			users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
 			porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
-			retorno[actual] = porcentaje
+			retorno[actual] = porcentaje.round(5)
 		end
 
 		return retorno
