@@ -20,7 +20,7 @@ class Metrics < ActiveRecord::Base
 
 	def self.porcentaje_usuarios_activos_al_mes
 		retorno={}
-		bets_months =  Bet.includes(:user).all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
+		bets_months =  Bet.all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
 
 
 		bets_months.each_index do | i |
