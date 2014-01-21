@@ -1,102 +1,15 @@
-/
-	%section#seccionMetricas
-		%header
-			%h2.titulosseccion MÉTRICAS
-		.MiApuesta
-			%h3 Metricas totales de golazzos
-		%table.table.table-striped
-			%thead
-				%tr 
-					%th #
-					%th Nombre de la metrica
-					%th Valor
-			%tbody
-				%tr
-					%td 1
-					%td Número de usuarios registrado
-					%td= @numeroUsuarios
-				%tr
-					%td 2
-					%td Número de apuestas registradas
-					%td= @numeroBets
-				%tr
-					%td 3
-					%td Número de invitaciones por usuario
-					%td= @numeroInvitacionesPromedio
-				%tr
-					%td 4
-					%td Total de usuarios referidos (aceptaron la invitación)
-					%td= @numeroUsuariosReferidos
-				%tr
-					%td 5
-					%td Número de Visitas (login) Promedio por usuario
-					%td= @numeroVisitasPromedio
-				%tr
-					%td 6
-					%td Número de Post promedio por usuario:
-					%td= @numeroPostsPromedio
-				%tr
-					%td 7
-					%td Tiempo promedio en aceptar invitación
-					%td= @tiempoPromedioEnAceptar
-				%tr
-					%td 8
-					%td Edad promedio:
-					%td= @usuariosConEdad
-				%tr
-					%td 9
-					%td Número de Apuestas Promedio por usuario
-					%td= @numeroApuestasPromedio
-		.MiApuesta
-			%h3 Metricas de viralidad Golazzos 2.0
-		%table.table.table-striped
-			%thead
-				%tr 
-					%th #
-					%th Nombre de la metrica
-					%th Valor
-			%tbody
-				%tr
-					%td 1
-					%td Usuarios referidos a traves de retos 
-					%td= @usuariosreferidos
-	/
-		.MiApuesta
-			%h3 Numero de Apuestas realizadas por usuarios
-		%table.table.table-striped
-			%thead
-				%tr 
-					%th Numero de Apuestas
-					%th Numero de Usuarios
-			%tbody
-				-@usuarios_activos.each do |numApuestas, numUsers|
-					%tr
-						%td=numApuestas
-						%td=numUsers
-		.MiApuesta
-			%h3 Recurrencia de usuarios en Meses
-		%table.table.table-striped
-			%thead
-				%tr 
-					%th # Meses en los que aposto
-					%th Numero de Usuarios
-			%tbody
-				-@recurrencia_de_usuarios.each do |numMeses, numUsers|
-					%tr
-						%td=numMeses
-						%td=numUsers
-	.MiApuesta
-		%h3 Porcentaje de usuarios activos por mes
-	%table.table.table-striped
-		%thead
-			%tr 
-				%th Mes
-				%th Porcentaje Usuarios activos
-		%tbody
-			-@porcentaje_usuarios_activos_al_mes.each do |mes, porcentaje|
-				%tr
-					%td=mes.strftime("%B %Y")
-					%td=porcentaje
+.MiApuesta
+	%h3 Porcentaje de usuarios activos por mes
+%table.table.table-striped
+	%thead
+		%tr 
+			%th Mes
+			%th Porcentaje Usuarios activos
+	%tbody
+		-@porcentaje_usuarios_activos_al_mes.each do |mes, porcentaje|
+			%tr
+				%td=mes.strftime("%B %Y")
+				%td=porcentaje
 
 
 
