@@ -38,7 +38,9 @@ class Metrics < ActiveRecord::Base
 
 			#Definiendo el porcentaje ( usuarios activos / total de usuarios )
 			porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
-			retorno[actual] = porcentaje.round(5)
+			
+			#retorno[actual] = porcentaje.round(5)
+			retorno[actual] = users_de_ese_mes.count
 		end
 
 		return retorno
