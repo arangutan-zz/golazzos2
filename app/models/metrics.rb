@@ -31,13 +31,13 @@ class Metrics < ActiveRecord::Base
 			siguiente = Date.today unless siguiente
 			
 			#Usuarios que apostaron en los meses
-			users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
+			#users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
 			
 			#Total de usuarios registrados en esos meses
 			total_usuarios = User.where( "created_at < ?", siguiente ).count
 
 			#Definiendo el porcentaje ( usuarios activos / total de usuarios )
-			porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
+			#porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
 			
 			#retorno[actual] = porcentaje.round(5)
 			retorno[actual] = total_usuarios.count
