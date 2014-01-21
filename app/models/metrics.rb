@@ -40,7 +40,7 @@ class Metrics < ActiveRecord::Base
 			porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
 			
 			#retorno[actual] = porcentaje.round(5)
-			retorno[actual] = users_de_ese_mes.count
+			retorno[actual] = total_usuarios.count
 		end
 
 		return retorno
