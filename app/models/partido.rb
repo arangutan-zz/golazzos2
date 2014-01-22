@@ -2,7 +2,7 @@ class Partido < ActiveRecord::Base
   include PublicActivity::Common
   
   attr_accessible :diapartido, :local, :logolocal, :logovisitante, :visitante, 
-  :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo
+  :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo , :id
 
   validates :diapartido, presence: true 
   validates :local, presence: true

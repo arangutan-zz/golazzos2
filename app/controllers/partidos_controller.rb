@@ -41,6 +41,9 @@ class PartidosController < ApplicationController
     if params[:betid] and params[:userid]
       @bet = Bet.find(params[:betid])
       @user = User.find(params[:userid])
+
+      @ids = params[:betid]+"-"+params[:userid]
+
       if current_user and current_user != @user
         #metrica de referidos
         current_user.update_attributes(referidos: current_user.referidos + 1 )

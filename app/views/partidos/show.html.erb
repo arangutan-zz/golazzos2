@@ -1,15 +1,23 @@
 <% if @user && @bet %>
-<section id="retodeamigo" class="amigosfacebook ">
-	<div class="amigoreto">
-		<div class="nombreamigoydescripcion">
-			<p class="nombreamigo">
-				<%= "#{@user.name} te reta con el #{@bet.golesLocal} - #{@bet.golesVisitante}. ¿Con cual marcador lo retas tu?"%></p>
+	<section id="retodeamigo" class="amigosfacebook ">
+		<div class="amigoreto">
+			<div class="nombreamigoydescripcion">
+				<p class="nombreamigo">
+					<%= "#{@user.name} te reta con el #{@bet.golesLocal} - #{@bet.golesVisitante}. ¿Con cual marcador lo retas tu?"%></p>
 				<p>
 					Acepta el reto. Juega tu marcador. Invita mas Amigos. Descubre los marcadores de tus amigos.</p>
-				</div>
 			</div>
-		</section>
-		<%end %>
+		</div>
+
+		<div style="display:none;" id="reminder">
+			<%= "#{@ids}" %>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+	   localStorage.reto= document.getElementById("reminder").innerHTML;
+	</script>
+<%end %>
 		<% if flash[:notice]%>
 		<div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -21,132 +29,164 @@
 			<header>
 				<h2 class="titulosseccion">MI APUESTA</h2>
 			</header>
-
-
 		</section>
 		<% if current_user %>
-		<section id="apuesta">
-			<article id="miapuesta">
-				<div class="datosmarcador">
-					<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
-					<div class="equipo2"> <%= @partido.local %></div>
-					<div class="vsmarcador">VS</div>
-					<div class="equipo2"> <%= @partido.visitante %></div>
-					<div class="horamarcador"><%= @partido.hora_partido %></div>
-					<%if @partido.users.uniq.count >=10%>
-						<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
-					<%end%>
-				</div>
-				<%= form_for([@partido, @partido.bets.build]) do |f| %>
-				<%= f.hidden_field :user_id, value: current_user.id%>
-				<div class="contenedorentrada">
-					<div class="equipin">
-						<div class="imgequipo1">
-							<%= image_tag @partido.logolocal %>
-
-						</div>
-						<div class="divmarcador">
-							<%= f.number_field :golesLocal, {
-								:max         =>"10" ,
-								:min         =>"0" ,
-								:placeholder =>"0",
-								:size        =>"10px", 
-								:class       =>"marcadoruser1 marcadorlocal",  
-								:align       =>"middle"}  %>
-							</div>
-						</div>
+			<section id="apuesta">
+				<article id="miapuesta">
+					<div class="datosmarcador">
+						<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
+						<div class="equipo2"> <%= @partido.local %></div>
+						<div class="vsmarcador">VS</div>
+						<div class="equipo2"> <%= @partido.visitante %></div>
+						<div class="horamarcador"><%= @partido.hora_partido %></div>
+						<%if @partido.users.uniq.count >=10%>
+							<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+						<%end%>
+					</div>
+					<%= form_for([@partido, @partido.bets.build]) do |f| %>
+					<%= f.hidden_field :user_id, value: current_user.id%>
+					<div class="contenedorentrada">
 						<div class="equipin">
+							<div class="imgequipo1">
+								<%= image_tag @partido.logolocal %>
+
+							</div>
 							<div class="divmarcador">
-								<%= f.number_field :golesVisitante, {
+								<%= f.number_field :golesLocal, {
 									:max         =>"10" ,
 									:min         =>"0" ,
 									:placeholder =>"0",
 									:size        =>"10px", 
-									:class       =>"marcadoruser1 marcadorvisitante",  
-									:align       =>"middle"}%>
+									:class       =>"marcadoruser1 marcadorlocal",  
+									:align       =>"middle"}  %>
 								</div>
-								<div class="imgequipo2">
-									<%= image_tag @partido.logovisitante %>
-								</div> 
-								<div class="clear"></div> 
 							</div>
+							<div class="equipin">
+								<div class="divmarcador">
+									<%= f.number_field :golesVisitante, {
+										:max         =>"10" ,
+										:min         =>"0" ,
+										:placeholder =>"0",
+										:size        =>"10px", 
+										:class       =>"marcadoruser1 marcadorvisitante",  
+										:align       =>"middle"}%>
+									</div>
+									<div class="imgequipo2">
+										<%= image_tag @partido.logovisitante %>
+									</div> 
+									<div class="clear"></div> 
+								</div>
+							</div>
+							<div class="opcionesplata">
+								<%= f.select :monto, current_user.montos_que_puede_apostar%>
+							</div>
+	
+							<div>
+								<%= render "partidos/redes_sociales" %>
+							</div>
+							<%end %>
+							<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
+						</article>
+						<article class="retaramigos" id="retaramigos">
+							<input type="submit" Value="Retar a tus amigos" class="botfacebook"/>
+							<p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
+							<div class="vermas">
+								<a href="partidos.html">jugar solo</a>
+							</div>
+						</article>
+						<article id="bets-info" data-total=<%=@partido.monto_total_apostado%> data-minimototal=<%=Partido.minimo_total%>>
+							<% for i in 0..10 %>
+							<% for j in 0..10 %>
+							<div class=<%= "local#{i}visitante#{j}"%> 
+								data-10000=<%= @partido.xveces_el_resultado(i,j,10000).round(3) %>
+								data-20000=<%= @partido.xveces_el_resultado(i,j,20000).round(3) %>
+								data-30000=<%= @partido.xveces_el_resultado(i,j,30000).round(3) %>
+								data-40000=<%= @partido.xveces_el_resultado(i,j,40000).round(3) %> 
+								data-50000=<%= @partido.xveces_el_resultado(i,j,50000).round(3) %>    
+								data-60000=<%= @partido.xveces_el_resultado(i,j,60000).round(3) %> 
+								data-70000=<%= @partido.xveces_el_resultado(i,j,70000).round(3) %> 
+								data-80000=<%= @partido.xveces_el_resultado(i,j,80000).round(3) %> 
+								data-90000=<%= @partido.xveces_el_resultado(i,j,90000).round(3) %> 
+								data-100000=<%= @partido.xveces_el_resultado(i,j,100000).round(3) %>> 
+							</div>
+							<%end %>
+							<%end  %>
+						</article>
+					</section>
+			<%else %>
+				<section id="apuesta">
+
+					<article id="miapuesta">
+						<div class="datosmarcador">
+							<div class="Ligamarcador"><%= @partido.nombre_torneo %></div>
+							<div class="equipo2"> <%= @partido.local %></div>
+							<div class="vsmarcador">VS</div>
+							<div class="equipo2"> <%= @partido.visitante %></div>
+							<div class="horamarcador"><%= @partido.hora_partido %></div>
+							<%if @partido.users.uniq.count >=10%>
+								<div class="pjugando2"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
+							<%end%>
 						</div>
-						<div class="opcionesplata">
-							<%= f.select :monto, current_user.montos_que_puede_apostar%>
-						</div>
-						<p class="retornoesperado" id="marcadorAbierto">
-							Retorno Estimado: 
-							<span class="cifrasapuestas" id="retornoEstimado">
-								<!-- JAVASCRIPT partidos.js -->
-							</span>
-							<br>
-							Retorno Minimo Garantizado:
-							<span class="cifrasapuestas" id="retornoMinimoGarantizado">
-								<!-- JAVASCRIPT partidos.js -->
-							</span>
-						</p>
-						<p class="retornoesperado" id="marcadorBloqueado">
-							<span class="cifrasapuestas">
-								¡Marcador bloqueado temporalmente!
-							</span>
-						</p>
-						<%= f.submit "JUGAR PEZZOS", {:class=> "botpezzos", :id => "jugarPezzos"}%>			
-						<div>
-							<%= render "partidos/redes_sociales" %>
-						</div>
-						<%end %>
-						<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
-					</article>
-					<article class="retaramigos" id="retaramigos">
-						<input type="submit" Value="Retar a tus amigos" class="botfacebook"/>
-						<p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
-						<div class="vermas">
-							<a href="partidos.html">jugar solo</a>
-						</div>
-					</article>
-					<article id="bets-info" data-total=<%=@partido.monto_total_apostado%> data-minimototal=<%=Partido.minimo_total%>>
-						<% for i in 0..10 %>
-						<% for j in 0..10 %>
-						<div class=<%= "local#{i}visitante#{j}"%> 
-							data-10000=<%= @partido.xveces_el_resultado(i,j,10000).round(3) %>
-							data-20000=<%= @partido.xveces_el_resultado(i,j,20000).round(3) %>
-							data-30000=<%= @partido.xveces_el_resultado(i,j,30000).round(3) %>
-							data-40000=<%= @partido.xveces_el_resultado(i,j,40000).round(3) %> 
-							data-50000=<%= @partido.xveces_el_resultado(i,j,50000).round(3) %>    
-							data-60000=<%= @partido.xveces_el_resultado(i,j,60000).round(3) %> 
-							data-70000=<%= @partido.xveces_el_resultado(i,j,70000).round(3) %> 
-							data-80000=<%= @partido.xveces_el_resultado(i,j,80000).round(3) %> 
-							data-90000=<%= @partido.xveces_el_resultado(i,j,90000).round(3) %> 
-							data-100000=<%= @partido.xveces_el_resultado(i,j,100000).round(3) %>> 
-						</div>
-						<%end %>
-						<%end  %>
-					</article>
-				</section>
-				<%else %>
-				<article class="cajamarcadorApuesta">
-					<div class="marcadorCentrado">
-						<div class="escudoequipo">
-							<%= image_tag @partido.logolocal %>
-							<h3> <%= @partido.local %></h3>
-						</div>
-						<div class="datospartido">
-							<div class="Liga"><%= @partido.nombre_torneo %></div>
-							<div class="vs">VS</div>
-							<div class="hora"><%= @partido.hora_partido %></div>
-							<div class="pjugando"><%= pluralize(@partido.users.uniq.count, "persona") %> jugando</div>
-						</div>
-						<div class="escudoequipo">
-							<%= image_tag @partido.logovisitante %>
-							<h3> <%= @partido.visitante %></h3>
-						</div>
-					</div>
-				</article>
+						<%= form_for([@partido, @partido.bets.build]) do |f| %>
+						<div class="contenedorentrada">
+							<div class="equipin">
+								<div class="imgequipo1">
+									<%= image_tag @partido.logolocal %>
+
+								</div>
+								<div class="divmarcador">
+									<%= f.number_field :golesLocal, {
+										:max         =>"10" ,
+										:min         =>"0" ,
+										:placeholder =>"0",
+										:size        =>"10px", 
+										:class       =>"marcadoruser1 marcadorlocal",  
+										:align       =>"middle"}  %>
+									</div>
+								</div>
+								<div class="equipin">
+									<div class="divmarcador">
+										<%= f.number_field :golesVisitante, {
+											:max         =>"10" ,
+											:min         =>"0" ,
+											:placeholder =>"0",
+											:size        =>"10px", 
+											:class       =>"marcadoruser1 marcadorvisitante",  
+											:align       =>"middle"}%>
+										</div>
+										<div class="imgequipo2">
+											<%= image_tag @partido.logovisitante %>
+										</div> 
+										<div class="clear"></div> 
+									</div>
+								</div>
+								<p class="retornoesperado" id="marcadorBloqueado">
+									<span class="cifrasapuestas">
+										¡Marcador bloqueado temporalmente!
+									</span>
+								</p>		
+								<div>
+									<%= render "partidos/redes_sociales" %>
+								</div>
+								<%end %>
+								<!--	<input type="submit" Value="APOSTAR DINERO" class="botdinero" name="dinero" /> -->
+							</article>
+							<article class="retaramigos" id="retaramigos">
+								<input type="submit" Value="Retar a tus amigos" class="botfacebook"/>
+								<p class="masamigos">Entre más amigos retes, más sube tu retorno.</p>
+								<div class="vermas">
+									<a href="partidos.html">jugar solo</a>
+								</div>
+							</article>
+					</section>
+				<p display="none" id="memory">
+					<%= @partido.id %>
+				</p>	
 				<section class="loginfacebook">
 					<h3>Tienes 100,000 Pezzos Gratis, Cobralos y Juega:</h3>
 					<%= link_to "¡Registrate y reta!", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> "botlogin", partido_id: @partido.id } %>
 				</section>
-				<%end %> 
+			<% end %>
 
 
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -160,4 +200,18 @@
     <button class="btn btn-primary">Compartir</button>
   </div>
 </div>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.botlogin').on('click',function(){
+			localStorage.apuesta= $('#memory').html()+"-"+$('#bet_golesLocal').val()+"-"+$('#bet_golesVisitante').val() ;
+			console.log($('#bet_golesLocal').val());
+			console.log($('#bet_golesVisitante').val());
+			console.log($('#memory').html());
+
+
+			
+		});
+	});
+</script>
 

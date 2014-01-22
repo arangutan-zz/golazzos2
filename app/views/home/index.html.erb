@@ -6,25 +6,12 @@
   <% end %>
 
   <section id="bienvenida">
-    <div id="myCarousel" class="carousel slide">
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <div class="active item">
-          <%= image_tag "golazzos2/banner1.png" %>
-        </div>
-        <div class="item">
-          <%= image_tag "golazzos2/banner2.png" %>
-        </div>
-        <div class="item">
-          <%= image_tag "golazzos2/banner3.png" %>
-        </div>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
+    <div class="imgbienvenida"></div>
     <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
-    <%= render "partidos/redes_sociales" %>
+    <div class="titulosseccion">
+      <%= render "partidos/redes_sociales" %>
+    </div>
+    
   </section>      
 
   <section id="partidosSabrozzos" class="clear">
@@ -59,47 +46,36 @@
   <div class="masPartidos"><%= link_to "ver mas partidos", partidos_path %></div> 
 </section>
 
-<section id="sobreGolazzos" class="">
-  <header>
-    <h2 class="titulosseccion">SOBRE GOLAZZO$</h2>
-  </header>
-  <p class="wrapper" id="frase1">Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos.</p>
-
-  <div class="pasos">
-    <%= image_tag "golazzos2/paso1.png", :class=> " pull-left", :width=> "80px" %>
-    <h3 class="wrapper" id="frase1">
-      Pazzo 1
-    </h3>
-    <p class="wrapper">
-      <strong class="bold">
-        SELECCIONA 
-      </strong> 
-      Tu partido y tu marcador esperado que te dará una ganancia si aciertas
-    </p>
-  </div>
-  <div class="pasos">
-    <%= image_tag "golazzos2/paso2.png", :class=> " pull-left", :width=> "80px" %>
-    <h3 class="wrapper" id="frase1"> 
-      Pazzo 2
-    </h3>
-    <p class="wrapper">
-      <strong class="bold">
-        RETA
-      </strong> 
-      A tus amigos y apuestas con dinero real o ficticio que llamamos "pezzo$"
-    </p>
-  </div>
-  <div class="pasos">
-    <%= image_tag "golazzos2/paso3.png", :class=> " pull-left", :width=> "80px" %>
-    <h3 class="wrapper" id="frase1">
-      Pazzo 3
-    </h3>
-    <p class="wrapper">
-      <strong class="bold">
-        COMPARTE
-      </strong>
-      tu pasión en nuestro "Estadio" donde comentas el partido. Ganas si aciertas el marcador.
-    </p>
+<section id="sobreGolazzos" >
+  <div class="container">
+    <div class="row-fluid">
+      <h2 class="text-center">
+        COMO APOSTAR Y GANAR PEZZOS
+      </h2>
+      <p class="text-center">
+        Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos
+      </p>
+    </div>
+    <div class="row-fluid">
+        <div class="span4 text-center">
+            <%= image_tag "golazzos2/pazzo1.png"%>
+          <p>
+              SELECCIONA tu partido y tu marcador esperado que te dará una ganancia si aciertas
+          </p>
+        </div>
+        <div class="span4 text-center">
+            <%= image_tag "golazzos2/pazzo2.png" %>
+          <p>
+            RETA a tus amigos y apuestas con dinero real o ficticio que llamamos "pezzo$"
+          </p>
+        </div>
+        <div class="span4 text-center">
+            <%= image_tag "golazzos2/pazzo3.png" %>
+          <p>
+            COMPARTE tu pasíon en nuestro "Estadio" donde comentas el partido. Ganas si aciertas el marcador. 
+          </p>
+        </div>
+    </div>
   </div>
 
   <div class="masPartidos"></div>
