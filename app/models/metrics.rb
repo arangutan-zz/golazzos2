@@ -31,22 +31,37 @@ class Metrics < ActiveRecord::Base
 			siguiente = Date.today unless siguiente
 			
 			#Usuarios que apostaron en los meses
-			#users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
-			
+			users_de_ese_mes = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
 			#Total de usuarios registrados en esos meses
 			total_usuarios = User.where( "created_at < ?", siguiente ).count
-
 			#Definiendo el porcentaje ( usuarios activos / total de usuarios )
-			#porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
-			
-			#retorno[actual] = porcentaje.round(5)
-			retorno[actual] = total_usuarios
+			porcentaje = users_de_ese_mes.count.to_f / total_usuarios.to_f
+			retorno[actual] = porcentaje.round(5)
 		end
 
 		return retorno
 
 		#users = User.joins(:bets).where( bets: { created_at: bets_months.first } ).uniq.inspect
+	end
 
+	def self.apuestas_al_mes
+		retorno={}
+		bets_months =  Bet.all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
+
+
+		bets_months.each_index do | i |
+
+			#Meses a consultar
+			actual = bets_months[i]
+			siguiente = bets_months[i+1]
+			siguiente = Date.today unless siguiente
+			
+			# Numero de Apuestas al Mes
+			apuestas_al_mes =  Bet.where( "? < created_at and created_at  < ?", actual, siguiente )
+			retorno[actual] = apuestas_al_mes.count
+		end
+
+		return retorno
 	end
 
 	def self.recurrencia_en_meses
