@@ -29,7 +29,7 @@ gem 'jquery-rails'
 
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails",'2.1.7'
+gem "twitter-bootstrap-rails"
 
 gem 'haml'
 

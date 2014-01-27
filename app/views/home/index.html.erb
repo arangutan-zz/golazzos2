@@ -6,8 +6,18 @@
   <% end %>
 
   <section id="bienvenida">
-    <div class="imgbienvenida"></div>
-    <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
+    <div class="imgbienvenida5">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-4">
+          El juego online donde
+          </div>
+          <p></p>
+          <p>Apuestas y ganas</p>
+        
+        </div>
+       </div>
+    </div>
     <div class="titulosseccion">
       <%= render "partidos/redes_sociales" %>
     </div>
@@ -16,7 +26,6 @@
 
   <section id="partidosSabrozzos" class="clear">
     <header >
-      <h2 class="titulosseccion clear">PARTIDOS SABROZZOS</h2>
     </header>  
     <%@partidos.each do |partido| %>
     <a href=<%= partido_path(partido)%>> 
@@ -85,6 +94,27 @@
     <%= link_to "REGLAMENTO", home_reglamento_path %>
   </h2>
 </section>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+      $(window).resize(function() {
+      
+        pos = ($(window).height() - 100 )+'px';
+        $('.imgbienvenida5').css('height',pos);
+
+      });
+      
+      var calcular = function(){
+        
+        pos = ($(window).height() - 100)+'px';
+        $('.imgbienvenida5').css('height',pos);
+
+      }
+
+      calcular();
+    
+  });
+</script>
 
 
 
