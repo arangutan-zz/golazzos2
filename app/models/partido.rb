@@ -3,7 +3,7 @@ class Partido < ActiveRecord::Base
   
   attr_accessible :diapartido, :local, :logolocal, :logovisitante, :visitante, 
   :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo,
-  :email_partido_cerrado, :email_partido_terminado
+  :email_partido_cerrado, :email_partido_terminado, :id
 
   validates :diapartido, presence: true 
   validates :local, presence: true

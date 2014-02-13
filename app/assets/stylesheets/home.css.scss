@@ -7,7 +7,7 @@ body{
 	padding-right: 0px;
 	margin:0px;
 	font-size:100%;
-	background-color: #eeeeee;
+	background-color: white;
 }
 .backcolor{
 	background-color: #ffffff;
@@ -196,10 +196,9 @@ a:focus{
 }
 nav{
 	font-family:Arial, Helvetica, sans-serif;
-	color: #FFF;
+	color: #007db6;
 	font-style:normal;
 	font-weight:lighter;
-	background-color:#ddd;
 }
 nav ul{
 	margin:0;
@@ -209,7 +208,7 @@ nav ul li{
 	list-style-image:none;
 	font-size:16px;
 	font-family: helvetica, arial, sans-serif;
-	color: #FFF;
+	color: #007db6;
 	border-bottom: solid 1px #bbb;
 }
 nav ul li a{
@@ -273,6 +272,13 @@ nav ul li a:hover{
 	background-image: url("http://periodicodigital.com.mx/media/images/2012/abril/deportes/semana_1/lunes_2/mexico%20campeon%20preolimpico.jpg");
 	background-repeat:no-repeat;
 	background-position: center;
+}
+
+.imgbienvenida5{
+	width:100%;
+	margin-bottom:0px;
+	background: url("http://www.1001consejos.com/wp-content/uploads/2011/05/jugador-de-futbol.jpg") 100% 65% no-repeat;
+	background-size: cover;
 }	
 /* Frase bienvenida ___________________________*/
 .frasehome{ 
@@ -284,14 +290,7 @@ nav ul li a:hover{
 	font-size: 1.1em;
 }
 .titulosseccion{
-	background: #1f7abe; /* Old browsers */
-	background: -moz-linear-gradient(-45deg,  #1f7abe 0%, #024791 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#1f7abe), color-stop(100%,#024791)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(-45deg,  #1f7abe 0%,#024791 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(-45deg,  #1f7abe 0%,#024791 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(-45deg,  #1f7abe 0%,#024791 100%); /* IE10+ */
-	background: linear-gradient(135deg,  #1f7abe 0%,#024791 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f7abe', endColorstr='#024791',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: #024791; /* Old browsers */
 	font-family:Futura,Arial, Helvetica, sans-serif;
 	font-size: 2Opx;
 	display:block;
@@ -417,8 +416,10 @@ nav ul li a:hover{
 #partidosSabrozzos{
 	margin-bottom: 10px;
 }
-#sobreGolazzos{
 
+#sobreGolazzos{
+	background: #0096cd;
+	color: white !important;
 }
 
 .pasos{
@@ -451,6 +452,16 @@ nav ul li a:hover{
 
 .dropdown-backdrop {
     position: static;
+}
+
+#form_compra{
+	width: 250px;
+	text-align: center;
+	margin: 10px auto 20px auto; 
+}
+
+.fb_edge_widget_with_comment span.fb_edge_comment_widget {
+   left: -45px !important;
 }
 
 

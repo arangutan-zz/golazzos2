@@ -11,7 +11,7 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -30,7 +30,7 @@ gem 'jquery-rails'
 
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails",'2.1.7'
+gem "twitter-bootstrap-rails"
 
 gem 'haml'
 

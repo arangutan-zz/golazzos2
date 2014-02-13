@@ -1,5 +1,8 @@
 Gollazos::Application.routes.draw do
 
+#------Pagos ---------
+get "home/comprar_pesos"
+
 #------GOLAZZOS 2 -----------
 get "home/index"
 resources :partidos do

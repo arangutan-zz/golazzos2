@@ -1,18 +1,29 @@
 <div class="navbar navbar-static-top">
   <div class="navbar-inner">
     <div class="container">
-        <div class="row">
-            <div class="span8 offset2">
-               <a class="logo" href=<%= root_path %>></a>
-               <ul class="nav pull-right">
+          <a class="logo" href=<%= root_path %>></a>
+            <ul class="nav navbar-nav pull-right ">
+              <li>
+                <a href="">PARTIDOS</a>
+              </li>
+              <li>
+                <a href="">COMO APOSTAR</a>
+              </li>
+              <li>
+                <a href="">Iniciar Sesión</a>
+              </li>
+            </ul> 
+
+          <!--
+          <ul class="nav pull-right">
                 <li class="dropdown">
                     <div href="#" class="botperfilpezzos">
                        <%if current_user %>
                        Pezzo$: <%=number_to_currency current_user.pezzos, precision: 0  %> 
-                       <!-- <br/>
+                       <br/>
                        <span>
                         pesos: <%= number_to_currency 50000, precision: 0 %>
-                       </span> -->
+                       </span>
                        <%end %>
                    </div>
                </li>
@@ -38,7 +49,8 @@
                             <li><%= link_to "Partido Nuevo", new_partido_path %></li>
                             <li><%= link_to "Metricas", metrics_index_path %></li>
                         <%end %>
-
+                    <li class="divider"></li>
+                    <li><%= link_to "Recargar tu cuenta", home_comprar_pesos_path %></li>
                     <%else %>
 
                     <li><%= link_to "Login con facebook", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> ""} %></li>
@@ -52,10 +64,9 @@
                     <%end%>
 
                 </ul>
-            </li>
-        </ul>
+              </li>
+          </ul>
+        -->
     </div>
-</div>
-</div>
-</div>
+  </div>
 </div>
