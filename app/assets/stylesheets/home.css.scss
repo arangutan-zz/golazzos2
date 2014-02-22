@@ -18,17 +18,33 @@ body{
 	width: 96%;
 	margin: 0px auto;
 }
+
+/*Colores tipograficos*/
+
+.blanco{
+	color: white;
+}
+
+.azul-claro{
+	color: #0096cd;
+}
+
+.azul-oscuro{
+	color: white;
+}
+
+
 /* Fuentes tipográficas */
 h1{ 
-	font-family: Futura,Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
 	font-weight:normal;
 	color: #fff;
 	padding:1px;
 	margin:10px;
 }
 h2{
-	font-family: Futura, Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size:15px;
 	font-weight:light;
 }
@@ -211,6 +227,11 @@ nav ul li{
 	color: #007db6;
 	border-bottom: solid 1px #bbb;
 }
+
+ #btn-iniciosec{
+
+}
+
 nav ul li a{
 	display: block;
 	height: 30px;
@@ -279,7 +300,23 @@ nav ul li a:hover{
 	margin-bottom:0px;
 	background: url("http://www.1001consejos.com/wp-content/uploads/2011/05/jugador-de-futbol.jpg") 100% 65% no-repeat;
 	background-size: cover;
+	overflow: hidden;
 }	
+
+
+.home-banner{
+	padding: 10px;
+	background: rgba(255,255,255, 0.3);
+	color: white;
+	font-size: 40px;
+	margin: 0 0 10px 0;
+}
+
+.home-banner-top{
+	margin: 10% 0 10px 0;
+}
+
+
 /* Frase bienvenida ___________________________*/
 .frasehome{ 
 	color: #157CBA;
@@ -294,7 +331,7 @@ nav ul li a:hover{
 	font-family:Futura,Arial, Helvetica, sans-serif;
 	font-size: 2Opx;
 	display:block;
-	padding:3px;
+	padding:10px;
 	color:#FFF;
 	font-weight:light;
 	margin:0px;
@@ -305,9 +342,85 @@ nav ul li a:hover{
 }
 /* partidos por jugarse///////////////////////////////*/
 
+
+
+/*Boton partidos*/
+
+.btn-apostar {
+	-moz-box-shadow: 0px 1px 0px 0px #bbdaf7;
+	-webkit-box-shadow: 0px 1px 0px 0px #bbdaf7;
+	box-shadow: 0px 1px 0px 0px #bbdaf7;
+	background-color:#0096cd;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	display:inline-block;
+	color:white !important;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:44px;
+	line-height:44px;
+	width:124px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #528ecc;
+}.btn-apostar:hover {
+	/*background-color:#024791;*/
+}.btn-apostar:active {
+	position:relative;
+	top:1px;
+}
+
+
+.btn-azul-oscuro{
+
+	background-color:#024791;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	display:inline-block;
+	color:white !important;
+	font-family:Arial;
+	font-size:15px;
+	font-style:normal;
+	height:47px;
+	line-height:44px;
+	width:190px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #528ecc;
+}
+.btn-azul-oscuro:hover {
+	/*background-color:#024791;*/
+}.btn-azul-oscuro:active {
+	position:relative;
+	top:1px;
+}
+
 .cajamarcador{
-	height:120px;
-	border-bottom:thin #CCC solid;
+	height:150px;
 	margin:0px auto;	
 	/*background-color:#0F0;*/
 	padding-left:10px;
@@ -315,15 +428,15 @@ nav ul li a:hover{
 }
 
 .cajamarcador:hover{
-	background-color: #EEE;
+	/*background-color: #EEE;*/
 }
 /* marcadores home*/
 .marcadorCentrado{
-	width:230px;
+	width:280px;
 	margin: 0px auto;
 }
 .escudoequipo{
-	width:60px;
+	width:70px;
 	height:auto;
 	/*background-color:#06C;*/
 	text-align:center;
@@ -342,7 +455,7 @@ nav ul li a:hover{
 	font-size: 12px;
 }
 .datospartido{
-	width:110px;
+	width:125px;
 	float:left;
 	/*background-color:#9F0;*/
 	height:100%;
@@ -405,7 +518,11 @@ nav ul li a:hover{
 	text-align:center;
 }
 .masPartidos{
+	padding: 20px;
+	background: #d8d8d8;
 	text-align: center;
+	position: relative;
+	top: 10px;
 }
 #frase1{
 	font-size: 15px;
@@ -420,11 +537,14 @@ nav ul li a:hover{
 #sobreGolazzos{
 	background: #0096cd;
 	color: white !important;
+	padding: 30px 0 20px 0;
 }
 
 .pasos{
 	margin:20px 10px 45px 10px;
 }
+
+
 .reglamentoGolazzos a{
 	color: #ffffff;
 }

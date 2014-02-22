@@ -9,8 +9,8 @@
               <li>
                 <a href="">COMO APOSTAR</a>
               </li>
-              <li>
-                <a href="">Iniciar Sesión</a>
+              <li id="btn-iniciosec">
+                <%= link_to "Iniciar Sesión", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> ""} %>
               </li>
             </ul> 
 
