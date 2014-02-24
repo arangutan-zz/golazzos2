@@ -57,7 +57,7 @@
 									:min         =>"0" ,
 									:placeholder =>"0",
 									:size        =>"10px", 
-									:class       =>"marcadoruser1 marcadorlocal",  
+									:class       =>"marcadoruser marcadorlocal",  
 									:align       =>"middle"}  %>
 								</div>
 							</div>
@@ -68,14 +68,14 @@
 										:min         =>"0" ,
 										:placeholder =>"0",
 										:size        =>"10px", 
-										:class       =>"marcadoruser1 marcadorvisitante",  
+										:class       =>"marcadoruser marcadorvisitante",  
 										:align       =>"middle"}%>
-									</div>
+								</div>
 									<div class="imgequipo2">
 										<%= image_tag @partido.logovisitante %>
 									</div> 
 									<div class="clear"></div> 
-								</div>
+							</div>
 							</div>
 							<div class="opcionesplata">
 								<%= f.select :monto, current_user.montos_que_puede_apostar%>
