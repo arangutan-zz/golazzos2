@@ -1,12 +1,8 @@
 .MiApuesta
-	%h3 Apuestas al mes
-%table.table.table-striped
-	%thead
-		%tr 
-			%th Mes
-			%th Apuestas realizadas
-	%tbody
-		-@apuestas_al_mes.each do |mes, porcentaje|
-			%tr
-				%td=mes.strftime("%B %Y")
-				%td=porcentaje
+	%h3 Totales
+.container
+	%p="Usuarios: #{@numeroUsuarios}"
+	%p="Apuestas: #{@numeroBets}"
+
+=link_to "usuarios activos", metrics_path(metric_id: 1), remote: true
+#metricas

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-#gem 'rake', '0.9.6'
+gem 'rake'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -46,7 +46,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'public_activity'
 #gem 'rack-google-analytics'
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 
 gem 'whenever', :require => false
@@ -72,3 +72,6 @@ gem 'whenever', :require => false
 # gem 'debugger'
 
 gem "mocha", :group => :test
+
+
+gem "devise"

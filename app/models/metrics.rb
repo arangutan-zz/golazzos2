@@ -1,5 +1,17 @@
 class Metrics < ActiveRecord::Base
-  attr_accessible :apuestas_usuario, :login_usuario, :posts_usuario, :referidos_usuario, :sinapostar_usuarios, :sininvitar_usuarios, :total_apuestas, :total_referidos, :total_usuarios
+  attr_accessible :apuestas_usuario, :login_usuario, :posts_usuario, 
+  :referidos_usuario, :sinapostar_usuarios, :sininvitar_usuarios, 
+  :total_apuestas, :total_referidos, :total_usuarios
+
+
+  def self.find_by_ajax(params={})
+  	metric_id = params[:id].to_i
+  	case metric_id
+	  when 1 then return self.usuarios_activos
+	  else return "No se encontro"
+  	end	
+  end
+
 
 	def self.usuarios_activos
 		users= User.includes(:bets).all
@@ -15,9 +27,36 @@ class Metrics < ActiveRecord::Base
 		end
 		
 		#Retorna { numApuestas => numUsers }
-		return retorno
+		return self.create_metric title:"Usuarios activos", 
+										column_one_name:"Numero de Apuestas", 
+										column_two_name:"Numero de Usuarios",
+															 rows: retorno.sort
 	end 
+	def self.usuarios_activos_al_mes
+		retorno={}
+		bets_months =  Bet.all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
+		bets_months.each_index do | i |
 
+			#Meses a consultar
+			actual = bets_months[i]
+			siguiente = bets_months[i+1]
+			siguiente = Date.today unless siguiente
+			
+			retorno_mes={}
+			#Usuarios que apostaron en los meses
+			users = User.includes(:bets).where( "? < bets.created_at and bets.created_at  < ?", actual, siguiente )
+			users.each do |user|
+				numApuestas = user.bets.where("? < created_at and created_at  < ?", actual, siguiente).count
+				if retorno_mes[numApuestas]==nil
+					retorno_mes[numApuestas]=1
+				else
+					retorno_mes[numApuestas]+=1
+				end
+			end
+			retorno[actual]=retorno_mes.sort
+		end
+		return retorno
+	end
 	def self.porcentaje_usuarios_activos_al_mes
 		retorno={}
 		bets_months =  Bet.all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
@@ -43,7 +82,6 @@ class Metrics < ActiveRecord::Base
 
 		#users = User.joins(:bets).where( bets: { created_at: bets_months.first } ).uniq.inspect
 	end
-
 	def self.apuestas_al_mes
 		retorno={}
 		bets_months =  Bet.all.group_by { |bet| bet.created_at.beginning_of_month}.keys.sort
@@ -61,9 +99,9 @@ class Metrics < ActiveRecord::Base
 			retorno[actual] = apuestas_al_mes.count
 		end
 
+
 		return retorno
 	end
-
 	def self.recurrencia_en_meses
 		users = User.includes(:bets).all
 		retorno={}
@@ -79,6 +117,11 @@ class Metrics < ActiveRecord::Base
 			end
 		end
 		return retorno
+	end
+
+	private
+	def self.create_metric(args={})
+		Metric.new args
 	end
 
 end

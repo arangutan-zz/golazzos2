@@ -20,14 +20,18 @@ end
   get "home/contacto"
   get "home/privacidad"
 
+# MEtrics
+resources :metrics
+# Gamification
+resources :levels
+
 #---------------------------------------------------------------------
 #-----------GOLAZZOS 1.0
   get "activities/index"
   get "friendship/index"
   get "redireccion/index"
   get "redireccion/new"
-  get "metrics/index"
-  get "metrics/emails"
+
   resources :invitations do
     post 'postear', :on => :collection
   end

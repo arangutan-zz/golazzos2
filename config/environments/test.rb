@@ -34,4 +34,7 @@ Gollazos::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.fb_app_id = '500959623297658'
+  config.fb_app_secret = '01911454d7d49d1a68786eb86791cb43'
 end

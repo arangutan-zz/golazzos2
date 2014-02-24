@@ -14,7 +14,7 @@
               </li>
             </ul> 
 
-          <!--
+          
           <ul class="nav pull-right">
                 <li class="dropdown">
                     <div href="#" class="botperfilpezzos">
@@ -47,7 +47,7 @@
                         <% if current_user.administrator %>
                             <li class="divider"></li>
                             <li><%= link_to "Partido Nuevo", new_partido_path %></li>
-                            <li><%= link_to "Metricas", metrics_index_path %></li>
+                            <li><%= link_to "Metricas", metrics_path %></li>
                         <%end %>
                     <li class="divider"></li>
                     <li><%= link_to "Recargar tu cuenta", home_comprar_pesos_path %></li>
@@ -66,7 +66,7 @@
                 </ul>
               </li>
           </ul>
-        -->
+        
     </div>
   </div>
 </div>

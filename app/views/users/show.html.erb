@@ -32,6 +32,16 @@
                 <div class="numerologro"><%= @user.partidos_perdidos %></div>
             </div>
         </div>
+        <div class="experience">
+            <div class="nombreperfil"><%="Nivel #{@user.level.step}: #{@user.level.title}"%></div>
+            <div>
+                <%= "XP #{@user.experience} / #{@user.level.max_experience}" %>
+            </div>
+            <div class="progress">
+              <div class="bar" style=<%="width: #{@user.userLevel.progress}%;"%>></div>
+            </div>
+
+        </div>
     </div>
 </section>
 <ul class="nav nav-tabs">

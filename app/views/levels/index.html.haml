@@ -1,0 +1,26 @@
+%h2.titulosseccion Levels
+=render "layouts/flash_notice"
+.container
+	.row
+		.span12
+			%table.table
+				%tr
+					%th Nivel
+					%th Titulo
+					%th Experiencia Minima
+					%th Experiencia Maxima
+					%th Opciones
+				-@levels.each do |level|
+					%tr
+						%td= level.step
+						%td= level.title
+						%td= level.min_experience
+						%td= level.max_experience
+						%td= link_to "Eliminar", level, method: :delete
+				%tr 
+					=form_for@level, html:{:class =>"form-inline"} do |f| 
+						%td=f.number_field :step,						placeholder:"Nivel"
+						%td=f.text_field   :title,          placeholder:"Titulo del Nivel"
+						%td=f.number_field :min_experience, placeholder:"XP Minima"
+						%td=f.number_field :max_experience, placeholder:"XP Maxima"
+						%td=f.submit 			 :class=>"btn btn-primary"

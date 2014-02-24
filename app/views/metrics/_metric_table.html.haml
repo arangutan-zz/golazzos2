@@ -1,0 +1,15 @@
+.metric
+	.MiApuesta
+		%h3=@metric.title
+	%table.table-striped.table-bordered.centrado.center-table
+		%thead 
+			%tr 
+				%th=@metric.column_one_name
+				%th=@metric.column_two_name
+		%tbody
+			-@metric.rows.each do |row|
+				%tr
+					%td=row[0]
+					%td=row[1]
+	%br/ 
+	%br/ 

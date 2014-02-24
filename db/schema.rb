@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211203434) do
+ActiveRecord::Schema.define(:version => 20140213214406) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(:version => 20131211203434) do
     t.datetime "updated_at",                       :null => false
     t.boolean  "used",          :default => false
     t.decimal  "demora"
+  end
+
+  create_table "levels", :force => true do |t|
+    t.string   "title"
+    t.integer  "min_experience"
+    t.integer  "max_experience"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "step"
   end
 
   create_table "metrics", :force => true do |t|
@@ -121,6 +130,13 @@ ActiveRecord::Schema.define(:version => 20131211203434) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "user_levels", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "level_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -145,6 +161,8 @@ ActiveRecord::Schema.define(:version => 20131211203434) do
     t.integer  "pezzos_acumulados",  :default => 0
     t.integer  "partidos_ganados",   :default => 0
     t.integer  "partidos_perdidos",  :default => 0
+    t.integer  "experience",         :default => 0
+    t.boolean  "new_level",          :default => true
   end
 
 end
