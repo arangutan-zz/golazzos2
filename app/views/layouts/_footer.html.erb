@@ -1,16 +1,32 @@
-<footer>
-	<p> 
-		<% if current_user%>
-			<%= link_to "Perfil", current_user%> | 
-		<%end%>
-		<%= link_to "Partidos", partidos_path%> |
-		<%= link_to "Blog","http://golazzos2013.wordpress.com/"%> |
-		<%= link_to "Contactanos", home_contacto_path%> |
-		<%= link_to "Reglamento", home_reglamento_path%>
-	</p>
-	<p>
-		Golazzos &copy; Todos los derechos reservados.
-</p>
-</footer>
+<section class="titulosseccion ">
+  <div class="container">
+    <div class="row-fluid">
+        <div class="span2 offset2 text-center">
+          <h2 class="reglamentoGolazzos">
+            <%= link_to "Reglamento", home_reglamento_path %>
+          </h2>
+        </div>
+        <div class="span2 text-center">
+          <h2 class="reglamentoGolazzos">
+            <%= link_to "Sobre Golazzo$", home_reglamento_path %>
+          </h2>
+        </div>
+        <div class="span2 text-center">
+          <h2 class="reglamentoGolazzos">
+            <%= link_to "Blog", home_reglamento_path %>
+          </h2>
+        </div>
+        <div class="span2 text-center">
+          <h2 class="reglamentoGolazzos">
+            <%= link_to "Contactenos", home_reglamento_path %>
+          </h2>
+        </div>
+      </div>
+
+    <div class="row-fluid">
+    	Golazzos &copy; Todos los derechos reservados.
+    </div>
+  </div>
+</section>
 <%= debug(params) if Rails.env.development? %>
      
