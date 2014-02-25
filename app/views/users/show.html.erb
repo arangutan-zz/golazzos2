@@ -175,37 +175,13 @@
             Comenta la Competencia con tus Amigos
         </h3>
     </div>
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
     <div class="fb-comments" data-href="http://goldos.herokuapp.com/partidos" data-colorscheme="light" data-numposts="10"></div>
-
-
     <style type="text/css">
     .fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
         width: 100% !important;
     }
     </style>
-
-
-    <script type="text/javascript">
-        $('.fb-comments').attr('data-href',window.location.href);
-
-
-        var reto = localStorage.reto;
-        if (reto == undefined) {
-            alert("no viene de un reto");
-        }else{
-            alert("viene de un reto");
-            var reminder = reto.split("-");
-            console.log(reminder);
-            localStorage.clear();
-            window.location = "/partidos/1-millos_vs_santafe?source=facebook&userid="+reminder[1]+"&betid="+reminder[0];
-        }
-
-        
-
-    </script>
 
     <div id="fb-root"></div>
 </section>

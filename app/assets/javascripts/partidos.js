@@ -100,20 +100,4 @@ $(document).ready(function(){
 
 	//CATEGORIZAR LOS PARTIDOS POR TORNEOS EN [PARTIDOS]
 	$("#torneoSelector").on("change", categorizarPartidos);
-
-
-	//REGLAS DE GOLAZZOS EN EL [RETO]
-	//$(".linkreglasGolazzos").on("click", function(event){
-	//	event.preventDefault();
-	//	$(".reglasGolazzos").fadeToggle();
-	//});
-
-	//$("input[name=agree]").on("change", function(){
-	//	$(".botonfacebook").show();
-	//	$(".terminosycondiciones").hide();
-	//});
-
-	//$("input[name=dinero]").on("click", function(){
-	//	alert("Todavia no hemos lanzado la version paga de Golazzos. PROXIMAMENTE. :)");
-	//});
 });

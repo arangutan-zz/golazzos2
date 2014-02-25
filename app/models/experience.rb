@@ -9,20 +9,21 @@ class Experience
 	end
 	
 	public
+	def self.all
+		{
+			bet: 5,
+			facebook_share: 3,
+			otro: 1
+		}
+	end
+
 
 	private
 	def add_experience
-		case from
-		when :bet
-			user.experience += 5
-		when :facebook_share
-			user.experience += 3
-		else
-			user.experience += 1
-		end
+		user.experience+= all.fetch(from, 10)
 	end	
 	def find_level
-		level = Level.find_level_by_experience user.experience
+		level = Level.find_by_experience user.experience
 		mark_user_new_level(level)
 	end
 	def mark_user_new_level(level)
