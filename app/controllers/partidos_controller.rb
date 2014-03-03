@@ -19,11 +19,8 @@ class PartidosController < ApplicationController
   def show
   	@partido = Partido.includes(:bets).find(params[:id])
     #Cerrar el patido automaticamente,
-    @hoy = Time.now.utc-5.hours-15.minutes
-    if @partido.diapartido < @hoy
-      @partido.update_attributes(cerrado: true)
-      Partido.enviar_email_partido_cerrado(@partido)
-    end
+    @hoy = Time.now.utc-5.hours
+    @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
 
     #--REDIRECCIONAMIENTO BEGINS----
     #redirecciona al ESTADIO si el partido ya esta cerrado
@@ -44,9 +41,6 @@ class PartidosController < ApplicationController
     if params[:betid] and params[:userid]
       @bet = Bet.find(params[:betid])
       @user = User.find(params[:userid])
-
-      @ids = params[:betid]+"-"+params[:userid]
-
       if current_user and current_user != @user
         #metrica de referidos
         current_user.update_attributes(referidos: current_user.referidos + 1 )
@@ -88,20 +82,16 @@ class PartidosController < ApplicationController
       return
     end
 
-
     @bet = Bet.find(params[:betid])
-    @linkinvitation = partido_url(@partido).to_s+"?source=facebook&userid=#{current_user.id}&betid=#{@bet.id}"
+    @linkinvitation = partido_url(@partido).to_s+"?userid=#{current_user.id}&betid=#{@bet.id}"
     @friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
   end
 
   def estadio
     @partido = Partido.find(params[:id])
         #Cerrar el patido automaticamente,
-    @hoy = Time.now.utc-5.hours-15.minutes
-    if @partido.diapartido < @hoy
-      @partido.update_attributes(cerrado: true)
-      Partido.enviar_email_partido_cerrado(@partido)
-    end
+    @hoy = Time.now.utc-5.hours
+    @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
 
     #SI el partido ya TERMINO y se REPARTIO la plata. Redireccionar al Resultado
     if @partido.repartido
@@ -165,11 +155,8 @@ class PartidosController < ApplicationController
       @partido = Partido.find(params[:id])
 
       #Cerrar el patido automaticamente,
-      @hoy = Time.now.utc-5.hours-15.minutes
-      if @partido.diapartido < @hoy
-          @partido.update_attributes(cerrado: true)
-          Partido.enviar_email_partido_cerrado(@partido)
-      end
+      @hoy = Time.now.utc-5.hours
+      @partido.update_attributes(cerrado: true) if @partido.diapartido < @hoy
   end
 
   # POST /partidos
@@ -195,22 +182,21 @@ class PartidosController < ApplicationController
   	@partido = Partido.find(params[:id])
     
     #prueba
-   # PartidoMailer.partido_cerrado.deliver
+    #PartidoMailer.partido_cerrado.deliver
 
     #si el partido se acaba de cerrar enviar email 
-
+    if @partido.cerrado && !@partido.terminado && !@partido.repartido
+      #@partido.enviar_email_se_cerro_el_partido
+      #flash[:notice] = "se envio el email"
+    end
 
   	respond_to do |format|
   		if @partido.update_attributes(params[:partido])
-  			#if (@partido.terminado && @partido.cerrado)
-  			#	@partido.create_activity :termino, owner: current_user
-  			#else
-  			#	@partido.create_activity :update, owner: current_user
-  			#end
-                  if @partido.cerrado and !@partido.terminado and !@partido.repartido
-                        Partido.enviar_email_partido_cerrado(@partido)
-                        flash[:notice] = "se envio el email"
-                  end                    
+  			if (@partido.terminado && @partido.cerrado)
+  				@partido.create_activity :termino, owner: current_user
+  			else
+  				@partido.create_activity :update, owner: current_user
+  			end
   			format.html { redirect_to edit_partido_path @partido, notice: 'Partido was successfully updated.' }
   			format.json { head :no_content }
   		else
@@ -237,7 +223,6 @@ class PartidosController < ApplicationController
 		if @partido.terminado && @partido.cerrado
 			@partido.repartir_la_plata
 			@partido.update_attributes(repartido: true)
-                  Partido.enviar_email_partido_terminado(@partido)
 			redirect_to partido_path(@partido), notice: "Se repartio la plata !"
 		else
 			redirect_to edit_partido_path(@partido), notice: "Asegurate de Cerrar la apuesta y de agregar el marcador"
@@ -247,4 +232,8 @@ class PartidosController < ApplicationController
 	def mostrar
     @partidos = Partido.all
 	end
+
+
+
+
 end

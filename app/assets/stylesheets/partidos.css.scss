@@ -136,31 +136,6 @@
 	font-size: 36px;
 	margin-top:20px;
 }
-.miApuesta{
-	display: block;
-	height: 400px;
-}
-.marcadoruser{
-	width:35px;
-	height:35px;
-	background-color: #FFF;
-	border: thin solid #999;
-	border-radius:3px;
-	box-shadow: inset- 1px 1px 1px #666666;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:24px;
-	text-align: center
-}
-.marcadoruservisitante{
-	float: right;
-}
-#bet_monto{
-	width: 50%;
-	margin: 0px auto;
-}
-.retornos{
-	padding: 20px 0px;
-}
 
 
 .marcadoruser1{
@@ -172,7 +147,7 @@
 	box-shadow: inset- 1px 1px 1px #666666;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:24px;
-	margin-left: 27px;
+	margin-left: 15px;
 	float:left;
 }
 .redes{
@@ -488,44 +463,3 @@ a.botpezzos:hover,a.botpezzos:focus{
 	padding-left:10px;
 	clear: both;
 }
-.espacio{
-	margin-bottom: 400px;
-}
-
-
-/*---------- GOLAZZOS 2.5 -----------*/
-.navigation{
-	text-align: center;
-	color: white;
-	header{
-		display: inline-block;
-		h1{
-			font-size: 23px;
-		}
-	}
-	nav{
-		padding: 20px 0px;
-		display: inline-block;
-		li{
-			margin: 0px;
-			padding: 0px;
-			display: inline-block;
-			text-decoration: none;
-			a{
-			margin: 0px;
-				color: white;
-				font-size: 16px;
-				font-weight: lighter;
-				padding: 25px 10px 20px 10px;
-				text-decoration: none
-			}
-			.active{
-					background-color: #024791 !important;
-				}
-			a:hover{
-				background-color: #024791;
-			}
-		}
-	}
-}
-

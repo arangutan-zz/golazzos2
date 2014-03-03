@@ -65,6 +65,8 @@ module Gollazos
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+
+    config.middleware.use(Rack::GoogleAnalytics, :tracker => 'UA-39477904-1') 
                                             
   end
 end

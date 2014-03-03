@@ -1,8 +1,5 @@
 Gollazos::Application.routes.draw do
 
-#------Pagos ---------
-get "home/comprar_pesos"
-
 #------GOLAZZOS 2 -----------
 get "home/index"
 resources :partidos do
@@ -11,7 +8,6 @@ resources :partidos do
   get 'retar', on: :member
   get 'estadio', on: :member
   get 'resultado', on: :member
-  get 'email', on: :member
   resources :bets
 end
 
@@ -20,18 +16,14 @@ end
   get "home/contacto"
   get "home/privacidad"
 
-# MEtrics
-resources :metrics
-# Gamification
-resources :levels
-
 #---------------------------------------------------------------------
 #-----------GOLAZZOS 1.0
   get "activities/index"
   get "friendship/index"
   get "redireccion/index"
   get "redireccion/new"
-
+  get "metrics/index"
+  get "metrics/emails"
   resources :invitations do
     post 'postear', :on => :collection
   end

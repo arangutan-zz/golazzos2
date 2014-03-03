@@ -1,1 +1,0 @@
-puts "Gamification test"

@@ -5,7 +5,6 @@
 
 
 function actualizarRetornos(){
-	console.log("actualizarRetornos");
 	var local = +$(".marcadorlocal").val();
 	var visitante = +$(".marcadorvisitante").val();
 	var monto = $("#bet_monto").val();
@@ -14,10 +13,6 @@ function actualizarRetornos(){
 	var veces = $(".local"+local+"visitante"+visitante).data(monto);
 	var retornoEstimado = veces *monto;
 	var retornoMinimo = monto*2;
-
-	if(retornoEstimado < retornoMinimo && totalApostado <= minimoTotal){
-		retornoEstimado = "Por definir";
-	}
 
 	if (retornoEstimado < retornoMinimo && totalApostado > minimoTotal) {
 		$("#marcadorAbierto").hide();
@@ -52,9 +47,13 @@ function categorizarPartidos(){
 function verificarMarcadores(){
 	var local = $(".marcadorlocal").val();
 	var visitante = $(".marcadorvisitante").val();
-	
-	$("#bet_golesLocal").val(local);
-	$("#bet_golesVisitante").val(visitante);
+
+	if(local===""){
+		$(".marcadorlocal").val(0);
+	}
+	if(visitante===""){
+		$(".marcadorvisitante").val(0);
+	}
 }
 function compartirEnFacebook(){
 	$("form#new_bet").submit(function(){
@@ -87,14 +86,30 @@ function compartirEnFacebook(){
 // DOCUMENT READY
 //---------------------------------------------------------------------------
 $(document).ready(function(){
+
 	//ACTUALIZAR RETORNOS EN LA [APUESTA]
 	actualizarRetornos();
-	$(".marcador").on("change",actualizarRetornos); //.on("change",validarApuesta);
-	$("#bet_monto").on("change", actualizarRetornos);     //.on("change",validarApuesta);
+	$(".marcadoruser1").on("change",actualizarRetornos) //.on("change",validarApuesta);
+	$("#bet_monto").on("change", actualizarRetornos)      //.on("change",validarApuesta);
 
-	$("#jugarPezzos").on("click", verificarMarcadores)
-									 .on("click", compartirEnFacebook);
+	$("#jugarPezzos").on("click", verificarMarcadores).on("click", compartirEnFacebook);
 
 	//CATEGORIZAR LOS PARTIDOS POR TORNEOS EN [PARTIDOS]
 	$("#torneoSelector").on("change", categorizarPartidos);
+
+
+	//REGLAS DE GOLAZZOS EN EL [RETO]
+	//$(".linkreglasGolazzos").on("click", function(event){
+	//	event.preventDefault();
+	//	$(".reglasGolazzos").fadeToggle();
+	//});
+
+	//$("input[name=agree]").on("change", function(){
+	//	$(".botonfacebook").show();
+	//	$(".terminosycondiciones").hide();
+	//});
+
+	//$("input[name=dinero]").on("click", function(){
+	//	alert("Todavia no hemos lanzado la version paga de Golazzos. PROXIMAMENTE. :)");
+	//});
 });

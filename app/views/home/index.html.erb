@@ -6,134 +6,109 @@
   <% end %>
 
   <section id="bienvenida">
-    <div class="imgbienvenida5">
-      <div class="container text-center">
-        <div class="row">
-          <div class="span7 offset3 text-center home-banner home-banner-top">
-          El juego online donde
-          </div>
+    <div id="myCarousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="active item">
+          <%= image_tag "golazzos2/banner1.png" %>
         </div>
-        <div class="row">
-          <div class="span7 offset3  text-center home-banner">
-            Apuestas y Ganas
-          </div>
+        <div class="item">
+          <%= image_tag "golazzos2/banner2.png" %>
         </div>
-       </div>
+        <div class="item">
+          <%= image_tag "golazzos2/banner3.png" %>
+        </div>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
-    <div class="titulosseccion">
-      <%= render "partidos/redes_sociales" %>
-    </div>
-    
+    <h1 class="frasehome"> APUESTAS EN FÚTBOL RETANDO A TUS AMIGOS</h1>
+    <%= render "partidos/redes_sociales" %>
   </section>      
 
   <section id="partidosSabrozzos" class="clear">
     <header >
-      <h1 class="azul-claro text-center">
-        Apuesta Ya!
-      </h1>
-      <p class="azul-claro text-center">
-        Acierta el marcador en los Partidos Sabrozzos
-      </p>
-
+      <h2 class="titulosseccion clear">PARTIDOS SABROZZOS</h2>
     </header>  
     <%@partidos.each do |partido| %>
-    
+    <a href=<%= partido_path(partido)%>> 
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">
-           <%= image_tag partido.logolocal , class:"img-circle" %>
+           <%= image_tag partido.logolocal %>
            <h3> <%= partido.local %></h3>
          </div>
          <div class="datospartido">
           <div class="Liga"><%= partido.nombre_torneo %></div>
           <div class="vs">VS</div>
-          <div class="marcadores">
-              <input align="middle" class="marcadoruser" id="bet_golesLocal" max="10" min="0" name="bet[golesLocal]" placeholder="0" size="10px" type="number">
-              <input align="middle" class="marcadoruser1 " id="bet_golesLocal" max="10" min="0" name="bet[golesLocal]" placeholder="0" size="10px" type="number">
-          </div>
-
           <div class="hora"><%= partido.hora_partido %></div>
           <%if partido.users.uniq.count >=10%>
             <div class="pjugando2"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
           <%end%>
-          
-
-          <a href=<%= partido_path(partido)%> class="btn-apostar">APOSTAR</a>
         </div>
         <div class="escudoequipo">
           <%= image_tag partido.logovisitante %>
           <h3> <%= partido.visitante %></h3>
         </div>
       </div>
+      <div class="botcontinuar"></div>
     </article>
+  </a>
   <%end %>
-  <div class="masPartidos">
-    <%= link_to "Todos los partidos", partidos_path, class:'btn-azul-oscuro' %>
-  </div> 
+  <div class="masPartidos"><%= link_to "ver mas partidos", partidos_path %></div> 
 </section>
 
-<section id="sobreGolazzos" >
-  <div class="container">
-    <div class="row-fluid">
-      <h1 class="text-center">
-        COMO APOSTAR Y GANAR PEZZOS
-      </h1>
-      <p class="text-center blanco">
-        Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos
-      </p>
-    </div>
-    <br>
-    <div class="row-fluid">
-        <div class="span4 text-center">
-          <%= image_tag "golazzos2/pazzo1.png"%>
-          <br>
-          <br>
-          <p class="blanco">
-              SELECCIONA tu partido y tu marcador esperado que te dará una ganancia si aciertas
-          </p>
-        </div>
-        <div class="span4 text-center">
-          <%= image_tag "golazzos2/pazzo2.png" %>
-          <br>
-          <br>
-          <p class="blanco">
-            RETA a tus amigos y apuestas con dinero real o ficticio que llamamos "pezzo$"
-          </p>
-        </div>
-        <div class="span4 text-center">
-          <%= image_tag "golazzos2/pazzo3.png" %>
-          <br>
-          <br>
-          <p class="blanco">
-            COMPARTE tu pasíon en nuestro "Estadio" donde comentas el partido. Ganas si aciertas el marcador. 
-          </p>
-        </div>
-    </div>
+<section id="sobreGolazzos" class="">
+  <header>
+    <h2 class="titulosseccion">SOBRE GOLAZZO$</h2>
+  </header>
+  <p class="wrapper" id="frase1">Golazzo$ es un juego divertido donde puedes ganar dinero retando a tus amigos a los marcadores finales de tus equipos favoritos. Funciona en (3) simples pazzos.</p>
+
+  <div class="pasos">
+    <%= image_tag "golazzos2/paso1.png", :class=> " pull-left", :width=> "80px" %>
+    <h3 class="wrapper" id="frase1">
+      Pazzo 1
+    </h3>
+    <p class="wrapper">
+      <strong class="bold">
+        SELECCIONA 
+      </strong> 
+      Tu partido y tu marcador esperado que te dará una ganancia si aciertas
+    </p>
+  </div>
+  <div class="pasos">
+    <%= image_tag "golazzos2/paso2.png", :class=> " pull-left", :width=> "80px" %>
+    <h3 class="wrapper" id="frase1"> 
+      Pazzo 2
+    </h3>
+    <p class="wrapper">
+      <strong class="bold">
+        RETA
+      </strong> 
+      A tus amigos y apuestas con dinero real o ficticio que llamamos "pezzo$"
+    </p>
+  </div>
+  <div class="pasos">
+    <%= image_tag "golazzos2/paso3.png", :class=> " pull-left", :width=> "80px" %>
+    <h3 class="wrapper" id="frase1">
+      Pazzo 3
+    </h3>
+    <p class="wrapper">
+      <strong class="bold">
+        COMPARTE
+      </strong>
+      tu pasión en nuestro "Estadio" donde comentas el partido. Ganas si aciertas el marcador.
+    </p>
   </div>
 
+  <div class="masPartidos"></div>
 </section>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript">
-  $(function(){
-      $(window).resize(function() {
-      
-        pos = ($(window).height() - 100 )+'px';
-        $('.imgbienvenida5').css('height',pos);
-
-      });
-      
-      var calcular = function(){
-        
-        pos = ($(window).height() - 100)+'px';
-        $('.imgbienvenida5').css('height',pos);
-
-      }
-
-      calcular();
-    
-  });
-</script>
+<section class="titulosseccion ">
+  <h2 class="reglamentoGolazzos">
+    <%= link_to "REGLAMENTO", home_reglamento_path %>
+  </h2>
+</section>
 
 
 

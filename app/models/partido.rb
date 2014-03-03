@@ -2,8 +2,7 @@ class Partido < ActiveRecord::Base
   include PublicActivity::Common
   
   attr_accessible :diapartido, :local, :logolocal, :logovisitante, :visitante, 
-  :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo,
-  :email_partido_cerrado, :email_partido_terminado, :id
+  :terminado, :resultadoLocal, :resultadoVisitante, :cerrado, :repartido, :torneo
 
   validates :diapartido, presence: true 
   validates :local, presence: true
@@ -71,7 +70,7 @@ class Partido < ActiveRecord::Base
   end
 
   def self.minimo_total
-    250000
+    500000
   end
 
 
@@ -181,10 +180,8 @@ end
       user.partidos_ganados  += 1 #
       user.partidos_perdidos = user.bets.count - user.partidos_ganados
       user.pezzos_acumulados += pezzos_ganados
+
       user.save  
-      Experience.new to: user, 
-                   from: :bet,
-                subject: bet
     end
   end
 
@@ -222,40 +219,11 @@ end
       end
   end
 
-  def self.enviar_email_partido_cerrado(partido)
-    if partido.email_partido_cerrado==false
-      partido.update_attributes(email_partido_cerrado: true)
-      users = partido.users.uniq
-          users.each do |user|
-            bets= partido.apuestas_del_usuario(user)
-            #PartidoMailer.email_prueba(user).deliver
-            PartidoMailer.partido_cerrado(partido, user, bets ).deliver
-      end  
-    end
-  end
-
-  def self.enviar_email_nueva_apuesta(user,bet)
-    PartidoMailer.email_apuesta_realizada(user, bet).deliver
-  end
-
-  def self.enviar_email_partido_terminado(partido)
-      if partido.email_partido_terminado==false
-          partido.update_attributes(email_partido_terminado: true)
-          users = partido.users.uniq
-          users.each do |user|
-              bets = partido.apuestas_del_usuario(user)
-              if partido.ganancias_del_usuario(user)>0
-                #enviar email de ganaste
-                PartidoMailer.ganador_del_partido(partido, user, bets ).deliver
-              else
-                #enviar email de perdiste 
-                PartidoMailer.perdedor_del_partido(partido, user, bets ).deliver
-              end
-          end
-      end
+  def enviar_email_se_cerro_el_partido
+      PartidoMailer.partido_cerrado.deliver
   end
 
   def to_param
-    "#{id}-#{self.local}_vs_#{self.visitante}_partidoid"
+    "#{id}-#{self.local}_vs_#{self.visitante}"
   end 
 end
