@@ -37,21 +37,28 @@
 
     </header>  
     <%@partidos.each do |partido| %>
-    <!--<a href=<%= partido_path(partido)%>> -->
+    
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">
-           <%= image_tag partido.logolocal %>
+           <%= image_tag partido.logolocal , class:"img-circle" %>
            <h3> <%= partido.local %></h3>
          </div>
          <div class="datospartido">
           <div class="Liga"><%= partido.nombre_torneo %></div>
           <div class="vs">VS</div>
+          <div class="marcadores">
+              <input align="middle" class="marcadoruser" id="bet_golesLocal" max="10" min="0" name="bet[golesLocal]" placeholder="0" size="10px" type="number">
+              <input align="middle" class="marcadoruser1 " id="bet_golesLocal" max="10" min="0" name="bet[golesLocal]" placeholder="0" size="10px" type="number">
+          </div>
+
           <div class="hora"><%= partido.hora_partido %></div>
           <%if partido.users.uniq.count >=10%>
             <div class="pjugando2"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
           <%end%>
-          <a href="#" class="btn-apostar">APOSTAR</a>
+          
+
+          <a href=<%= partido_path(partido)%> class="btn-apostar">APOSTAR</a>
         </div>
         <div class="escudoequipo">
           <%= image_tag partido.logovisitante %>
@@ -59,7 +66,6 @@
         </div>
       </div>
     </article>
- <!-- </a> -->
   <%end %>
   <div class="masPartidos">
     <%= link_to "Todos los partidos", partidos_path, class:'btn-azul-oscuro' %>

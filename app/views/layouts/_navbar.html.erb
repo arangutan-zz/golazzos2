@@ -6,13 +6,21 @@
 
   <!--    <ul class="nav navbar-nav pull-right ">
               <li>
-                <a href="">PARTIDOS</a>
+                <%= link_to "Partidos", partidos_path %>
               </li>
               <li>
                 <a href="">COMO APOSTAR</a>
               </li>
               <li id="btn-iniciosec">
-                <%= link_to "Iniciar Sesión", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> ""} %>
+                <%if current_user %>
+                   
+                    <%= link_to "Logout", signout_path, id: "sign_out"%>
+                <%else %>
+
+                   <%= link_to "Iniciar Sesión", "/auth/facebook",  {:onClick => "_gaq.push(['_trackEvent', 'usuario', 'login'])", :class=> ""} %>
+                <%end %>
+
+               
               </li>
             </ul>  -->
 

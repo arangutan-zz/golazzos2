@@ -71,7 +71,7 @@ class Partido < ActiveRecord::Base
   end
 
   def self.minimo_total
-    500000
+    250000
   end
 
 
@@ -181,8 +181,10 @@ end
       user.partidos_ganados  += 1 #
       user.partidos_perdidos = user.bets.count - user.partidos_ganados
       user.pezzos_acumulados += pezzos_ganados
-
       user.save  
+      Experience.new to: user, 
+                   from: :bet,
+                subject: bet
     end
   end
 

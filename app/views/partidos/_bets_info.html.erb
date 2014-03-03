@@ -1,0 +1,20 @@
+<article       id="bets-info" 
+			 data-total=<%=@partido.monto_total_apostado%> 
+ data-minimototal=<%=Partido.minimo_total%>>
+		<% for i in 0..10 %>
+		<% for j in 0..10 %>
+					<div class=<%= "local#{i}visitante#{j}"%> 
+							data-10000=<%= @partido.xveces_el_resultado(i,j,10000).round(3) %>
+							data-20000=<%= @partido.xveces_el_resultado(i,j,20000).round(3) %>
+							data-30000=<%= @partido.xveces_el_resultado(i,j,30000).round(3) %>
+							data-40000=<%= @partido.xveces_el_resultado(i,j,40000).round(3) %> 
+							data-50000=<%= @partido.xveces_el_resultado(i,j,50000).round(3) %>    
+							data-60000=<%= @partido.xveces_el_resultado(i,j,60000).round(3) %> 
+							data-70000=<%= @partido.xveces_el_resultado(i,j,70000).round(3) %> 
+							data-80000=<%= @partido.xveces_el_resultado(i,j,80000).round(3) %> 
+							data-90000=<%= @partido.xveces_el_resultado(i,j,90000).round(3) %> 
+							data-100000=<%= @partido.xveces_el_resultado(i,j,100000).round(3) %>> 
+					</div>
+		<%end %>
+		<%end  %>
+</article>

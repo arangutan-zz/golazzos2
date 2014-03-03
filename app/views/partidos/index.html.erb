@@ -7,14 +7,17 @@
 
   <section id="partidos">
     <header >
-      <h2 class="titulosseccion">PARTIDOS</h2>
+      <div class="imagen_titulo">
+
+      </div>
+      <h2 class="azul-claro-bg titulosseccion">PARTIDOS</h2>
     </header> 
     <div class="MiApuesta opcionesplata">
             <%= select_tag(:torneo,options_for_select(Partido.torneos), :id=>"torneoSelector") %>
     </div>
     <%@partidos.each do |partido| %>
     <div class="partido torneo<%=partido.torneo%>">
-    <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>   > 
+    <!-- <a href=<%= partido_path(partido, params:{ ir_estadio: "si" })%>   > -->
       <article class="cajamarcador">
         <div class="marcadorCentrado">
           <div class="escudoequipo">
@@ -24,18 +27,22 @@
           <div class="datospartido">
             <div class="Liga"><%= partido.nombre_torneo %></div>
             <div class="vs">VS</div>
+            <div class="marcadores">
+              <input align="middle" class="marcador marcadoruser marcadorlocal" id="bet_golesLocal" max="10" min="0" name="bet[golesLocal]" placeholder="0" size="10px" type="number" value="0">
+              <input align="middle" class="marcador marcadoruser marcadoruservisitante marcadorvisitante" id="bet_golesLocal" max="10" min="0" name="bet[golesLocal]" placeholder="0" size="10px" type="number" value="0">
+            </div>
+            
             <div class="hora"><%= partido.hora_partido %></div>
             <%if partido.users.uniq.count >=10%>
               <div class="pjugando"><%= pluralize(partido.users.uniq.count, "persona") %> jugando</div>
             <%end%>
-               
+            <a href=<%= partido_path(partido)%> class="btn-apostar">APOSTAR</a>
           </div>
           <div class="escudoequipo">
             <%= image_tag partido.logovisitante %>
             <h3> <%= partido.visitante %></h3>
           </div>
         </div>
-        <div class="botcontinuar"></div>
         <div>
           <% if current_user && current_user.administrator %>
           <%= link_to "Editar", edit_partido_path(partido), :class =>"btn" %>
@@ -43,9 +50,11 @@
           <% end %>
         </div>
       </article>
-    </a>
+    <!-- </a> -->
   </div>
     <%end %>
+
+    
+
   </section>
 
-  

@@ -88,6 +88,7 @@ class PartidosController < ApplicationController
       return
     end
 
+
     @bet = Bet.find(params[:betid])
     @linkinvitation = partido_url(@partido).to_s+"?source=facebook&userid=#{current_user.id}&betid=#{@bet.id}"
     @friends = current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(square)")
@@ -244,6 +245,6 @@ class PartidosController < ApplicationController
 	end
 
 	def mostrar
-          @partidos = Partido.all
+    @partidos = Partido.all
 	end
 end

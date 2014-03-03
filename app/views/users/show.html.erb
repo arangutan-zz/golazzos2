@@ -38,9 +38,8 @@
                 <%= "XP #{@user.experience} / #{@user.level.max_experience}" %>
             </div>
             <div class="progress">
-              <div class="bar" style=<%="width: #{@user.userLevel.progress}%;"%>></div>
+              <div class="bar" style=<%="width:#{@user.userLevel.progress}\%;"%>></div>
             </div>
-
         </div>
     </div>
 </section>
@@ -182,7 +181,22 @@
         width: 100% !important;
     }
     </style>
+    <script type="text/javascript">
+        $('.fb-comments').attr('data-href',window.location.href);
 
+
+        var reto = localStorage.reto;
+        if (reto == undefined) {
+            //alert("no viene de un reto");
+        }else{
+            //alert("viene de un reto");
+            var reminder = reto.split("-");
+            console.log(reminder);
+            localStorage.clear();
+            window.location = "/partidos/1-millos_vs_santafe?source=facebook&userid="+reminder[1]+"&betid="+reminder[0];
+        }
+
+    </script>
     <div id="fb-root"></div>
 </section>
 </div>

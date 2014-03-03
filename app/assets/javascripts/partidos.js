@@ -5,6 +5,7 @@
 
 
 function actualizarRetornos(){
+	console.log("actualizarRetornos");
 	var local = +$(".marcadorlocal").val();
 	var visitante = +$(".marcadorvisitante").val();
 	var monto = $("#bet_monto").val();
@@ -51,13 +52,9 @@ function categorizarPartidos(){
 function verificarMarcadores(){
 	var local = $(".marcadorlocal").val();
 	var visitante = $(".marcadorvisitante").val();
-
-	if(local===""){
-		$(".marcadorlocal").val(0);
-	}
-	if(visitante===""){
-		$(".marcadorvisitante").val(0);
-	}
+	
+	$("#bet_golesLocal").val(local);
+	$("#bet_golesVisitante").val(visitante);
 }
 function compartirEnFacebook(){
 	$("form#new_bet").submit(function(){
@@ -90,13 +87,13 @@ function compartirEnFacebook(){
 // DOCUMENT READY
 //---------------------------------------------------------------------------
 $(document).ready(function(){
-
 	//ACTUALIZAR RETORNOS EN LA [APUESTA]
 	actualizarRetornos();
-	$(".marcadoruser1").on("change",actualizarRetornos) //.on("change",validarApuesta);
-	$("#bet_monto").on("change", actualizarRetornos)      //.on("change",validarApuesta);
+	$(".marcador").on("change",actualizarRetornos); //.on("change",validarApuesta);
+	$("#bet_monto").on("change", actualizarRetornos);     //.on("change",validarApuesta);
 
-	$("#jugarPezzos").on("click", verificarMarcadores).on("click", compartirEnFacebook);
+	$("#jugarPezzos").on("click", verificarMarcadores)
+									 .on("click", compartirEnFacebook);
 
 	//CATEGORIZAR LOS PARTIDOS POR TORNEOS EN [PARTIDOS]
 	$("#torneoSelector").on("change", categorizarPartidos);

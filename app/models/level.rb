@@ -5,7 +5,6 @@ class Level < ActiveRecord::Base
   has_many :users, through: :userLevels
 
   default_scope {order("step asc")}
-
   def self.find_by_experience(experience)
   	self.where("min_experience <= ? and ? <= max_experience", experience, experience)
   end
